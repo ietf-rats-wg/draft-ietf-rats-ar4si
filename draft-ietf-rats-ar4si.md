@@ -692,10 +692,10 @@ Jump to step (6.1).
         3. Prune any Trustworthiness Claims unsupportable by the Attesting Environment.
         4. Prune any Trustworthiness Claims the Relying Party doesn't accept from this Verifier.
 
-6. The Relying Party takes action based on Verifier B's appraised Trustworthiness Vector:
+6. The Relying Party takes action based on Verifier B's appraised Trustworthiness Vector, and applies the Appraisal Policy for Attestation Results.  Following is a reasonable process for such evaluation:
 
-     1. Prune any Trustworthiness Claims not used in the Appraisal Policy for Attestation Results.
-     2. Allow the information exchange from the Attester into a Relying Party context where the Verifier B appraised Trustworthiness Vector includes all the mandatory Trustworthiness Claims of value "1", and none of the disqualifying Trustworthiness Claims containing values that are not "0" or "1".
+     1. Prune any Trustworthiness Claims from the Trustworthiness Vector not used in the Appraisal Policy for Attestation Results.
+     2. Allow the information exchange from the Attester into a Relying Party context in the Appraisal Policy for Attestation Results where the Verifier B appraised Trustworthiness Vector includes all the mandatory Trustworthiness Claims are in the "Affirming" value range, and none of the disqualifying Trustworthiness Claims are in the "Contraindicated" value range.
      3. Disallow any information exchange into a Relying Party context for which that Verifier B appraised Trustworthiness Vector is not qualified.
 
 As link layer protocols re-authenticate, steps (1) to (2) and steps (3) to (6) will independently refresh.
