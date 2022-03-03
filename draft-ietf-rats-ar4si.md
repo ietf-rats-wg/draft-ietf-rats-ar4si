@@ -203,7 +203,7 @@ During the Remote Attestation process, the Verifier's identity must be establish
 This Verifier identity could only have come from a key pair maintained by a trusted developer or operator of the Verifier.
 
 Additionally, each set of Attestation Results must be provably and non-reputably bound to the identity of the original Attesting Environment which was evaluated by the Verifier.
-This will be accomplished via two the meeting of two requirements.
+This is accomplished via satisfying two requirements.
 First the Verifier signed Attestation Results MUST include sufficient Identity Evidence to ensure that this Attesting Environment signature refers to the same Attesting Environment appraised by the Verifier.
 Second, where the passport model is used as a subsystem, an Attesting Environment signature which spans the Verifier signature MUST also be included.
 As the Verifier signature already spans the Attester Identity as well as the Attestation Results, this restricts the viability of spoofing attacks.
