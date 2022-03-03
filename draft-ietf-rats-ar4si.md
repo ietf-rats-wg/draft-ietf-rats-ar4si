@@ -82,7 +82,10 @@ informative:
     title: "802.1AR: Secure Device Identity"
     date: 2018-08-02
   I-D.tschofenig-rats-psa-token: PSA
-  I-D.birkholz-rats-network-device-subscription: subscription
+  I-D.ietf-rats-network-device-subscription: subscription
+  TPM2.0:
+    target: https://trustedcomputinggroup.org/wp-content/uploads/TPM-Rev-2.0-Part-1-Architecture-01.07-2014-03-13.pdf
+    title: "Trusted Platform Module Library - Part 1: Architecture"
   US-Executive-Order:
     target: https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/
     title: "Executive Order on Improving the Nation's Cybersecurity"
@@ -227,7 +230,7 @@ After the Verifier performs its appraisal, it will include sufficient informatio
 
 This document recognizes three general categories of Attesters.
 
-1. HSM-based: A Hardware Security Module (HSM) based cryptoprocessor which continually hashes security measurements in a way which prevents an Attester from lying about measurements which have been extended into the Attesting Environment (e.g., TPM2.0.)
+1. HSM-based: A Hardware Security Module (HSM) based cryptoprocessor which hashes one or more streams of security measurements from an Attester within the Attesting Environment. Maintenance of this hash enables detection of an Attester which is lying about the set of security measurements taken. An example of a HSM is a TPM2.0 {{TPM2.0}}.
 2. Process-based: An individual process which has its runtime memory encrypted by an Attesting Environment in a way that no other processes can read and decrypt that memory (e.g., {{SGX}} or {{-PSA}}.)
 3. VM-based: An entire Guest VM (or a set of containers within a host) have been encrypted as a walled-garden unit by an Attesting Environment.  The result is that the host operating system cannot read and decrypt what is executing within that VM (e.g., {{SEV-SNP}} or {{TDX}}.)
 
