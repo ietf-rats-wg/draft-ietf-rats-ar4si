@@ -430,7 +430,7 @@ executables:
    : Cryptographic validation of the Evidence has failed.
 
 file-system:
-:  A Verifier has evaluated the Attester's file system.
+:  A Verifier has evaluated a specific set of directories within the Attester's file system.  (Note: the Verifier may or may not indicate what these directory and expected files are via an unspecified management interface.)
 
    0:
    : No assertion
