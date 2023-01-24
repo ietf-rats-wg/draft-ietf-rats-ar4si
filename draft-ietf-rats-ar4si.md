@@ -173,7 +173,7 @@ The vector is included within Attestation Results.
 # Attestation Results for Secure Interactions
 
 A Verifier generates the Attestation Results used by a Relying Party.
-When a Relying Party needs to determine whether to permit communications with an Attester, these Attestation Results must contain a specific set of information elements. 
+When a Relying Party needs to determine whether to permit communications with an Attester, these Attestation Results must contain a specific set of information elements.
 This section defines those information elements, and in some cases encodings for information elements.
 
 ## Information driving a Relying Party Action
@@ -334,7 +334,7 @@ None: The Verifier makes no assertions regarding this aspect of trustworthiness.
 
 * Value 0: The Evidence received is insufficient to make a conclusion. Note: this should always be always treated equivalently by the Relying Party as no claim being made. I.e., the RP's Appraisal Policy for Attestation Results SHOULD NOT make any distinction between a Trustworthiness Claim with enumeration '0', and no Trustworthiness Claim being provided.
 * Value 1: The Evidence received contains unexpected elements which the Verifier is unable to parse.  An example might be that the wrong type of Evidence has been delivered.
-* Value -1: A verifier malfunction occurred during the Verifier's appraisal processing. 
+* Value -1: A verifier malfunction occurred during the Verifier's appraisal processing.
 
 Affirming: The Verifier affirms the Attester support for this aspect of trustworthiness.
 
@@ -357,10 +357,10 @@ Such a policies may be as simple as saying that a specific Verifier has recently
 
 ### Assigning a Trustworthiness Claim value
 
-In order to simplify design, only a single encoded value is asserted by a Verifier for any Trustworthiness Claim within a using the following process.  
+In order to simplify design, only a single encoded value is asserted by a Verifier for any Trustworthiness Claim within a using the following process.
 
 1. If applicable, a Verifier MUST assign a standardized value from the Contraindicated tier.
-2. Else if applicable, a Verifier MUST assign a non-standardized value from the Contraindicated tier.  
+2. Else if applicable, a Verifier MUST assign a non-standardized value from the Contraindicated tier.
 3. Else if applicable, a Verifier MUST assign a standardized value from the Warning tier.
 4. Else if applicable, a Verifier MUST assign a non-standardized value from the Warning tier.
 5. Else if applicable, a Verifier MUST assign a standardized value from the Affirming tier.
@@ -395,7 +395,7 @@ configuration:
 
    36:
    : Elements of the configuration relevant to security are unavailable to the Verifier.
-   
+
    96:
    : The configuration is unsupportable as it exposes unacceptable security vulnerabilities.
 
@@ -407,16 +407,16 @@ executables:
 
    0:
    : No assertion
-   
+
    1:
    : Verifer cannot parse unexpected Evidence.
-      
+
    -1:
    : Verifier malfunction
-   
+
    2:
    : Only a recognized genuine set of approved executables, scripts, files, and/or objects have been loaded during and after the boot process.
-   
+
    3:
    : Only a recognized genuine set of approved executables have been loaded during the boot process.
 
@@ -440,10 +440,10 @@ file-system:
 
    1:
    : Verifer cannot parse unexpected Evidence.
-      
+
    -1:
    : Verifier malfunction
-   
+
    2:
    : Only a recognized set of approved files are found.
 
@@ -452,11 +452,11 @@ file-system:
 
    96:
    : The file system includes contraindicated executables, scripts, or files.
-   
-   99:
-   : Cryptographic validation of the Evidence has failed. 
 
-   
+   99:
+   : Cryptographic validation of the Evidence has failed.
+
+
 hardware:
 : A Verifier has appraised any Attester hardware and firmware which are able to expose fingerprints of their identity and running code.
 
@@ -465,10 +465,10 @@ hardware:
 
    1:
    : Verifer cannot parse unexpected Evidence.
-   
+
    -1:
    : Verifier malfunction
-   
+
    2:
    : An Attester has passed its hardware and/or firmware verifications needed to demonstrate that these are genuine/supported.
 
@@ -483,8 +483,8 @@ hardware:
    99:
    : Cryptographic validation of the Evidence has failed.
 
-   
-instance-identity: 
+
+instance-identity:
 : A Verifier has appraised an Attesting Environment's unique identity based upon private key signed Evidence which can be correlated to a unique instantiated instance of the Attester.  (Note: this Trustworthiness Claim should only be generated if the Verifier actually expects to recognize the unique identity of the Attester.)
 
    0:
@@ -508,8 +508,8 @@ instance-identity:
    99:
    : Cryptographic validation of the Evidence has failed.
 
-   
-runtime-opaque: 
+
+runtime-opaque:
 : A Verifier has appraised the visibility of Attester objects in memory from perspectives outside the Attester.
 
    0:
@@ -523,17 +523,17 @@ runtime-opaque:
 
    2:
    : the Attester's executing Target Environment and Attesting Environments are encrypted and within Trusted Execution Environment(s) opaque to the operating system, virtual machine manager, and peer  applications.  (Note: This value corresponds to the protections asserted by O.RUNTIME_CONFIDENTIALITY from {{GP-TEE-PP}})
-   
+
    32:
    : the Attester's executing Target Environment and Attesting Environments inaccessible from any other parallel application or Guest VM running on the Attester's physical device.  (Note that unlike "1" these environments are not encrypted in a way which restricts the Attester's root operator visibility. See O.TA_ISOLATION from {{GP-TEE-PP}}.)
-   
+
    96:
    : The Verifier has concluded that in memory objects are unacceptably visible within the physical host that supports the Attester.
-   
+
    99:
    : Cryptographic validation of the Evidence has failed.
 
-    
+
 sourced-data:
 : A Verifier has evaluated of the integrity of data objects from external systems used by the Attester.
 
@@ -542,10 +542,10 @@ sourced-data:
 
    1:
    : Verifer cannot parse unexpected Evidence.
-   
+
    -1:
    : Verifier malfunction
-   
+
    2:
    : All essential Attester source data objects have been provided by other Attester(s) whose most recent appraisal(s) had both no Trustworthiness Claims of "0" where the current Trustworthiness Claim is "Affirming", as well as no "Warning" or "Contraindicated" Trustworthiness Claims.
 
@@ -566,10 +566,10 @@ storage-opaque:
 
    1:
    : Verifer cannot parse unexpected Evidence.
-   
+
    -1:
    : Verifier malfunction
-   
+
    2:
    : the Attester encrypts all secrets in persistent storage via using keys which are never visible outside an HSM or the Trusted Execution Environment hardware.
 
@@ -578,13 +578,13 @@ storage-opaque:
 
    96:
    : There are persistent secrets which are stored unencrypted in an Attester.
-   
+
    99:
    : Cryptographic validation of the Evidence has failed.
- 
-    
 
-It is possible for additonal Trustworthiness Claims and enumerated values to be defined in subsequent documents. 
+
+
+It is possible for additonal Trustworthiness Claims and enumerated values to be defined in subsequent documents.
 At the same time, the standardized Trustworthiness Claim values listed above have been designed so there is no overlap within a Trustworthiness Tier.
 As a result, it is possible to imagine a future where overlapping Trustworthiness Claims within a single Trustworthiness Tier may be defined.
 Wherever possible, the Verifier SHOULD assign the best fitting standardized value.
@@ -636,9 +636,9 @@ Subsequent connection re-establishment will allow fresh new Trustworthiness Clai
 There are multiple ways of providing a Trustworthiness Vector to a Relying Party.
 This section describes two alternatives.
 
-## Background-Check 
+## Background-Check
 
-### Verifier Retrieval 
+### Verifier Retrieval
 
 It is possible to for a Relying Party to follow the Background-Check Model defined in Section 5.2 of {{I-D.ietf-rats-architecture}}.
 In this case, a Relying Party will receive Attestation Results containing the Trustworthiness Vector directly from a Verifier.
@@ -655,16 +655,16 @@ An implementer should examine these potential drawbacks before selecting this al
 
 ### Co-resident Verifier
 
-A simplified Background-Check Model may exist in a very specific case.  
+A simplified Background-Check Model may exist in a very specific case.
 This is where the Relying Party and Verifier functions are co-resident.
 This model is appropriate when:
 
-* Some hardware-based private key is used by an Attester while proving its identity as part of a mutually authenticated secure channel establishment with the Relying Party, and 
+* Some hardware-based private key is used by an Attester while proving its identity as part of a mutually authenticated secure channel establishment with the Relying Party, and
 * this Attester identity is accepted as sufficient proof of Attester integrity.
 
 Effectively this means that detailed forensic capabilities of a robust Verifier are unnecessary because it is accepted that the code and operational behavior of the Attester cannot be manipulated after TEE initialization.
 
-An example of such a scenario may be when an SGX's MRENCLAVE and MRSIGNER values have been associated with a known QUOTE value. 
+An example of such a scenario may be when an SGX's MRENCLAVE and MRSIGNER values have been associated with a known QUOTE value.
 And the code running within the TEE is not modifiable after launch.
 
 ## Below Zero Trust
@@ -672,8 +672,8 @@ And the code running within the TEE is not modifiable after launch.
 Zero Trust Architectures are referenced in {{US-Executive-Order}} eleven times.
 However despite this high profile, there is an architectural gap with Zero Trust.
 The credentials used for authentication and admission control can be manipulated on the endpoint.
-Attestation can fill this gap through the generation of a compound credential called AR-augmented Evidence.  
-This compound credential is rooted in the hardware based Attesting Environment of an endpoint, plus the trustworthiness of a Verifier. 
+Attestation can fill this gap through the generation of a compound credential called AR-augmented Evidence.
+This compound credential is rooted in the hardware based Attesting Environment of an endpoint, plus the trustworthiness of a Verifier.
 The overall solution is known as "Below Zero Trust" as the compound credential cannot be manipulated or spoofed by an administrator of an endpoint with root access.
 This solution is not adversely impacted by the potential drawbacks with pure background-check described above.
 
@@ -729,8 +729,8 @@ time(EG')(4)------AR-augmented Evidence----------------->|
 The interaction model depicted above includes specific time related events from Appendix A of {{I-D.ietf-rats-architecture}}.
 With the identification of these time related events, time duration/interval tracking becomes possible.
 Such duration/interval tracking can become important if the Relying Party cares if too much time has elapsed between the Verifier PoF and Relying Party PoF.
-If too much time has elapsed, perhaps the Attestation Results themselves are no longer trustworthy.  
- 
+If too much time has elapsed, perhaps the Attestation Results themselves are no longer trustworthy.
+
 Note that while time intervals will often be relevant, there is a simplified case that does not require a Relying Party's PoF in step (3).
 In this simplified case, the Relying Party trusts that the Attester cannot be meaningfully changed from the outside during any reportable interval.
 Based on that assumption, and when this is the case then the step of the Relying Party PoF can be safely omitted.
@@ -819,10 +819,10 @@ See Body.
 # Implementation Guidance
 
 ## Supplementing Trustworthiness Claims
-What has been encoded into each Trustworthiness Claim is the domain of integer values which is likely to drive a different programmatic decision in the Relying Party's Appraisal Policy for Attestation Results. 
-This will not be the only thing a Relying Party's Operations team might care to track for measurement or debugging purposes. 
+What has been encoded into each Trustworthiness Claim is the domain of integer values which is likely to drive a different programmatic decision in the Relying Party's Appraisal Policy for Attestation Results.
+This will not be the only thing a Relying Party's Operations team might care to track for measurement or debugging purposes.
 
-There is also the opportunity for the Verifier to include supplementary Evidence beyond a set of asserted Trustworthiness Claims. 
+There is also the opportunity for the Verifier to include supplementary Evidence beyond a set of asserted Trustworthiness Claims.
 It is recommended that if supplementary Evidence is provided by the Verifier within the Attestation Results, that this supplementary Evidence includes a reference to a specific Trustworthiness Claim.
 This will allow a deeper understanding of some of the reasoning behind the integer value assigned.
 
@@ -928,7 +928,7 @@ Questions like architecting the cluster/hierarchy of Verifiers fall into this br
 For some Trustworthiness Claims, there could be value in identifying a specific Appraisal Policy for Attestation Results applied within the Attester.
 One way this could be done would be a URI which identifies the policy used at Verifier A, and this URI would reference a specific Trustworthiness Claim.
 As the URI also could encode the version of the software, it might also act as a mechanism to signal the Relying Party to refresh/re-evaluate its view of Verifier A.
-Do we need this type of structure to be included here?  
+Do we need this type of structure to be included here?
 Should it be in subsequent documents?
 
 Expand the variant of {{interactions}} which requires no Relying Party PoF into its own picture.
