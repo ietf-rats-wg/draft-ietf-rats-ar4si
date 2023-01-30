@@ -269,7 +269,7 @@ Consequently, the Relying Party SHOULD require Identity Evidence which indicates
 For the Verifier identity, it is critical for a Relying Party to review the certificate and chain of trust for that Verifier.
 Additionally, the Relying Party must have confidence that the Trustworthiness Claims being relied upon from the Verifier considered the chain of trust for the Attesting Environment.
 
-There are two categorizations Verifier identities defined in this document.
+There are two categorizations of Verifier identities defined in this document:
 
 * verifier build: a unique instance of a software build running as a Verifier.	
 * verifier developer: the organizational unit responsible for a particular 'verifier build'.
