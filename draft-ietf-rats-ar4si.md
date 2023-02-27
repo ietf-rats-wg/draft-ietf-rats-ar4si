@@ -333,7 +333,7 @@ To simplify the processing of these enumerations by the Relying Party, the enume
 None: The Verifier makes no assertions regarding this aspect of trustworthiness.
 
 * Value 0: The Evidence received is insufficient to make a conclusion. Note: this should always be always treated equivalently by the Relying Party as no claim being made. I.e., the RP's Appraisal Policy for Attestation Results SHOULD NOT make any distinction between a Trustworthiness Claim with enumeration '0', and no Trustworthiness Claim being provided.
-* Value 1: The Evidence received contains unexpected elements which the Verifier is unable to parse.  An example might be that the wrong type of Evidence has been delivered.
+* Value 1: The Evidence received contains unknown elements which the Verifier is unable to evaluate. An example might be that the wrong type of Evidence has been delivered.
 * Value -1: A verifier malfunction occurred during the Verifier's appraisal processing.
 
 Affirming: The Verifier affirms the Attester support for this aspect of trustworthiness.
@@ -379,7 +379,7 @@ configuration:
    : No assertion
 
    1:
-   : Verifer cannot parse unexpected Evidence.
+   : Evidence contains unknown elements which inhibit Verifer evaluation.
 
    -1:
    : Verifier malfunction
@@ -409,7 +409,7 @@ executables:
    : No assertion
 
    1:
-   : Verifer cannot parse unexpected Evidence.
+   : Evidence contains unknown elements which inhibit Verifer evaluation.
 
    -1:
    : Verifier malfunction
@@ -439,7 +439,7 @@ file-system:
    : No assertion
 
    1:
-   : Verifer cannot parse unexpected Evidence.
+   : Evidence contains unknown elements which inhibit Verifer evaluation.
 
    -1:
    : Verifier malfunction
@@ -464,7 +464,7 @@ hardware:
    : No assertion
 
    1:
-   : Verifer cannot parse unexpected Evidence.
+   : Evidence contains unknown elements which inhibit Verifer evaluation.
 
    -1:
    : Verifier malfunction
@@ -491,7 +491,7 @@ instance-identity:
    : No assertion
 
    1:
-   : Verifer cannot parse unexpected Evidence.
+   : Evidence contains unknown elements which inhibit Verifer evaluation.
 
    -1:
    : Verifier malfunction
@@ -516,7 +516,7 @@ runtime-opaque:
    : No assertion
 
    1:
-   : Verifer cannot parse unexpected Evidence.
+   : Evidence contains unknown elements which inhibit Verifer evaluation.
 
    -1:
    : Verifier malfunction
@@ -541,7 +541,7 @@ sourced-data:
    : No assertion
 
    1:
-   : Verifer cannot parse unexpected Evidence.
+   : Evidence contains unknown elements which inhibit Verifer evaluation.
 
    -1:
    : Verifier malfunction
@@ -565,7 +565,7 @@ storage-opaque:
    : No assertion
 
    1:
-   : Verifer cannot parse unexpected Evidence.
+   : Evidence contains unknown elements which inhibit Verifer evaluation.
 
    -1:
    : Verifier malfunction
