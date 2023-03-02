@@ -333,7 +333,7 @@ To simplify the processing of these enumerations by the Relying Party, the enume
 None: The Verifier makes no assertions regarding this aspect of trustworthiness.
 
 * Value 0: The Evidence received is insufficient to make a conclusion. Note: this should always be always treated equivalently by the Relying Party as no claim being made. I.e., the RP's Appraisal Policy for Attestation Results SHOULD NOT make any distinction between a Trustworthiness Claim with enumeration '0', and no Trustworthiness Claim being provided.
-* Value 1: The Evidence received contains unknown elements which the Verifier is unable to evaluate. An example might be that the wrong type of Evidence has been delivered.  Another  case is that of Evidence coming from a composite Attester: a Verifier may only understand only part of it and leave as "unknown" the Trustworthiness claims related to features it can't appraise.
+* Value 1: The Evidence received contains unknown elements which the Verifier is unable to evaluate. An example might be that the wrong type of Evidence has been delivered.  Another  case is that of Evidence coming from a composite Attester: a Verifier may understand only part of it and leave as "unknown" the Trustworthiness claims related to features it can't appraise.
 * Value -1: A verifier malfunction occurred during the Verifier's appraisal processing.
 
 Affirming: The Verifier affirms the Attester support for this aspect of trustworthiness.
