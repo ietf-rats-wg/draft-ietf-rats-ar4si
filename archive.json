@@ -1,0 +1,212 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2021-12-07T00:42:14.925601+00:00",
+  "repo": "ietf-rats-wg/draft-ietf-rats-ar4si",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOGeKE6M4_6ms2",
+      "title": "Add an Interaction model without a Verifier",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/1",
+      "state": "OPEN",
+      "author": "ericvoit",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "In April, Vinnie asked for an interaction model which doesn't require a Verifier.  This is for things like SGX where the provable identity of the MRSIGNER is sufficient to the Relying Party.  The specific comment was: The question then is whether we need some form of time interval tracking between Verifiers A & B.  I believe it to be useful to understand the delta in time between the creation of the original Attestation Results, and their receipt on the Relying Party.  The one time I can think of when this might *not* be necessary is when the Relying Party trusts that the Attester cannot be meaningfully changed from the outside over time.  (E.g., a specific MRENCLAVE can expose no changing Evidence to Verifier A over time, and this MRENCLAVE is trusted to be unable to mimic another MRENCLAVE or replay Attestation Evidence about another MRENCLAVE.)  In such a case, nonce#2 from figure 1 can be safely dropped.   I will propose text to this effect into the draft.",
+      "createdAt": "2021-12-06T16:09:40Z",
+      "updatedAt": "2021-12-06T16:09:40Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOGeKE6M4_6mzw",
+      "title": "Linkage with Terminology of DAA draft",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/2",
+      "state": "OPEN",
+      "author": "ericvoit",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Ned asserts that specific wording appears to conflict with other adopted drafts.  E.g., Section 2.1 \u2013 Non-reputable Identity Evidence and subsequent use of \u2018non-reputable\u2019 in the context of identifying the Attester or an Attesting Environment. Given a DAA key as Attesting Environment identity, the objective is to allow reputable Attester instance identity but non-reputable Attester class identity. Eric responded that in DAA, perhaps the term DAA credential should be formally defined.  What DAA says now is \"Attestation Evidence SHOULD be cryptographically associated with an identity document that is a randomised DAA credential.\" Additionally, perhaps the \"Attester Identity ('attesterIdentity')\"  principle in Section 5 should be refined to \"Anonymous Attester Identity\"?   In any case, DAA seems to have a more narrow definition of identity than draft-voit-rats-attestation-results.  In this draft, the non-reputable class itself be considered a form of identity.  So I think the *intent* of both sets of text don't conflict, even if we don't have all the terms right.  Also draft-voit-rats-attestation-results could easily import terms like \"Anonymous Attester Identity\" from DAA as being a valid form of identity.  Having the group being identified is quite useful.",
+      "createdAt": "2021-12-06T16:10:04Z",
+      "updatedAt": "2021-12-06T16:10:04Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOGeKE6M4_6m6D",
+      "title": "[IANA #1216055] Early review: draft-voit-rats-attestation-results",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/3",
+      "state": "OPEN",
+      "author": "ericvoit",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Prior to the start of the IETF meeting, IANA takes a look at the documents that will be discussed on the agendas for working groups and we do a quick review to see if there are any IANA Considerations related issues.  We reviewed draft-voit-rats-attestation-results. The IANA Considerations section currently says \"See body\". Any actions being requested need to be included in the IANA Considerations section.  This includes any new registries being created, registrations in existing registries or adding this document as a reference to existing registries or registrations.  RFC8126 and https://www.iana.org/help/protocol-registration offers some guidance as to what to include in the IANA section.",
+      "createdAt": "2021-12-06T16:10:25Z",
+      "updatedAt": "2021-12-06T16:10:25Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOGeKE6M4_6nAl",
+      "title": "Are we ready for the sourced-data claim?",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/4",
+      "state": "OPEN",
+      "author": "ericvoit",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "There are several ways for this to be determined by the Verifier.  But it is a hard problem.  Is there consensus that solution-level trustworthiness claims are ready to be tackled by the RATS WG?",
+      "createdAt": "2021-12-06T16:10:48Z",
+      "updatedAt": "2021-12-06T16:10:48Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOGeKE6M4_6npW",
+      "title": "Intersection with supply-chains group term \"trust score\".",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/5",
+      "state": "OPEN",
+      "author": "ericvoit",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Thomas H has agreed to provide some text on the following issue:  \r\n-------------------\r\nIn discussions in the GSA TIES trusted supply-chains group, there has been some usage of the term \"trust score\".\r\n\r\nSo there could be the situation in which (a) the supply-chain entities have their collective understanding of the \"trust score\" of the composition of BOM/SBOM items, and (b) the Verifier and RP have a slightly different (or very different) notion of \"trust score\" from folks in (a).\r\n",
+      "createdAt": "2021-12-06T16:13:12Z",
+      "updatedAt": "2021-12-06T16:13:12Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOGeKE6M4_7QzO",
+      "title": "Update Section 3.2, step 6.2",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/6",
+      "state": "OPEN",
+      "author": "ericvoit",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Need to convert to affirming, warning, contraindicated vs 0 & 1",
+      "createdAt": "2021-12-06T19:02:12Z",
+      "updatedAt": "2021-12-06T19:02:12Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 7,
+      "id": "PR_kwDOGeKE6M4vdUbs",
+      "title": "Update draft-ietf-rats-ar4si.md",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/7",
+      "state": "OPEN",
+      "author": "ericvoit",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Includes stuff from Lawrence (as discussed on list), as well as text for Vinnie",
+      "createdAt": "2021-12-06T19:39:55Z",
+      "updatedAt": "2021-12-06T19:39:56Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "ac4525bf195430787074c6ce965fdb6f79d9887c",
+      "headRepository": "ericvoit/draft-ietf-rats-ar4si",
+      "headRefName": "patch-2",
+      "headRefOid": "71eb638c59828aaa8f5d9c05f65a4daf53033831",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOGeKE6M4veADG",
+      "title": "Fix for Issue #8",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/8",
+      "state": "OPEN",
+      "author": "ericvoit",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-12-06T23:41:58Z",
+      "updatedAt": "2021-12-06T23:42:50Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "ac4525bf195430787074c6ce965fdb6f79d9887c",
+      "headRepository": "ericvoit/draft-ietf-rats-ar4si",
+      "headRefName": "patch-3",
+      "headRefOid": "e9df4eff2a27bb2c7f7263c69fd88c2525072fdf",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "ericvoit",
+          "authorAssociation": "NONE",
+          "body": "Misnamed the Issue number.   It is actually issue #6 ",
+          "createdAt": "2021-12-06T23:42:49Z",
+          "updatedAt": "2021-12-06T23:42:49Z"
+        }
+      ],
+      "reviews": []
+    }
+  ]
+}
