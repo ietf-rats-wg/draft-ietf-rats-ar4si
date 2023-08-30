@@ -46,7 +46,7 @@ author:
 normative:
   RFC2119:
   RFC8174:
-  I-D.ietf-rats-architecture: rats-arch
+  RFC9334: rats-arch
 
   OMTP-ATE:
     target: https://www.gsma.com/newsroom/wp-content/uploads/2012/03/omtpadvancedtrustedenvironmentomtptr1v11.pdf
@@ -224,7 +224,7 @@ For any of these more nuanced appraisals, additional Identity Evidence or other 
 
 ### Attester and Attesting Environment
 
-Per {{I-D.ietf-rats-architecture}} Figure 2, an Attester and a corresponding Attesting Environment might not share common code or even hardware boundaries.
+Per {{-rats-arch}} Figure 2, an Attester and a corresponding Attesting Environment might not share common code or even hardware boundaries.
 Consequently, an Attester implementation needs to ensure that any Evidence which originates from outside the Attesting Environment MUST have been collected and delivered securely before any Attesting Environment signing may occur.
 After the Verifier performs its appraisal, it will include sufficient information in the Attestation Results to enable a Relying Party to have confidence that the Attester's trustworthiness is represented via Trustworthiness Claims signed by the appropriate Attesting Environment.
 
@@ -271,7 +271,7 @@ Additionally, the Relying Party must have confidence that the Trustworthiness Cl
 
 There are two categorizations of Verifier identities defined in this document:
 
-* verifier build: a unique instance of a software build running as a Verifier.	
+* verifier build: a unique instance of a software build running as a Verifier.
 * verifier developer: the organizational unit responsible for a particular 'verifier build'.
 
 Within each category, communicating the identity can be accomplished via a variety of objects and encodings.
@@ -640,7 +640,7 @@ This section describes two alternatives.
 
 ### Verifier Retrieval
 
-It is possible to for a Relying Party to follow the Background-Check Model defined in Section 5.2 of {{I-D.ietf-rats-architecture}}.
+It is possible to for a Relying Party to follow the Background-Check Model defined in Section 5.2 of {{-rats-arch}}.
 In this case, a Relying Party will receive Attestation Results containing the Trustworthiness Vector directly from a Verifier.
 These Attestation Results can then be used by the Relying Party in determining the appropriate treatment for interactions with the Attester.
 
@@ -690,11 +690,11 @@ The AR Augmented Evidence is then sent to the Relying Party.
 The Relying Party then can appraise these semantically bound sets of signed Evidence by applying an Appraisal Policy for Attestation Results as described below.
 This policy will consider both the AR as well as additional information about the Attester within the AR Augmented Evidence the when determining what action to take.
 
-This alternative combines the {{I-D.ietf-rats-architecture}} Sections 5.1 Passport Model and Section 5.2 Background-Check Model.
+This alternative combines the {{-rats-arch}} Sections 5.1 Passport Model and Section 5.2 Background-Check Model.
 {{interactions}} describes this flow of information.
-The flows within this combined model are mapped to {{I-D.ietf-rats-architecture}} in the following way.
-"Verifier A" below corresponds to the "Verifier" Figure 5 within {{I-D.ietf-rats-architecture}}.
-And "Relying Party/Verifier B" below corresponds to the union of the "Relying Party" and "Verifier" boxes within Figure 6 of {{I-D.ietf-rats-architecture}}.
+The flows within this combined model are mapped to {{-rats-arch}} in the following way.
+"Verifier A" below corresponds to the "Verifier" Figure 5 within {{-rats-arch}}.
+And "Relying Party/Verifier B" below corresponds to the union of the "Relying Party" and "Verifier" boxes within Figure 6 of {{-rats-arch}}.
 This union is possible because Verifier B can be implemented as a simple, self-contained process.
 The resulting combined process can appraise the AR-augmented Evidence to determine whether an Attester qualifies for secure interactions with the Relying Party.
 The specific steps of this process are defined later in this section.
@@ -726,7 +726,7 @@ time(EG')(4)------AR-augmented Evidence----------------->|
 ~~~
 {: #interactions title="Below Zero Trust"}
 
-The interaction model depicted above includes specific time related events from Appendix A of {{I-D.ietf-rats-architecture}}.
+The interaction model depicted above includes specific time related events from Appendix A of {{-rats-arch}}.
 With the identification of these time related events, time duration/interval tracking becomes possible.
 Such duration/interval tracking can become important if the Relying Party cares if too much time has elapsed between the Verifier PoF and Relying Party PoF.
 If too much time has elapsed, perhaps the Attestation Results themselves are no longer trustworthy.
