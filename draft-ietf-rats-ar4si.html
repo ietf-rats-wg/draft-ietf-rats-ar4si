@@ -15,24 +15,24 @@
 When these elements are offered to Relying Parties as Evidence, different aspects of Attester trustworthiness can be evaluated.
 Additionally, where the Relying Party is interfacing with a heterogeneous mix of Attesting Environment and Verifier types, consistent policies can be applied to subsequent information exchange between each Attester and the Relying Party. 
     " name="description">
-<meta content="xml2rfc 3.18.0" name="generator">
+<meta content="xml2rfc 3.19.4" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-rats-ar4si-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.18.0
-    Python 3.11.4
-    ConfigArgParse 1.5.3
+  xml2rfc 3.19.4
+    Python 3.11.6
+    ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 3.10.0
+    platformdirs 4.2.0
     pycountry 22.3.5
-    PyYAML 6.0
+    PyYAML 6.0.1
     requests 2.31.0
-    setuptools 67.7.2
+    setuptools 68.2.2
     six 1.16.0
-    wcwidth 0.2.6
+    wcwidth 0.2.13
 -->
 <link href="draft-ietf-rats-ar4si.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -655,7 +655,7 @@ sub, sup {
 }
 #toc nav li {
   line-height: 1.3em;
-  margin: 0.75em 0;
+  margin: 2px 0;
   padding-left: 1.2em;
   text-indent: -1.2em;
 }
@@ -748,7 +748,7 @@ hr.addr {
     z-index: 2;
     top: 0;
     right: 0;
-    padding: 0;
+    padding: 1px 0 0 0;
     margin: 0;
     border-bottom: 1px solid #ccc;
     opacity: 0.6;
@@ -872,16 +872,13 @@ hr.addr {
     border-top: none;
     padding-top: 0;
   }
-  figure, pre {
+  figure, pre, .vcard {
     page-break-inside: avoid;
-  }
-  figure {
-    overflow: scroll;
   }
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
   }
-  h2+*, h3+*, h4+*, h5+*, h6+* {
+  :is(h2, h3, h4, h5, h6)+*, dd {
     page-break-before: avoid;
   }
   pre {
@@ -894,6 +891,9 @@ hr.addr {
   }
   td {
     border-top: 1px solid #ddd;
+  }
+  .toplink {
+    display: none;
   }
 }
 
@@ -995,28 +995,6 @@ address div.right {
   text-align: right;
 }
 
-/* Give the table caption label the same styling as the figcaption */
-
-@media print {
-  .toplink {
-    display: none;
-  }
-
-  /* avoid overwriting the top border line with the ToC header */
-  #toc {
-    padding-top: 1px;
-  }
-
-  /* Avoid page breaks inside dl and author address entries */
-  dd {
-    page-break-before: avoid;
-  }
-  .vcard {
-    page-break-inside: avoid;
-  }
-
-}
-
 /* Dark mode. */
 @media (prefers-color-scheme: dark) {
 :root {
@@ -1053,11 +1031,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Attestation Results</td>
-<td class="right">August 2023</td>
+<td class="right">March 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Voit, et al.</td>
-<td class="center">Expires 2 March 2024</td>
+<td class="center">Expires 2 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1070,12 +1048,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-rats-ar4si-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-08-30" class="published">30 August 2023</time>
+<time datetime="2024-03-01" class="published">1 March 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-03-02">2 March 2024</time></dd>
+<dd class="expires"><time datetime="2024-09-02">2 September 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1092,7 +1070,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </div>
 <div class="author">
       <div class="author-name">T. Fossati</div>
-<div class="org">Arm Limited</div>
+<div class="org">Linaro</div>
 </div>
 <div class="author">
       <div class="author-name">V. Scarlata</div>
@@ -1135,7 +1113,7 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 March 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 2 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1144,7 +1122,7 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2023 IETF Trust and the persons identified as the
+            Copyright (c) 2024 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1320,13 +1298,17 @@ Frequently, this action will be to choose whether to allow the Attester to secur
 <p id="section-1-4">When determining whether to allow secure interactions with an Attester, a Relying Party is challenged with a number of difficult problems which it must be able to handle successfully.
 These problems include:<a href="#section-1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-1-5.1">What Attestation Results (AR) might a Relying Party be willing to trust from a specific Verifier?<a href="#section-1-5.1" class="pilcrow">¶</a>
+<li class="normal" id="section-1-5.1">
+          <p id="section-1-5.1.1">What Attestation Results (AR) might a Relying Party be willing to trust from a specific Verifier?<a href="#section-1-5.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-1-5.2">What information does a Relying Party need before allowing interactions or choosing policies to apply to a connection?<a href="#section-1-5.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-1-5.2">
+          <p id="section-1-5.2.1">What information does a Relying Party need before allowing interactions or choosing policies to apply to a connection?<a href="#section-1-5.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-1-5.3">What are the operating/environmental realities of the Attesting Environment where a Relying Party should only be able to associate a certain confidence regarding Attestation Results out of the Verifier?  (In other words, different types of Trusted Execution Environments (TEE) need not be treated as equivalent.)<a href="#section-1-5.3" class="pilcrow">¶</a>
+        <li class="normal" id="section-1-5.3">
+          <p id="section-1-5.3.1">What are the operating/environmental realities of the Attesting Environment where a Relying Party should only be able to associate a certain confidence regarding Attestation Results out of the Verifier?  (In other words, different types of Trusted Execution Environments (TEE) need not be treated as equivalent.)<a href="#section-1-5.3.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-1-5.4">How to make direct comparisons where there is a heterogeneous mix of Attesting Environments and Verifier types.<a href="#section-1-5.4" class="pilcrow">¶</a>
+        <li class="normal" id="section-1-5.4">
+          <p id="section-1-5.4.1">How to make direct comparisons where there is a heterogeneous mix of Attesting Environments and Verifier types.<a href="#section-1-5.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-1-6">To address these problems, it is important that specific Attestation Result information elements are framed independently of Attesting Environment specific constraints.
@@ -1363,12 +1345,15 @@ Background-Check Model and Passport Model.<a href="#section-1.2-2" class="pilcro
           <dd style="margin-left: 1.5em" id="section-1.2-4.2">
             <p id="section-1.2-4.2.1">a bundle of Evidence which includes at least the following:<a href="#section-1.2-4.2.1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-1.2-4.2.2">
-<li id="section-1.2-4.2.2.1">Verifier signed Attestation Results.
-These Attestation Results must include Identity Evidence for the Attester, a Trustworthiness Vector describing a Verifier's most recent appraisal of an Attester, and some Verifier Proof-of-Freshness (PoF).<a href="#section-1.2-4.2.2.1" class="pilcrow">¶</a>
+<li id="section-1.2-4.2.2.1">
+                <p id="section-1.2-4.2.2.1.1">Verifier signed Attestation Results.
+These Attestation Results must include Identity Evidence for the Attester, a Trustworthiness Vector describing a Verifier's most recent appraisal of an Attester, and some Verifier Proof-of-Freshness (PoF).<a href="#section-1.2-4.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-1.2-4.2.2.2">A Relying Party PoF which is bound to the Attestation Results of (1) by the Attester's Attesting Environment signature.<a href="#section-1.2-4.2.2.2" class="pilcrow">¶</a>
+              <li id="section-1.2-4.2.2.2">
+                <p id="section-1.2-4.2.2.2.1">A Relying Party PoF which is bound to the Attestation Results of (1) by the Attester's Attesting Environment signature.<a href="#section-1.2-4.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-1.2-4.2.2.3">Sufficient information to determine the elapsed interval between the Verifier PoF and Relying Party PoF.<a href="#section-1.2-4.2.2.3" class="pilcrow">¶</a>
+              <li id="section-1.2-4.2.2.3">
+                <p id="section-1.2-4.2.2.3.1">Sufficient information to determine the elapsed interval between the Verifier PoF and Relying Party PoF.<a href="#section-1.2-4.2.2.3.1" class="pilcrow">¶</a></p>
 </li>
             </ol>
 </dd>
@@ -1417,21 +1402,27 @@ This section defines those information elements, and in some cases encodings for
 <p id="section-2.1-1">When the action is a communication establishment attempt with an Attester, there is only a limited set of actions which a Relying Party might take.
 These actions include:<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.1-2.1">Allow or deny information exchange with the Attester.
-When there is a deny, reasons should be returned to the Attester.<a href="#section-2.1-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.1-2.1">
+            <p id="section-2.1-2.1.1">Allow or deny information exchange with the Attester.
+When there is a deny, reasons should be returned to the Attester.<a href="#section-2.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-2.1-2.2">Establish a transport connection between an Attester and a specific context within a Relying Party (e.g., a TEE, or Virtual Routing Function (VRF).)<a href="#section-2.1-2.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-2.1-2.2">
+            <p id="section-2.1-2.2.1">Establish a transport connection between an Attester and a specific context within a Relying Party (e.g., a TEE, or Virtual Routing Function (VRF).)<a href="#section-2.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-2.1-2.3">Apply policies on this connection (e.g., rate limits).<a href="#section-2.1-2.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-2.1-2.3">
+            <p id="section-2.1-2.3.1">Apply policies on this connection (e.g., rate limits).<a href="#section-2.1-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-2.1-3">There are three categories of information which must be conveyed to the Relying Party (which also is integrated with a Verifier) before it determines which of these actions to take.<a href="#section-2.1-3" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-2.1-4">
-<li id="section-2.1-4.1">Non-repudiable Identity Evidence – Evidence which undoubtably identifies one or more entities involved with a communication.<a href="#section-2.1-4.1" class="pilcrow">¶</a>
+<li id="section-2.1-4.1">
+            <p id="section-2.1-4.1.1">Non-repudiable Identity Evidence – Evidence which undoubtably identifies one or more entities involved with a communication.<a href="#section-2.1-4.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-2.1-4.2">Trustworthiness Claims – Specifics a Verifier asserts with regards to its trustworthiness findings about an Attester.<a href="#section-2.1-4.2" class="pilcrow">¶</a>
+          <li id="section-2.1-4.2">
+            <p id="section-2.1-4.2.1">Trustworthiness Claims – Specifics a Verifier asserts with regards to its trustworthiness findings about an Attester.<a href="#section-2.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-2.1-4.3">Claim Freshness – Establishes the time of last update (or refresh) of Trustworthiness Claims.<a href="#section-2.1-4.3" class="pilcrow">¶</a>
+          <li id="section-2.1-4.3">
+            <p id="section-2.1-4.3.1">Claim Freshness – Establishes the time of last update (or refresh) of Trustworthiness Claims.<a href="#section-2.1-4.3.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
 <p id="section-2.1-5">The following sections detail requirements for these three categories.<a href="#section-2.1-5" class="pilcrow">¶</a></p>
@@ -1458,11 +1449,14 @@ If the use case is a connection request, a Relying Party may simply then establi
 However an Appraisal Policy for Attestation Results will often be more nuanced, and the Relying Party may need additional information.
 Some Identity Evidence related policy questions which the Relying Party may consider include:<a href="#section-2.2-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.2-5.1">Does the Relying Party only trust this Verifier to make Trustworthiness Claims on behalf a specific type of Attesting Environment?  Might a mix of Verifiers be necessary to cover all mandatory Trustworthiness Claims?<a href="#section-2.2-5.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.2-5.1">
+            <p id="section-2.2-5.1.1">Does the Relying Party only trust this Verifier to make Trustworthiness Claims on behalf a specific type of Attesting Environment?  Might a mix of Verifiers be necessary to cover all mandatory Trustworthiness Claims?<a href="#section-2.2-5.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-2.2-5.2">Does the Relying Party only accept connections from a verified-authentic software build from a specific software developer?<a href="#section-2.2-5.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-2.2-5.2">
+            <p id="section-2.2-5.2.1">Does the Relying Party only accept connections from a verified-authentic software build from a specific software developer?<a href="#section-2.2-5.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-2.2-5.3">Does the Relying Party only accept connections from specific preconfigured list of Attesters?<a href="#section-2.2-5.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-2.2-5.3">
+            <p id="section-2.2-5.3.1">Does the Relying Party only accept connections from specific preconfigured list of Attesters?<a href="#section-2.2-5.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-2.2-6">For any of these more nuanced appraisals, additional Identity Evidence or other policy related information must be conveyed or pre-provisioned during the formation of a trust context between the Relying Party, the Attester, the Attester's Attesting Environment, and the Verifier.<a href="#section-2.2-6" class="pilcrow">¶</a></p>
@@ -1476,11 +1470,14 @@ Consequently, an Attester implementation needs to ensure that any Evidence which
 After the Verifier performs its appraisal, it will include sufficient information in the Attestation Results to enable a Relying Party to have confidence that the Attester's trustworthiness is represented via Trustworthiness Claims signed by the appropriate Attesting Environment.<a href="#section-2.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-2.2.1-2">This document recognizes three general categories of Attesters.<a href="#section-2.2.1-2" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-2.2.1-3">
-<li id="section-2.2.1-3.1">HSM-based: A Hardware Security Module (HSM) based cryptoprocessor which hashes one or more streams of security measurements from an Attester within the Attesting Environment. Maintenance of this hash enables detection of an Attester which is not reporting the exact set of security measurements (such as log entries) taken within the Attesting Environment. An example of a HSM is a TPM2.0 <span>[<a href="#TPM2.0" class="cite xref">TPM2.0</a>]</span>.<a href="#section-2.2.1-3.1" class="pilcrow">¶</a>
+<li id="section-2.2.1-3.1">
+              <p id="section-2.2.1-3.1.1">HSM-based: A Hardware Security Module (HSM) based cryptoprocessor which hashes one or more streams of security measurements from an Attester within the Attesting Environment. Maintenance of this hash enables detection of an Attester which is not reporting the exact set of security measurements (such as log entries) taken within the Attesting Environment. An example of a HSM is a TPM2.0 <span>[<a href="#TPM2.0" class="cite xref">TPM2.0</a>]</span>.<a href="#section-2.2.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-2.2.1-3.2">Process-based: An individual process which has its runtime memory encrypted by an Attesting Environment in a way that no other processes can read and decrypt that memory (e.g., <span>[<a href="#SGX" class="cite xref">SGX</a>]</span> or <span>[<a href="#I-D.tschofenig-rats-psa-token" class="cite xref">I-D.tschofenig-rats-psa-token</a>]</span>.)<a href="#section-2.2.1-3.2" class="pilcrow">¶</a>
+            <li id="section-2.2.1-3.2">
+              <p id="section-2.2.1-3.2.1">Process-based: An individual process which has its runtime memory encrypted by an Attesting Environment in a way that no other processes can read and decrypt that memory (e.g., <span>[<a href="#SGX" class="cite xref">SGX</a>]</span> or <span>[<a href="#I-D.tschofenig-rats-psa-token" class="cite xref">I-D.tschofenig-rats-psa-token</a>]</span>.)<a href="#section-2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-2.2.1-3.3">VM-based: An entire Guest VM (or a set of containers within a host) have been encrypted as a walled-garden unit by an Attesting Environment.  The result is that the host operating system cannot read and decrypt what is executing within that VM (e.g., <span>[<a href="#SEV-SNP" class="cite xref">SEV-SNP</a>]</span> or <span>[<a href="#TDX" class="cite xref">TDX</a>]</span>.)<a href="#section-2.2.1-3.3" class="pilcrow">¶</a>
+            <li id="section-2.2.1-3.3">
+              <p id="section-2.2.1-3.3.1">VM-based: An entire Guest VM (or a set of containers within a host) have been encrypted as a walled-garden unit by an Attesting Environment.  The result is that the host operating system cannot read and decrypt what is executing within that VM (e.g., <span>[<a href="#SEV-SNP" class="cite xref">SEV-SNP</a>]</span> or <span>[<a href="#TDX" class="cite xref">TDX</a>]</span>.)<a href="#section-2.2.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
           </ol>
 <p id="section-2.2.1-4">Each of these categories of Attesters above will be capable of generating Evidence which is protected using private keys / certificates which are not accessible outside of the corresponding Attesting Environment.
@@ -1489,15 +1486,20 @@ Effectively this means that for any Attester identity, there will exist a chain 
 It is upon this root of trust that unique, non-repudiable Attester identities may be founded.<a href="#section-2.2.1-4" class="pilcrow">¶</a></p>
 <p id="section-2.2.1-5">There are several types of Attester identities defined in this document.  This list is extensible:<a href="#section-2.2.1-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.2.1-6.1">chip-vendor: the vendor of the hardware chip used for the Attesting Environment (e.g., a primary Endorsement Key from a TPM)<a href="#section-2.2.1-6.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.2.1-6.1">
+              <p id="section-2.2.1-6.1.1">chip-vendor: the vendor of the hardware chip used for the Attesting Environment (e.g., a primary Endorsement Key from a TPM)<a href="#section-2.2.1-6.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-2.2.1-6.2">chip-hardware: specific hardware with specific firmware from an 'chip-vendor'<a href="#section-2.2.1-6.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-2.2.1-6.2">
+              <p id="section-2.2.1-6.2.1">chip-hardware: specific hardware with specific firmware from an 'chip-vendor'<a href="#section-2.2.1-6.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-2.2.1-6.3">target-environment: a unique instance of a software build running in an Attester (e.g., MRENCLAVE <span>[<a href="#SGX" class="cite xref">SGX</a>]</span>, an Instance ID <span>[<a href="#I-D.tschofenig-rats-psa-token" class="cite xref">I-D.tschofenig-rats-psa-token</a>]</span>, an Identity Block <span>[<a href="#SEV-SNP" class="cite xref">SEV-SNP</a>]</span>, or a hash which represents a set of software loaded since boot (e.g., TPM based integrity verification.))<a href="#section-2.2.1-6.3" class="pilcrow">¶</a>
+            <li class="normal" id="section-2.2.1-6.3">
+              <p id="section-2.2.1-6.3.1">target-environment: a unique instance of a software build running in an Attester (e.g., MRENCLAVE <span>[<a href="#SGX" class="cite xref">SGX</a>]</span>, an Instance ID <span>[<a href="#I-D.tschofenig-rats-psa-token" class="cite xref">I-D.tschofenig-rats-psa-token</a>]</span>, an Identity Block <span>[<a href="#SEV-SNP" class="cite xref">SEV-SNP</a>]</span>, or a hash which represents a set of software loaded since boot (e.g., TPM based integrity verification.))<a href="#section-2.2.1-6.3.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-2.2.1-6.4">target-developer: the organizational unit responsible for a particular 'target-environment' (e.g., MRSIGNER <span>[<a href="#SGX" class="cite xref">SGX</a>]</span>)<a href="#section-2.2.1-6.4" class="pilcrow">¶</a>
+            <li class="normal" id="section-2.2.1-6.4">
+              <p id="section-2.2.1-6.4.1">target-developer: the organizational unit responsible for a particular 'target-environment' (e.g., MRSIGNER <span>[<a href="#SGX" class="cite xref">SGX</a>]</span>)<a href="#section-2.2.1-6.4.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-2.2.1-6.5">instance: a unique instantiated instance of an Attesting Environment running on 'chip-hardware' (e.g., an LDevID <span>[<a href="#IEEE802.1AR" class="cite xref">IEEE802.1AR</a>]</span>)<a href="#section-2.2.1-6.5" class="pilcrow">¶</a>
+            <li class="normal" id="section-2.2.1-6.5">
+              <p id="section-2.2.1-6.5.1">instance: a unique instantiated instance of an Attesting Environment running on 'chip-hardware' (e.g., an LDevID <span>[<a href="#IEEE802.1AR" class="cite xref">IEEE802.1AR</a>]</span>)<a href="#section-2.2.1-6.5.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-2.2.1-7">Based on the category of the Attesting Environment, different types of identities might be exposed by an Attester.<a href="#section-2.2.1-7" class="pilcrow">¶</a></p>
@@ -1560,9 +1562,11 @@ Consequently, the Relying Party SHOULD require Identity Evidence which indicates
 Additionally, the Relying Party must have confidence that the Trustworthiness Claims being relied upon from the Verifier considered the chain of trust for the Attesting Environment.<a href="#section-2.2.2-1" class="pilcrow">¶</a></p>
 <p id="section-2.2.2-2">There are two categorizations of Verifier identities defined in this document:<a href="#section-2.2.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.2.2-3.1">verifier build: a unique instance of a software build running as a Verifier.<a href="#section-2.2.2-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.2.2-3.1">
+              <p id="section-2.2.2-3.1.1">verifier build: a unique instance of a software build running as a Verifier.<a href="#section-2.2.2-3.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-2.2.2-3.2">verifier developer: the organizational unit responsible for a particular 'verifier build'.<a href="#section-2.2.2-3.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-2.2.2-3.2">
+              <p id="section-2.2.2-3.2.1">verifier developer: the organizational unit responsible for a particular 'verifier build'.<a href="#section-2.2.2-3.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-2.2.2-4">Within each category, communicating the identity can be accomplished via a variety of objects and encodings.<a href="#section-2.2.2-4" class="pilcrow">¶</a></p>
@@ -1640,32 +1644,41 @@ Reason: standard types of Verifier generated Trustworthiness Claims should be ve
 To simplify the processing of these enumerations by the Relying Party, the enumeration will be encoded as a single signed 8 bit integer.  These value assignments for this integer will be in four Trustworthiness Tiers which follow these guidelines:<a href="#section-2.3.2-1" class="pilcrow">¶</a></p>
 <p id="section-2.3.2-2">None: The Verifier makes no assertions regarding this aspect of trustworthiness.<a href="#section-2.3.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.3.2-3.1">Value 0: The Evidence received is insufficient to make a conclusion. Note: this should always be always treated equivalently by the Relying Party as no claim being made. I.e., the RP's Appraisal Policy for Attestation Results SHOULD NOT make any distinction between a Trustworthiness Claim with enumeration '0', and no Trustworthiness Claim being provided.<a href="#section-2.3.2-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.3.2-3.1">
+              <p id="section-2.3.2-3.1.1">Value 0: The Evidence received is insufficient to make a conclusion. Note: this should always be always treated equivalently by the Relying Party as no claim being made. I.e., the RP's Appraisal Policy for Attestation Results SHOULD NOT make any distinction between a Trustworthiness Claim with enumeration '0', and no Trustworthiness Claim being provided.<a href="#section-2.3.2-3.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-2.3.2-3.2">Value 1: The Evidence received contains unknown elements which the Verifier is unable to evaluate. An example might be that the wrong type of Evidence has been delivered.  Another  case is that of Evidence coming from a composite Attester: a Verifier may understand only part of it and leave as "unknown" the Trustworthiness claims related to features it can't appraise.<a href="#section-2.3.2-3.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-2.3.2-3.2">
+              <p id="section-2.3.2-3.2.1">Value 1: The Evidence received contains unknown elements which the Verifier is unable to evaluate. An example might be that the wrong type of Evidence has been delivered.  Another  case is that of Evidence coming from a composite Attester: a Verifier may understand only part of it and leave as "unknown" the Trustworthiness claims related to features it can't appraise.<a href="#section-2.3.2-3.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-2.3.2-3.3">Value -1: A verifier malfunction occurred during the Verifier's appraisal processing.<a href="#section-2.3.2-3.3" class="pilcrow">¶</a>
+            <li class="normal" id="section-2.3.2-3.3">
+              <p id="section-2.3.2-3.3.1">Value -1: A verifier malfunction occurred during the Verifier's appraisal processing.<a href="#section-2.3.2-3.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-2.3.2-4">Affirming: The Verifier affirms the Attester support for this aspect of trustworthiness.<a href="#section-2.3.2-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.3.2-5.1">Values 2 to 31: A standards enumerated reason for affirming.<a href="#section-2.3.2-5.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.3.2-5.1">
+              <p id="section-2.3.2-5.1.1">Values 2 to 31: A standards enumerated reason for affirming.<a href="#section-2.3.2-5.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-2.3.2-5.2">Values -2 to -32: A non-standard reason for affirming.<a href="#section-2.3.2-5.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-2.3.2-5.2">
+              <p id="section-2.3.2-5.2.1">Values -2 to -32: A non-standard reason for affirming.<a href="#section-2.3.2-5.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-2.3.2-6">Warning: The Verifier warns about this aspect of trustworthiness.<a href="#section-2.3.2-6" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.3.2-7.1">Values 32 to 95: A standards enumerated reason for the warning.<a href="#section-2.3.2-7.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.3.2-7.1">
+              <p id="section-2.3.2-7.1.1">Values 32 to 95: A standards enumerated reason for the warning.<a href="#section-2.3.2-7.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-2.3.2-7.2">Values -33 to -96: A non-standard reason for the warning.<a href="#section-2.3.2-7.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-2.3.2-7.2">
+              <p id="section-2.3.2-7.2.1">Values -33 to -96: A non-standard reason for the warning.<a href="#section-2.3.2-7.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-2.3.2-8">Contraindicated: The Verifier asserts the Attester is explicitly untrustworthy in regard to this aspect.<a href="#section-2.3.2-8" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.3.2-9.1">Values 96 to 127: A standards enumerated reason for the contraindication.<a href="#section-2.3.2-9.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.3.2-9.1">
+              <p id="section-2.3.2-9.1.1">Values 96 to 127: A standards enumerated reason for the contraindication.<a href="#section-2.3.2-9.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-2.3.2-9.2">Values -97 to -128: A non-standard reason for the contraindication.<a href="#section-2.3.2-9.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-2.3.2-9.2">
+              <p id="section-2.3.2-9.2.1">Values -97 to -128: A non-standard reason for the contraindication.<a href="#section-2.3.2-9.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-2.3.2-10">This enumerated encoding listed above will simplify the Appraisal Policy for Attestation Results.
@@ -1679,19 +1692,26 @@ Such a policies may be as simple as saying that a specific Verifier has recently
           </h4>
 <p id="section-2.3.3-1">In order to simplify design, only a single encoded value is asserted by a Verifier for any Trustworthiness Claim within a using the following process.<a href="#section-2.3.3-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-2.3.3-2">
-<li id="section-2.3.3-2.1">If applicable, a Verifier MUST assign a standardized value from the Contraindicated tier.<a href="#section-2.3.3-2.1" class="pilcrow">¶</a>
+<li id="section-2.3.3-2.1">
+              <p id="section-2.3.3-2.1.1">If applicable, a Verifier MUST assign a standardized value from the Contraindicated tier.<a href="#section-2.3.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-2.3.3-2.2">Else if applicable, a Verifier MUST assign a non-standardized value from the Contraindicated tier.<a href="#section-2.3.3-2.2" class="pilcrow">¶</a>
+            <li id="section-2.3.3-2.2">
+              <p id="section-2.3.3-2.2.1">Else if applicable, a Verifier MUST assign a non-standardized value from the Contraindicated tier.<a href="#section-2.3.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-2.3.3-2.3">Else if applicable, a Verifier MUST assign a standardized value from the Warning tier.<a href="#section-2.3.3-2.3" class="pilcrow">¶</a>
+            <li id="section-2.3.3-2.3">
+              <p id="section-2.3.3-2.3.1">Else if applicable, a Verifier MUST assign a standardized value from the Warning tier.<a href="#section-2.3.3-2.3.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-2.3.3-2.4">Else if applicable, a Verifier MUST assign a non-standardized value from the Warning tier.<a href="#section-2.3.3-2.4" class="pilcrow">¶</a>
+            <li id="section-2.3.3-2.4">
+              <p id="section-2.3.3-2.4.1">Else if applicable, a Verifier MUST assign a non-standardized value from the Warning tier.<a href="#section-2.3.3-2.4.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-2.3.3-2.5">Else if applicable, a Verifier MUST assign a standardized value from the Affirming tier.<a href="#section-2.3.3-2.5" class="pilcrow">¶</a>
+            <li id="section-2.3.3-2.5">
+              <p id="section-2.3.3-2.5.1">Else if applicable, a Verifier MUST assign a standardized value from the Affirming tier.<a href="#section-2.3.3-2.5.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-2.3.3-2.6">Else if applicable, a Verifier MUST assign a non-standardized value from the Affirming tier.<a href="#section-2.3.3-2.6" class="pilcrow">¶</a>
+            <li id="section-2.3.3-2.6">
+              <p id="section-2.3.3-2.6.1">Else if applicable, a Verifier MUST assign a non-standardized value from the Affirming tier.<a href="#section-2.3.3-2.6.1" class="pilcrow">¶</a></p>
 </li>
-            <li id="section-2.3.3-2.7">Else a Verifier MAY assign a 0 or -1.<a href="#section-2.3.3-2.7" class="pilcrow">¶</a>
+            <li id="section-2.3.3-2.7">
+              <p id="section-2.3.3-2.7.1">Else a Verifier MAY assign a 0 or -1.<a href="#section-2.3.3-2.7.1" class="pilcrow">¶</a></p>
 </li>
           </ol>
 </section>
@@ -2142,11 +2162,14 @@ These Attestation Results can then be used by the Relying Party in determining t
 <p id="section-3.1.1-2">While applicable in some cases, the utilization of the Background-Check Model without modification has potential drawbacks in other cases.
 These include:<a href="#section-3.1.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.1.1-3.1">Verifier scale: if the Attester has many Relying Parties, a Verifier appraising that Attester could be frequently be queried based on the same Evidence.<a href="#section-3.1.1-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-3.1.1-3.1">
+              <p id="section-3.1.1-3.1.1">Verifier scale: if the Attester has many Relying Parties, a Verifier appraising that Attester could be frequently be queried based on the same Evidence.<a href="#section-3.1.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3.1.1-3.2">Information leak: Evidence which the Attester might consider private can be visible to the Relying Party.  Hiding that Evidence could devalue any resulting appraisal.<a href="#section-3.1.1-3.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-3.1.1-3.2">
+              <p id="section-3.1.1-3.2.1">Information leak: Evidence which the Attester might consider private can be visible to the Relying Party.  Hiding that Evidence could devalue any resulting appraisal.<a href="#section-3.1.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3.1.1-3.3">Latency: a Relying Party will need to wait for the Verifier to return Attestation Results before proceeding with secure interactions with the Attester.<a href="#section-3.1.1-3.3" class="pilcrow">¶</a>
+            <li class="normal" id="section-3.1.1-3.3">
+              <p id="section-3.1.1-3.3.1">Latency: a Relying Party will need to wait for the Verifier to return Attestation Results before proceeding with secure interactions with the Attester.<a href="#section-3.1.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-3.1.1-4">An implementer should examine these potential drawbacks before selecting this alternative.<a href="#section-3.1.1-4" class="pilcrow">¶</a></p>
@@ -2161,9 +2184,11 @@ These include:<a href="#section-3.1.1-2" class="pilcrow">¶</a></p>
 This is where the Relying Party and Verifier functions are co-resident.
 This model is appropriate when:<a href="#section-3.1.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.1.2-2.1">Some hardware-based private key is used by an Attester while proving its identity as part of a mutually authenticated secure channel establishment with the Relying Party, and<a href="#section-3.1.2-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-3.1.2-2.1">
+              <p id="section-3.1.2-2.1.1">Some hardware-based private key is used by an Attester while proving its identity as part of a mutually authenticated secure channel establishment with the Relying Party, and<a href="#section-3.1.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3.1.2-2.2">this Attester identity is accepted as sufficient proof of Attester integrity.<a href="#section-3.1.2-2.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-3.1.2-2.2">
+              <p id="section-3.1.2-2.2.1">this Attester identity is accepted as sufficient proof of Attester integrity.<a href="#section-3.1.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-3.1.2-3">Effectively this means that detailed forensic capabilities of a robust Verifier are unnecessary because it is accepted that the code and operational behavior of the Attester cannot be manipulated after TEE initialization.<a href="#section-3.1.2-3" class="pilcrow">¶</a></p>
@@ -2247,33 +2272,42 @@ To qualify, an Attester has to be able to provide all of the mandatory affirming
 <p id="section-3.2-11">More details on each interaction step of Below Zero Trust are as follows.
 The numbers used in this sequence match to the numbered steps in <a href="#interactions" class="auto internal xref">Figure 1</a>:<a href="#section-3.2-11" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-3.2-12">
-<li id="section-3.2-12.1">An Attester sends Evidence which is provably fresh to Verifier A at time(EG).
-Freshness from the perspective of Verifier A MAY be established with Verifier PoF such as a nonce.<a href="#section-3.2-12.1" class="pilcrow">¶</a>
+<li id="section-3.2-12.1">
+            <p id="section-3.2-12.1.1">An Attester sends Evidence which is provably fresh to Verifier A at time(EG).
+Freshness from the perspective of Verifier A MAY be established with Verifier PoF such as a nonce.<a href="#section-3.2-12.1.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-3.2-12.2">
             <p id="section-3.2-12.2.1">Verifier A appraises (1), then sends the following items back to that Attester within Attestation Results:<a href="#section-3.2-12.2.1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-3.2-12.2.2">
-<li id="section-3.2-12.2.2.1">the verified identity of the Attesting Environment,<a href="#section-3.2-12.2.2.1" class="pilcrow">¶</a>
+<li id="section-3.2-12.2.2.1">
+                <p id="section-3.2-12.2.2.1.1">the verified identity of the Attesting Environment,<a href="#section-3.2-12.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.2.2.2">the Verifier A appraised Trustworthiness Vector of an Attester,<a href="#section-3.2-12.2.2.2" class="pilcrow">¶</a>
+              <li id="section-3.2-12.2.2.2">
+                <p id="section-3.2-12.2.2.2.1">the Verifier A appraised Trustworthiness Vector of an Attester,<a href="#section-3.2-12.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.2.2.3">a freshness proof associated with the Attestation Results,<a href="#section-3.2-12.2.2.3" class="pilcrow">¶</a>
+              <li id="section-3.2-12.2.2.3">
+                <p id="section-3.2-12.2.2.3.1">a freshness proof associated with the Attestation Results,<a href="#section-3.2-12.2.2.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.2.2.4">a Verifier signature across (2.1) though (2.3).<a href="#section-3.2-12.2.2.4" class="pilcrow">¶</a>
+              <li id="section-3.2-12.2.2.4">
+                <p id="section-3.2-12.2.2.4.1">a Verifier signature across (2.1) though (2.3).<a href="#section-3.2-12.2.2.4.1" class="pilcrow">¶</a></p>
 </li>
             </ol>
 </li>
-          <li id="section-3.2-12.3">At time(EG') a Relying Party PoF (such as a nonce) known to the Relying Party is sent to the Attester.<a href="#section-3.2-12.3" class="pilcrow">¶</a>
+          <li id="section-3.2-12.3">
+            <p id="section-3.2-12.3.1">At time(EG') a Relying Party PoF (such as a nonce) known to the Relying Party is sent to the Attester.<a href="#section-3.2-12.3.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-3.2-12.4">
             <p id="section-3.2-12.4.1">The Attester generates and sends AR-augmented Evidence to the Relying Party/Verifier B.
 This AR-augmented Evidence includes:<a href="#section-3.2-12.4.1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-3.2-12.4.2">
-<li id="section-3.2-12.4.2.1">The Attestation Results from (2)<a href="#section-3.2-12.4.2.1" class="pilcrow">¶</a>
+<li id="section-3.2-12.4.2.1">
+                <p id="section-3.2-12.4.2.1.1">The Attestation Results from (2)<a href="#section-3.2-12.4.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.4.2.2">Any (optionally) new incremental Evidence from the Attesting Environment<a href="#section-3.2-12.4.2.2" class="pilcrow">¶</a>
+              <li id="section-3.2-12.4.2.2">
+                <p id="section-3.2-12.4.2.2.1">Any (optionally) new incremental Evidence from the Attesting Environment<a href="#section-3.2-12.4.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.4.2.3">Attestation Environment signature which spans a hash of the Attestation Results (such as the signature of (2.4)), the proof-of-freshness from (3), and (4.2).  Note: this construct allows the delta of time between (2.3) and (3) to be definitively calculated by the Relying Party.<a href="#section-3.2-12.4.2.3" class="pilcrow">¶</a>
+              <li id="section-3.2-12.4.2.3">
+                <p id="section-3.2-12.4.2.3.1">Attestation Environment signature which spans a hash of the Attestation Results (such as the signature of (2.4)), the proof-of-freshness from (3), and (4.2).  Note: this construct allows the delta of time between (2.3) and (3) to be definitively calculated by the Relying Party.<a href="#section-3.2-12.4.2.3.1" class="pilcrow">¶</a></p>
 </li>
             </ol>
 </li>
@@ -2281,30 +2315,40 @@ This AR-augmented Evidence includes:<a href="#section-3.2-12.4.1" class="pilcrow
             <p id="section-3.2-12.5.1">On receipt of (4), the Relying Party applies its Appraisal Policy for Attestation Results.
 At minimum, this appraisal policy process must include the following:<a href="#section-3.2-12.5.1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-3.2-12.5.2">
-<li id="section-3.2-12.5.2.1">Verify that (4.3) includes the nonce from (3).<a href="#section-3.2-12.5.2.1" class="pilcrow">¶</a>
+<li id="section-3.2-12.5.2.1">
+                <p id="section-3.2-12.5.2.1.1">Verify that (4.3) includes the nonce from (3).<a href="#section-3.2-12.5.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.5.2.2">Use a local certificate to validate the signature (4.1).<a href="#section-3.2-12.5.2.2" class="pilcrow">¶</a>
+              <li id="section-3.2-12.5.2.2">
+                <p id="section-3.2-12.5.2.2.1">Use a local certificate to validate the signature (4.1).<a href="#section-3.2-12.5.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.5.2.3">Verify that the hash from (4.3) matches (4.1)<a href="#section-3.2-12.5.2.3" class="pilcrow">¶</a>
+              <li id="section-3.2-12.5.2.3">
+                <p id="section-3.2-12.5.2.3.1">Verify that the hash from (4.3) matches (4.1)<a href="#section-3.2-12.5.2.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.5.2.4">Use the identity of (2.1) to validate the signature of (4.3).<a href="#section-3.2-12.5.2.4" class="pilcrow">¶</a>
+              <li id="section-3.2-12.5.2.4">
+                <p id="section-3.2-12.5.2.4.1">Use the identity of (2.1) to validate the signature of (4.3).<a href="#section-3.2-12.5.2.4.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.5.2.5">Failure of any steps (5.1) through (5.4) means the link does not meet minimum validation criteria, therefore appraise the link as having a null Verifier B Trustworthiness Vector.
-Jump to step (6.1).<a href="#section-3.2-12.5.2.5" class="pilcrow">¶</a>
+              <li id="section-3.2-12.5.2.5">
+                <p id="section-3.2-12.5.2.5.1">Failure of any steps (5.1) through (5.4) means the link does not meet minimum validation criteria, therefore appraise the link as having a null Verifier B Trustworthiness Vector.
+Jump to step (6.1).<a href="#section-3.2-12.5.2.5.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.5.2.6">When there is large or uncertain time gap between time(EG) and time(EG'), the link should be assigned a null Verifier B Trustworthiness Vector.
-Jump to step (6.1).<a href="#section-3.2-12.5.2.6" class="pilcrow">¶</a>
+              <li id="section-3.2-12.5.2.6">
+                <p id="section-3.2-12.5.2.6.1">When there is large or uncertain time gap between time(EG) and time(EG'), the link should be assigned a null Verifier B Trustworthiness Vector.
+Jump to step (6.1).<a href="#section-3.2-12.5.2.6.1" class="pilcrow">¶</a></p>
 </li>
               <li id="section-3.2-12.5.2.7">
                 <p id="section-3.2-12.5.2.7.1">Assemble the Verifier B Trustworthiness Vector<a href="#section-3.2-12.5.2.7.1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-3.2-12.5.2.7.2">
-<li id="section-3.2-12.5.2.7.2.1">Copy Verifier A Trustworthiness Vector to Verifier B Trustworthiness Vector<a href="#section-3.2-12.5.2.7.2.1" class="pilcrow">¶</a>
+<li id="section-3.2-12.5.2.7.2.1">
+                    <p id="section-3.2-12.5.2.7.2.1.1">Copy Verifier A Trustworthiness Vector to Verifier B Trustworthiness Vector<a href="#section-3.2-12.5.2.7.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li id="section-3.2-12.5.2.7.2.2">Add implicit Trustworthiness Claims inherent to the type of TEE.<a href="#section-3.2-12.5.2.7.2.2" class="pilcrow">¶</a>
+                  <li id="section-3.2-12.5.2.7.2.2">
+                    <p id="section-3.2-12.5.2.7.2.2.1">Add implicit Trustworthiness Claims inherent to the type of TEE.<a href="#section-3.2-12.5.2.7.2.2.1" class="pilcrow">¶</a></p>
 </li>
-                  <li id="section-3.2-12.5.2.7.2.3">Prune any Trustworthiness Claims unsupportable by the Attesting Environment.<a href="#section-3.2-12.5.2.7.2.3" class="pilcrow">¶</a>
+                  <li id="section-3.2-12.5.2.7.2.3">
+                    <p id="section-3.2-12.5.2.7.2.3.1">Prune any Trustworthiness Claims unsupportable by the Attesting Environment.<a href="#section-3.2-12.5.2.7.2.3.1" class="pilcrow">¶</a></p>
 </li>
-                  <li id="section-3.2-12.5.2.7.2.4">Prune any Trustworthiness Claims the Relying Party doesn't accept from this Verifier.<a href="#section-3.2-12.5.2.7.2.4" class="pilcrow">¶</a>
+                  <li id="section-3.2-12.5.2.7.2.4">
+                    <p id="section-3.2-12.5.2.7.2.4.1">Prune any Trustworthiness Claims the Relying Party doesn't accept from this Verifier.<a href="#section-3.2-12.5.2.7.2.4.1" class="pilcrow">¶</a></p>
 </li>
                 </ol>
 </li>
@@ -2313,11 +2357,14 @@ Jump to step (6.1).<a href="#section-3.2-12.5.2.6" class="pilcrow">¶</a>
           <li id="section-3.2-12.6">
             <p id="section-3.2-12.6.1">The Relying Party takes action based on Verifier B's appraised Trustworthiness Vector, and applies the Appraisal Policy for Attestation Results.  Following is a reasonable process for such evaluation:<a href="#section-3.2-12.6.1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-3.2-12.6.2">
-<li id="section-3.2-12.6.2.1">Prune any Trustworthiness Claims from the Trustworthiness Vector not used in the Appraisal Policy for Attestation Results.<a href="#section-3.2-12.6.2.1" class="pilcrow">¶</a>
+<li id="section-3.2-12.6.2.1">
+                <p id="section-3.2-12.6.2.1.1">Prune any Trustworthiness Claims from the Trustworthiness Vector not used in the Appraisal Policy for Attestation Results.<a href="#section-3.2-12.6.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.6.2.2">Allow the information exchange from the Attester into a Relying Party context in the Appraisal Policy for Attestation Results where the Verifier B appraised Trustworthiness Vector includes all the mandatory Trustworthiness Claims are in the "Affirming" value range, and none of the disqualifying Trustworthiness Claims are in the "Contraindicated" value range.<a href="#section-3.2-12.6.2.2" class="pilcrow">¶</a>
+              <li id="section-3.2-12.6.2.2">
+                <p id="section-3.2-12.6.2.2.1">Allow the information exchange from the Attester into a Relying Party context in the Appraisal Policy for Attestation Results where the Verifier B appraised Trustworthiness Vector includes all the mandatory Trustworthiness Claims are in the "Affirming" value range, and none of the disqualifying Trustworthiness Claims are in the "Contraindicated" value range.<a href="#section-3.2-12.6.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.6.2.3">Disallow any information exchange into a Relying Party context for which that Verifier B appraised Trustworthiness Vector is not qualified.<a href="#section-3.2-12.6.2.3" class="pilcrow">¶</a>
+              <li id="section-3.2-12.6.2.3">
+                <p id="section-3.2-12.6.2.3.1">Disallow any information exchange into a Relying Party context for which that Verifier B appraised Trustworthiness Vector is not qualified.<a href="#section-3.2-12.6.2.3.1" class="pilcrow">¶</a></p>
 </li>
             </ol>
 </li>
@@ -2326,11 +2373,14 @@ Jump to step (6.1).<a href="#section-3.2-12.5.2.6" class="pilcrow">¶</a>
 This allows the Trustworthiness of Attester to be continuously re-appraised.
 There are only specific event triggers which will drive the refresh of Evidence generation (1), Attestation Result generation (2), or AR-augmented Evidence generation (4):<a href="#section-3.2-13" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.2-14.1">life-cycle events, e.g. a change to an Authentication Secret of the Attester or an update of a software component.<a href="#section-3.2-14.1" class="pilcrow">¶</a>
+<li class="normal" id="section-3.2-14.1">
+            <p id="section-3.2-14.1.1">life-cycle events, e.g. a change to an Authentication Secret of the Attester or an update of a software component.<a href="#section-3.2-14.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-14.2">uptime-cycle events, e.g. a hard reset or a re-initialization of an Attester.<a href="#section-3.2-14.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-3.2-14.2">
+            <p id="section-3.2-14.2.1">uptime-cycle events, e.g. a hard reset or a re-initialization of an Attester.<a href="#section-3.2-14.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-14.3">authentication-cycle events, e.g. a link-layer interface reset could result in a new (4).<a href="#section-3.2-14.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-3.2-14.3">
+            <p id="section-3.2-14.3.1">authentication-cycle events, e.g. a link-layer interface reset could result in a new (4).<a href="#section-3.2-14.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -2384,6 +2434,7 @@ While this document does not mandate specific transport protocols, messages cont
       <h2 id="name-references">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
+<div id="sec-normative-references">
 <section id="section-7.1">
         <h3 id="name-normative-references">
 <a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
@@ -2411,6 +2462,8 @@ While this document does not mandate specific transport protocols, messages cont
 <dd class="break"></dd>
 </dl>
 </section>
+</div>
+<div id="sec-informative-references">
 <section id="section-7.2">
         <h3 id="name-informative-references">
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
@@ -2418,11 +2471,11 @@ While this document does not mandate specific transport protocols, messages cont
 <dl class="references">
 <dt id="I-D.ietf-rats-network-device-subscription">[I-D.ietf-rats-network-device-subscription]</dt>
         <dd>
-<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Voit, E.</span>, and <span class="refAuthor">W. Pan</span>, <span class="refTitle">"Attestation Event Stream Subscription"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-network-device-subscription-03</span>, <time datetime="2023-03-10" class="refDate">10 March 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-network-device-subscription-03">https://datatracker.ietf.org/doc/html/draft-ietf-rats-network-device-subscription-03</a>&gt;</span>. </dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Voit, E.</span>, and <span class="refAuthor">W. Pan</span>, <span class="refTitle">"Attestation Event Stream Subscription"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-network-device-subscription-04</span>, <time datetime="2023-09-10" class="refDate">10 September 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-network-device-subscription-04">https://datatracker.ietf.org/doc/html/draft-ietf-rats-network-device-subscription-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.tschofenig-rats-psa-token">[I-D.tschofenig-rats-psa-token]</dt>
         <dd>
-<span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Frost, S.</span>, <span class="refAuthor">Brossard, M.</span>, <span class="refAuthor">Shaw, A. L.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"Arm's Platform Security Architecture (PSA) Attestation Token"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-rats-psa-token-12</span>, <time datetime="2023-07-05" class="refDate">5 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-12">https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-12</a>&gt;</span>. </dd>
+<span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Frost, S.</span>, <span class="refAuthor">Brossard, M.</span>, <span class="refAuthor">Shaw, A. L.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"Arm's Platform Security Architecture (PSA) Attestation Token"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-rats-psa-token-22</span>, <time datetime="2024-02-21" class="refDate">21 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-22">https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-22</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IEEE802.1AR">[IEEE802.1AR]</dt>
         <dd>
@@ -2462,6 +2515,7 @@ While this document does not mandate specific transport protocols, messages cont
 <dd class="break"></dd>
 </dl>
 </section>
+</div>
 </section>
 <div id="implementation-guidance">
 <section id="appendix-A">
@@ -2774,10 +2828,10 @@ Should it be in subsequent documents?<a href="#appendix-C-3" class="pilcrow">¶<
 </address>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Thomas Fossati</span></div>
-<div dir="auto" class="left"><span class="org">Arm Limited</span></div>
+<div dir="auto" class="left"><span class="org">Linaro</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:Thomas.Fossati@arm.com" class="email">Thomas.Fossati@arm.com</a>
+<a href="mailto:Thomas.Fossati@linaro.org" class="email">Thomas.Fossati@linaro.org</a>
 </div>
 </address>
 <address class="vcard">

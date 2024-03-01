@@ -5,14 +5,14 @@
 RATS Working Group                                               E. Voit
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                             H. Birkholz
-Expires: 2 March 2024                                     Fraunhofer SIT
+Expires: 2 September 2024                                 Fraunhofer SIT
                                                              T. Hardjono
                                                                      MIT
                                                               T. Fossati
-                                                             Arm Limited
+                                                                  Linaro
                                                              V. Scarlata
                                                                    Intel
-                                                          30 August 2023
+                                                            1 March 2024
 
 
               Attestation Results for Secure Interactions
@@ -50,11 +50,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 March 2024.
+   This Internet-Draft will expire on 2 September 2024.
 
 Copyright Notice
 
-   Copyright (c) 2023 IETF Trust and the persons identified as the
+   Copyright (c) 2024 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1250,17 +1250,17 @@ Table of Contents
    [I-D.ietf-rats-network-device-subscription]
               Birkholz, H., Voit, E., and W. Pan, "Attestation Event
               Stream Subscription", Work in Progress, Internet-Draft,
-              draft-ietf-rats-network-device-subscription-03, 10 March
-              2023, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              rats-network-device-subscription-03>.
+              draft-ietf-rats-network-device-subscription-04, 10
+              September 2023, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-rats-network-device-subscription-04>.
 
    [I-D.tschofenig-rats-psa-token]
               Tschofenig, H., Frost, S., Brossard, M., Shaw, A. L., and
               T. Fossati, "Arm's Platform Security Architecture (PSA)
               Attestation Token", Work in Progress, Internet-Draft,
-              draft-tschofenig-rats-psa-token-12, 5 July 2023,
+              draft-tschofenig-rats-psa-token-22, 21 February 2024,
               <https://datatracker.ietf.org/doc/html/draft-tschofenig-
-              rats-psa-token-12>.
+              rats-psa-token-22>.
 
    [IEEE802.1AR]
               "802.1AR: Secure Device Identity", 2 August 2018,
@@ -1584,8 +1584,8 @@ Authors' Addresses
 
 
    Thomas Fossati
-   Arm Limited
-   Email: Thomas.Fossati@arm.com
+   Linaro
+   Email: Thomas.Fossati@linaro.org
 
 
    Vincent Scarlata
