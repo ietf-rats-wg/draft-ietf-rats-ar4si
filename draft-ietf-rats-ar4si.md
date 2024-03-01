@@ -34,8 +34,8 @@ author:
   email: hardjono@mit.edu
 - ins: T. Fossati
   name: Thomas Fossati
-  organization: Arm Limited
-  email: Thomas.Fossati@arm.com
+  organization: Linaro
+  email: Thomas.Fossati@linaro.org
 - ins: V. Scarlata
   name: Vincent Scarlata
   organization: Intel
