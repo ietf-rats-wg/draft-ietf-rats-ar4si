@@ -14,21 +14,22 @@
        This document defines reusable Attestation Result information elements.
 When these elements are offered to Relying Parties as Evidence, different aspects of Attester trustworthiness can be evaluated.
 Additionally, where the Relying Party is interfacing with a heterogeneous mix of Attesting Environment and Verifier types, consistent policies can be applied to subsequent information exchange between each Attester and the Relying Party. 
+       This document also defines two serialisations of the proposed information model, utilising CBOR and JSON. 
     " name="description">
-<meta content="xml2rfc 3.23.0" name="generator">
+<meta content="xml2rfc 3.26.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-rats-ar4si-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.23.0
-    Python 3.12.3
+  xml2rfc 3.26.0
+    Python 3.12.8
     ConfigArgParse 1.7
-    google-i18n-address 3.1.0
+    google-i18n-address 3.1.1
     intervaltree 3.1.0
-    Jinja2 3.1.4
-    lxml 4.9.4
-    platformdirs 4.2.2
-    pycountry 22.3.5
-    PyYAML 6.0.1
+    Jinja2 3.1.5
+    lxml 5.3.0
+    platformdirs 4.3.6
+    pycountry 24.6.1
+    PyYAML 6.0.2
     requests 2.32.3
     setuptools 70.3.0
     wcwidth 0.2.13
@@ -167,31 +168,6 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
 }
 
 @font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-vietnamese.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
-}
-@font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
   font-family: 'Oxygen Mono';
   font-style: normal;
   font-weight: 400;
@@ -208,6 +184,77 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   color-scheme: light dark;
   --background-color: #fff;
@@ -220,6 +267,7 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
   --pilcrow-strong: #bbb;
   --small-font-size: 14.5px;
   --font-mono: 'Oxygen Mono', monospace;
+  --font-title: "Sofia Sans Semi Condensed", sans-serif;
   scrollbar-color: #bbb #eee;
 }
 body {
@@ -237,9 +285,15 @@ body {
 }
 
 /* headings */
+section {
+  clear: both;
+}
+.section-number {
+  padding-right: 0.5em;
+}
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Cabin Condensed", sans-serif;
-  font-weight: 600;
+  font-family: var(--font-title);
+  font-weight: 680;
   margin: 0.8em 0 0.3em;
   font-size-adjust: 0.5;
   color: var(--title-color);
@@ -268,6 +322,7 @@ h4, h5, h6 {
 /* general structure */
 .author {
   padding-bottom: 0.3em;
+  vertical-align: top;
 }
 #abstract+p {
   font-size: 18px;
@@ -345,25 +400,26 @@ svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
 ol, ul {
   padding: 0;
   margin: 0 0 0.5em 2em;
-}
-:is(ol, ul) :is(ol, ul) {
-  margin-left: 1em;
+  & :is(ol, ul) {
+    margin-left: 1em;
+  }
 }
 li {
   margin: 0 0 0.25em 0;
 }
-.ulCompact li {
-  margin: 0;
-}
 ul.empty, .ulEmpty {
   list-style-type: none;
-}
-ul.empty li, .ulEmpty li {
-  margin-top: 0.5em;
+  & li {
+    margin-top: 0.5em;
+  }
 }
 :is(ul, ol).compact, .ulCompact, .olCompact {
-  line-height: 1;
   margin: 0 0 0 2em;
+  & li {
+    margin: 0;
+    & :first-child { margin-top: 0; }
+    & :last-child { margin-bottom: 0; }
+  }
 }
 
 /* definition lists */
@@ -371,38 +427,39 @@ dl {
   clear: left;
   --indent: 3ch;
   /* --indent: attr(indent ch); not supported in any browser, but we can dream */
-}
-dl.olPercent {
-  --indent: 5ch;
+  &.olPercent {
+    --indent: 5ch;
+    & > dt {
+      min-width: calc(var(--indent) - 2ch);
+    }
+  }
+  &.olPercent > dt {
+    float: none;
+  }
+
+  dl > dd > & {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
 }
 dl > dt {
   float: left;
   margin-right: 2ch;
   min-width: 8ch;
 }
-dl.dlNewline > dt {
-  float: none;
-}
 dl > dd {
   margin-bottom: .8em;
   margin-left: var(--indent) !important; /* stupid element overrides */
   min-height: 2ex;
 }
-dl.olPercent > dt {
-  min-width: calc(var(--indent) - 2ch);
-}
 :is(dl.compact, .dlCompact) > dd {
   margin-bottom: 0;
-}
-:is(dl.compact, .dlCompact) > dd > :is(:first-child, .break:first-child + *) {
-  margin-top: 0;
-}
-:is(dl.compact, .dlCompact) > dd > :is(:last-child) {
-  margin-bottom: 0;
-}
-dl > dd > dl {
-  margin-top: 0.5em;
-  margin-bottom: 0;
+  & > :is(:first-child, .break:first-child + *) {
+    margin-top: 0;
+  }
+  & > :is(:last-child) {
+    margin-bottom: 0;
+  }
 }
 :is(dd, span).break {
   display: none;
@@ -466,6 +523,7 @@ figcaption, caption {
   font-style: italic;
   margin: 0.5em 1.5em;
   text-align: left;
+  caption-side: bottom;
 }
 @media screen {
   /* Auto-collapse boilerplate. */
@@ -483,7 +541,11 @@ figcaption, caption {
   }
   pre, svg {
     display: inline-block;
-    overflow-x: auto;
+    /* In the horizontal direction, sometimes people make over-sized figures.
+       Scrollbars for those is therefore necessary: auto adds them as necessary..
+       In the vertical direction, the line-height can combine with the font
+       asender/descender height to produce scrollbars: hidden avoids that. */
+    overflow: auto hidden;
   }
   pre {
     max-width: 100%;
@@ -520,6 +582,7 @@ cite {
 
 /* tables */
 table {
+  width: auto;
   max-width: 100%;
   margin: 0 0 1em;
   border-collapse: collapse;
@@ -534,6 +597,16 @@ table.center {
 table.left {
   margin-right: auto;
 }
+table .text-left {
+  text-align: left;
+}
+table .text-center {
+  text-align: center;
+}
+table .text-right {
+  text-align: right;
+}
+
 thead, tbody {
   border: 1px solid var(--line-color);
 }
@@ -564,9 +637,11 @@ a.pilcrow {
   margin-left: 3px;
   opacity: 0.2;
   user-select: none;
+  &[href] {
+    color: var(--pilcrow-weak);
+    &:hover { text-decoration: none; }
+  }
 }
-a.pilcrow[href] { color: var(--pilcrow-weak); }
-a.pilcrow[href]:hover { text-decoration: none; }
 @media not print {
   :hover > a.pilcrow {
     opacity: 1;
@@ -606,26 +681,28 @@ sub, sup {
   font-size: var(--small-font-size);
   line-height: 18px;
   --identifier-width: 15ch;
-}
-#identifiers dt {
-  width: var(--identifier-width);
-  min-width: var(--identifier-width);
-  clear: left;
-  float: left;
-  text-align: right;
-  margin-right: 1ch;
-}
-#identifiers dd {
-  margin: 0;
-  margin-left: calc(1em + var(--identifier-width)) !important;
-  min-width: 5em;
-}
-#identifiers .authors .author {
-  display: inline-block;
-  margin-right: 1.5em;
-}
-#identifiers .authors .org {
-  font-style: italic;
+  & dt {
+    width: var(--identifier-width);
+    min-width: var(--identifier-width);
+    clear: left;
+    float: left;
+    text-align: right;
+    margin-right: 1ch;
+  }
+  & dd {
+    margin: 0;
+    margin-left: calc(1em + var(--identifier-width)) !important;
+    min-width: 5em;
+  }
+  & .authors {
+    & .author {
+      display: inline-block;
+      margin-right: 1.5em;
+    }
+    & .org {
+      font-style: italic;
+    }
+  }
 }
 
 /* The prepared/rendered info at the very bottom of the page */
@@ -636,9 +713,6 @@ sub, sup {
   margin-top: 2em;
 }
 .docInfo .prepared {
-  float: left;
-}
-.docInfo .prepared {
   float: right;
 }
 
@@ -646,47 +720,48 @@ sub, sup {
 #toc {
   padding: 0.75em 0 2em 0;
   margin-bottom: 1em;
-}
-#toc nav ul {
-  margin: 0 0.5em 0 0;
-  padding: 0;
-  list-style: none;
-}
-#toc nav li {
-  line-height: 1.3em;
-  margin: 2px 0;
-  padding-left: 1.2em;
-  text-indent: -1.2em;
-}
-#toc a.xref {
-  white-space: normal;
-}
-/* references */
-.references dt {
-  text-align: right;
-  font-weight: bold;
-  min-width: 10ch;
-  margin-right: 1.5ch;
-}
-.references dt:target::before {
-  content: "⇒";
-  width: 15px;
-  margin: 0 10px 0 -25px;
-}
-.references dd {
-  margin-left: 12ch !important;
-  overflow: auto;
+
+  & nav {
+    & ul {
+      margin: 0 0.5em 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    & li {
+      line-height: 1.3em;
+      margin: 2px 0;
+      padding-left: 1.2em;
+      text-indent: -1.2em;
+    }
+  }
+  & a.xref {
+    white-space: normal;
+  }
 }
 
-.refInstance {
-  margin-bottom: 1.25em;
+.references {
+  & > dt {
+    text-align: right;
+    font-weight: bold;
+    min-width: 10ch;
+    margin-right: 1.5ch;
+    &:target::before {
+      content: "⇒";
+      margin: 0 10px 0 -25px;
+    }
+  }
+  & > dd {
+    margin-left: 12ch !important;
+    overflow: visible;
+    & .refInstance {
+      margin-bottom: 0.8em;
+    }
+    & .ascii {
+      margin-bottom: 0.25em;
+    }
+  }
 }
 
-.references .ascii {
-  margin-bottom: 0.25em;
-}
-
-/* index */
 #rfc\.index\.index + ul {
   margin-left: 0;
 }
@@ -694,21 +769,33 @@ sub, sup {
 /* authors */
 address.vcard {
   font-style: normal;
-  margin: 1em 0;
+  max-width: 20em;
+  margin: 1em auto 1em 0;
+
+  & .nameRole {
+    font-weight: 700;
+    margin-left: 0;
+  }
+  & .label {
+    margin: 0.5em 0;
+  }
+  & .type {
+    display: none;
+  }
+  & .alternative-contact {
+    margin: 0.5em 0 0.25em 0;
+  }
+  & .non-ascii {
+    margin: 0 0 0 2em;
+  }
+  & div.left {
+    text-align: left;
+  }
+  & div.right {
+    text-align: right;
+  }
 }
-address.vcard .nameRole {
-  font-weight: 700;
-  margin-left: 0;
-}
-address.vcard .label {
-  margin: 0.5em 0;
-}
-address.vcard .type {
-  display: none;
-}
-.alternative-contact {
-  margin: 1.5em 0 1em;
-}
+
 hr.addr {
   border-top: 1px dashed;
   margin: 0;
@@ -730,6 +817,7 @@ hr.addr {
   }
 }
 
+/* Comments */
 .rfcEditorRemove p:first-of-type {
   font-style: italic;
 }
@@ -740,7 +828,31 @@ hr.addr {
 .crefSource {
   font-style: italic;
 }
-/* alternative layout for smaller screens */
+
+@media screen {
+  #toc nav {
+    font-family: var(--font-title);
+    font-weight: 360;
+    & > ul { margin-bottom: 2em; }
+    & ul {
+      margin: 0 0 0 4px;
+      & :is(p, li) {
+        margin: 2px 0;
+      }
+    }
+  }
+  #toc a.toplink {
+    float: right;
+  }
+}
+@media not screen {
+  #toc a.toplink {
+    display: none;
+  }
+}
+
+
+/* TOC layout for smaller screens */
 @media screen and (max-width: 929px) {
   #toc {
     position: fixed;
@@ -751,9 +863,6 @@ hr.addr {
     margin: 0;
     border-bottom: 1px solid #ccc;
     opacity: 0.6;
-  }
-  #toc.active {
-      opacity: 1;
   }
   #toc h2 {
     margin: 0;
@@ -766,17 +875,17 @@ hr.addr {
     background-color: #444;
     color: white;
     cursor: pointer;
-  }
-  #toc h2::before { /* css hamburger */
-    float: right;
-    position: relative;
-    width: 1em;
-    height: 1px;
-    left: -164px;
-    margin: 8px 0 0 0;
-    background: white none repeat scroll 0 0;
-    box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
-    content: "";
+    &::before { /* css hamburger */
+      float: right;
+      position: relative;
+      width: 1em;
+      height: 1px;
+      left: -164px;
+      margin: 8px 0 0 0;
+      background: white none repeat scroll 0 0;
+      box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+      content: "";
+    }
   }
   #toc nav {
     display: none;
@@ -787,14 +896,13 @@ hr.addr {
     height: calc(100vh - 48px);
     border-left: 1px solid #ddd;
   }
-  #toc.active nav {
-    display: block;
+  #toc.active {
+    opacity: 1;
+    & nav { display: block; }
   }
   /* Make the collapsed ToC header render white on gray also when it's a link */
   #toc h2 a,
-  #toc h2 a:link,
-  #toc h2 a:focus,
-  #toc h2 a:hover,
+  #toc h2 a:is(:link, :focus, :hover),
   #toc a.toplink,
   #toc a.toplink:hover {
     color: white;
@@ -802,11 +910,11 @@ hr.addr {
     text-decoration: none;
   }
   #toc a.toplink {
-    margin-top: 2px;
+    margin: 2px 0.5em 0;
   }
 }
 
-/* alternative layout for wide screens */
+/* TOC layout for wide screens */
 @media screen and (min-width: 930px) {
   body {
     padding-right: 360px;
@@ -835,20 +943,12 @@ hr.addr {
     overscroll-behavior: contain;
     scrollbar-width: thin;
   }
-  #toc nav > ul  {
-    margin-bottom: 2em;
-  }
-  #toc ul {
-    margin: 0 0 0 4px;
-    font-size: var(--small-font-size);
-  }
-  #toc ul :is(p, li) {
-    margin: 2px 0;
-    line-height: 22px;
-  }
   img { /* future proofing */
     max-width: 100%;
     height: auto;
+  }
+  #toc a.toplink {
+    margin: 8px 0.5em 0;
   }
 }
 
@@ -891,9 +991,6 @@ hr.addr {
   td {
     border-top: 1px solid #ddd;
   }
-  .toplink {
-    display: none;
-  }
 }
 
 @page :first {
@@ -916,82 +1013,6 @@ hr.addr {
   size: A4;
   margin-bottom: 45mm;
   padding-top: 20px;
-}
-
-/* Changes introduced to fix issues found during implementation */
-
-/* Separate body from document info even without intervening H1 */
-section {
-  clear: both;
-}
-
-/* Top align author divs, to avoid names without organization dropping level with org names */
-.author {
-  vertical-align: top;
-}
-
-/* Style section numbers with more space between number and title */
-.section-number {
-  padding-right: 0.5em;
-}
-
-/* Add styling for a link in the ToC that points to the top of the document */
-a.toplink {
-  float: right;
-  margin: 8px 0.5em 0;
-}
-
-/* Provide styling for table cell text alignment */
-table .text-left {
-  text-align: left;
-}
-table .text-center {
-  text-align: center;
-}
-table .text-right {
-  text-align: right;
-}
-
-/* Make the alternative author contact information look less like just another
-   author, and group it closer with the primary author contact information */
-.alternative-contact {
-  margin: 0.5em 0 0.25em 0;
-}
-address .non-ascii {
-  margin: 0 0 0 2em;
-}
-
-/* With it being possible to set tables with alignment
-  left, center, and right, { width: 100%; } does not make sense */
-table {
-  width: auto;
-}
-
-/* Avoid reference text that sits in a block with very wide left margin,
-   because of a long floating dt label.*/
-.references dd {
-  overflow: visible;
-}
-
-/* Control caption placement */
-caption {
-  caption-side: bottom;
-}
-
-/* Limit the width of the author address vcard, so names in right-to-left
-   script don't end up on the other side of the page. */
-
-address.vcard {
-  max-width: 20em;
-  margin-right: auto;
-}
-
-/* For address alignment dependent on LTR or RTL scripts */
-address div.left {
-  text-align: left;
-}
-address div.right {
-  text-align: right;
 }
 
 /* Dark mode. */
@@ -1030,11 +1051,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Attestation Results</td>
-<td class="right">September 2024</td>
+<td class="right">February 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Voit, et al.</td>
-<td class="center">Expires 6 March 2025</td>
+<td class="center">Expires 7 August 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1047,12 +1068,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-rats-ar4si-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-09-02" class="published">2 September 2024</time>
+<time datetime="2025-02-03" class="published">3 February 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-03-06">6 March 2025</time></dd>
+<dd class="expires"><time datetime="2025-08-07">7 August 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1084,6 +1105,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-abstract-1">This document defines reusable Attestation Result information elements.
 When these elements are offered to Relying Parties as Evidence, different aspects of Attester trustworthiness can be evaluated.
 Additionally, where the Relying Party is interfacing with a heterogeneous mix of Attesting Environment and Verifier types, consistent policies can be applied to subsequent information exchange between each Attester and the Relying Party.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">This document also defines two serialisations of the proposed information model, utilising CBOR and JSON.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1112,7 +1134,7 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 6 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 7 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1121,7 +1143,7 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2024 IETF Trust and the persons identified as the
+            Copyright (c) 2025 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1201,80 +1223,83 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-secure-interactions-models" class="internal xref">Secure Interactions Models</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
-                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-background-check" class="internal xref">Background-Check</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.1">
-                    <p id="section-toc.1-1.3.2.1.2.1.1"><a href="#section-3.1.1" class="auto internal xref">3.1.1</a>.  <a href="#name-verifier-retrieval" class="internal xref">Verifier Retrieval</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-data-model" class="internal xref">Data Model</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.2">
-                    <p id="section-toc.1-1.3.2.1.2.2.1"><a href="#section-3.1.2" class="auto internal xref">3.1.2</a>.  <a href="#name-co-resident-verifier" class="internal xref">Co-resident Verifier</a></p>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-secure-interactions-models" class="internal xref">Secure Interactions Models</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-background-check" class="internal xref">Background-Check</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.1">
+                    <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="auto internal xref">4.1.1</a>.  <a href="#name-verifier-retrieval" class="internal xref">Verifier Retrieval</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.2">
+                    <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="auto internal xref">4.1.2</a>.  <a href="#name-co-resident-verifier" class="internal xref">Co-resident Verifier</a></p>
 </li>
                 </ul>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-below-zero-trust" class="internal xref">Below Zero Trust</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-below-zero-trust" class="internal xref">Below Zero Trust</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
-                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-mutual-attestation" class="internal xref">Mutual Attestation</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-mutual-attestation" class="internal xref">Mutual Attestation</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
-                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-transport-protocol-integrat" class="internal xref">Transport Protocol Integration</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+                <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-transport-protocol-integrat" class="internal xref">Transport Protocol Integration</a></p>
 </li>
             </ul>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
-                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
-                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-implementation-guidance" class="internal xref">Implementation Guidance</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-references" class="internal xref">References</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
-                <p id="section-toc.1-1.8.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-supplementing-trustworthine" class="internal xref">Supplementing Trustworthiness Claims</a></p>
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-supportable-trustworthiness" class="internal xref">Supportable Trustworthiness Claims</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-implementation-guidance" class="internal xref">Implementation Guidance</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
-                <p id="section-toc.1-1.9.2.1.1"><a href="#appendix-B.1" class="auto internal xref">B.1</a>.  <a href="#name-supportable-trustworthiness-" class="internal xref">Supportable Trustworthiness Claims for HSM-based CC</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
-                <p id="section-toc.1-1.9.2.2.1"><a href="#appendix-B.2" class="auto internal xref">B.2</a>.  <a href="#name-supportable-trustworthiness-c" class="internal xref">Supportable Trustworthiness Claims for process-based CC</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3">
-                <p id="section-toc.1-1.9.2.3.1"><a href="#appendix-B.3" class="auto internal xref">B.3</a>.  <a href="#name-supportable-trustworthiness-cl" class="internal xref">Supportable Trustworthiness Claims for VM-based CC</a></p>
+                <p id="section-toc.1-1.9.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-supplementing-trustworthine" class="internal xref">Supplementing Trustworthiness Claims</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#appendix-C" class="auto internal xref">Appendix C</a>.  <a href="#name-some-issues-being-worked" class="internal xref">Some issues being worked</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-supportable-trustworthiness" class="internal xref">Supportable Trustworthiness Claims</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+                <p id="section-toc.1-1.10.2.1.1"><a href="#appendix-B.1" class="auto internal xref">B.1</a>.  <a href="#name-supportable-trustworthiness-" class="internal xref">Supportable Trustworthiness Claims for HSM-based CC</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+                <p id="section-toc.1-1.10.2.2.1"><a href="#appendix-B.2" class="auto internal xref">B.2</a>.  <a href="#name-supportable-trustworthiness-c" class="internal xref">Supportable Trustworthiness Claims for process-based CC</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.3">
+                <p id="section-toc.1-1.10.2.3.1"><a href="#appendix-B.3" class="auto internal xref">B.3</a>.  <a href="#name-supportable-trustworthiness-cl" class="internal xref">Supportable Trustworthiness Claims for VM-based CC</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#appendix-D" class="auto internal xref">Appendix D</a>.  <a href="#name-contributors" class="internal xref">Contributors</a></p>
+            <p id="section-toc.1-1.11.1"><a href="#appendix-C" class="auto internal xref">Appendix C</a>.  <a href="#name-some-issues-being-worked" class="internal xref">Some issues being worked</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#appendix-E" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#appendix-D" class="auto internal xref">Appendix D</a>.  <a href="#name-contributors" class="internal xref">Contributors</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#appendix-E" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -2138,97 +2163,145 @@ Subsequent connection re-establishment will allow fresh new Trustworthiness Clai
 </div>
 </section>
 </div>
-<div id="secure-interactions-models">
+<div id="dm">
 <section id="section-3">
-      <h2 id="name-secure-interactions-models">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-secure-interactions-models" class="section-name selfRef">Secure Interactions Models</a>
+      <h2 id="name-data-model">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-data-model" class="section-name selfRef">Data Model</a>
       </h2>
-<p id="section-3-1">There are multiple ways of providing a Trustworthiness Vector to a Relying Party.
-This section describes two alternatives.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">The following CDDL defines the necessary AR4SI types for use in CBOR and JSON serializations.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">Other serializations are possible but must be defined in subsequent documents.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<div class="lang-cddl sourcecode" id="section-3-3">
+<pre>
+$.start.$ = trustworthiness-vector / trust-tier / verifier-id
+trustworthiness-vector = non-empty&lt;{
+    ? instance-identity-label =&gt; trustworthiness-claim,
+    ? configuration-label =&gt; trustworthiness-claim,
+    ? executables-label =&gt; trustworthiness-claim,
+    ? file-system-label =&gt; trustworthiness-claim,
+    ? hardware-label =&gt; trustworthiness-claim,
+    ? runtime-opaque-label =&gt; trustworthiness-claim,
+    ? storage-opaque-label =&gt; trustworthiness-claim,
+    ? sourced-data-label =&gt; trustworthiness-claim,
+}&gt;
+instance-identity-label = JC&lt;"instance-identity", 0&gt;
+configuration-label = JC&lt;"configuration", 1&gt;
+executables-label = JC&lt;"executables", 2&gt;
+file-system-label = JC&lt;"file-system", 3&gt;
+hardware-label = JC&lt;"hardware", 4&gt;
+runtime-opaque-label = JC&lt;"runtime-opaque", 5&gt;
+storage-opaque-label = JC&lt;"storage-opaque", 6&gt;
+sourced-data-label = JC&lt;"sourced-data", 7&gt;
+trustworthiness-claim = -128 .. 127
+trust-tier-none-label = JC&lt;"none", 0&gt;
+trust-tier-affirming-label = JC&lt;"affirming", 2&gt;
+trust-tier-warning-label = JC&lt;"warning", 32&gt;
+trust-tier-contraindicated-label = JC&lt;"contraindicated", 96&gt;
+trust-tier /= trust-tier-none-label / trust-tier-affirming-label / trust-tier-warning-label / trust-tier-contraindicated-label
+verifier-id = {
+  developer-label =&gt; text,
+  build-label =&gt; text,
+}
+developer-label = JC&lt;"developer", 0&gt;
+build-label = JC&lt;"build", 1&gt;
+non-empty&lt;M&gt; = M .within ({+ any =&gt; any})
+JSON-ONLY&lt;J&gt; = J .feature "json"
+CBOR-ONLY&lt;C&gt; = C .feature "cbor"
+JC&lt;J, C&gt; = JSON-ONLY&lt;J&gt; / CBOR-ONLY&lt;C&gt;
+</pre><a href="#section-3-3" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="secure-interactions-models">
+<section id="section-4">
+      <h2 id="name-secure-interactions-models">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-secure-interactions-models" class="section-name selfRef">Secure Interactions Models</a>
+      </h2>
+<p id="section-4-1">There are multiple ways of providing a Trustworthiness Vector to a Relying Party.
+This section describes two alternatives.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <div id="background-check">
-<section id="section-3.1">
+<section id="section-4.1">
         <h3 id="name-background-check">
-<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-background-check" class="section-name selfRef">Background-Check</a>
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-background-check" class="section-name selfRef">Background-Check</a>
         </h3>
 <div id="verifier-retrieval">
-<section id="section-3.1.1">
+<section id="section-4.1.1">
           <h4 id="name-verifier-retrieval">
-<a href="#section-3.1.1" class="section-number selfRef">3.1.1. </a><a href="#name-verifier-retrieval" class="section-name selfRef">Verifier Retrieval</a>
+<a href="#section-4.1.1" class="section-number selfRef">4.1.1. </a><a href="#name-verifier-retrieval" class="section-name selfRef">Verifier Retrieval</a>
           </h4>
-<p id="section-3.1.1-1">It is possible to for a Relying Party to follow the Background-Check Model defined in Section 5.2 of <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>.
+<p id="section-4.1.1-1">It is possible to for a Relying Party to follow the Background-Check Model defined in Section 5.2 of <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>.
 In this case, a Relying Party will receive Attestation Results containing the Trustworthiness Vector directly from a Verifier.
-These Attestation Results can then be used by the Relying Party in determining the appropriate treatment for interactions with the Attester.<a href="#section-3.1.1-1" class="pilcrow">¶</a></p>
-<p id="section-3.1.1-2">While applicable in some cases, the utilization of the Background-Check Model without modification has potential drawbacks in other cases.
-These include:<a href="#section-3.1.1-2" class="pilcrow">¶</a></p>
+These Attestation Results can then be used by the Relying Party in determining the appropriate treatment for interactions with the Attester.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.1-2">While applicable in some cases, the utilization of the Background-Check Model without modification has potential drawbacks in other cases.
+These include:<a href="#section-4.1.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.1.1-3.1">
-              <p id="section-3.1.1-3.1.1">Verifier scale: if the Attester has many Relying Parties, a Verifier appraising that Attester could be frequently be queried based on the same Evidence.<a href="#section-3.1.1-3.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4.1.1-3.1">
+              <p id="section-4.1.1-3.1.1">Verifier scale: if the Attester has many Relying Parties, a Verifier appraising that Attester could be frequently be queried based on the same Evidence.<a href="#section-4.1.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3.1.1-3.2">
-              <p id="section-3.1.1-3.2.1">Information leak: Evidence which the Attester might consider private can be visible to the Relying Party.  Hiding that Evidence could devalue any resulting appraisal.<a href="#section-3.1.1-3.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-4.1.1-3.2">
+              <p id="section-4.1.1-3.2.1">Information leak: Evidence which the Attester might consider private can be visible to the Relying Party.  Hiding that Evidence could devalue any resulting appraisal.<a href="#section-4.1.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3.1.1-3.3">
-              <p id="section-3.1.1-3.3.1">Latency: a Relying Party will need to wait for the Verifier to return Attestation Results before proceeding with secure interactions with the Attester.<a href="#section-3.1.1-3.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-4.1.1-3.3">
+              <p id="section-4.1.1-3.3.1">Latency: a Relying Party will need to wait for the Verifier to return Attestation Results before proceeding with secure interactions with the Attester.<a href="#section-4.1.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-3.1.1-4">An implementer should examine these potential drawbacks before selecting this alternative.<a href="#section-3.1.1-4" class="pilcrow">¶</a></p>
+<p id="section-4.1.1-4">An implementer should examine these potential drawbacks before selecting this alternative.<a href="#section-4.1.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="co-resident-verifier">
-<section id="section-3.1.2">
+<section id="section-4.1.2">
           <h4 id="name-co-resident-verifier">
-<a href="#section-3.1.2" class="section-number selfRef">3.1.2. </a><a href="#name-co-resident-verifier" class="section-name selfRef">Co-resident Verifier</a>
+<a href="#section-4.1.2" class="section-number selfRef">4.1.2. </a><a href="#name-co-resident-verifier" class="section-name selfRef">Co-resident Verifier</a>
           </h4>
-<p id="section-3.1.2-1">A simplified Background-Check Model may exist in a very specific case.
+<p id="section-4.1.2-1">A simplified Background-Check Model may exist in a very specific case.
 This is where the Relying Party and Verifier functions are co-resident.
-This model is appropriate when:<a href="#section-3.1.2-1" class="pilcrow">¶</a></p>
+This model is appropriate when:<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.1.2-2.1">
-              <p id="section-3.1.2-2.1.1">Some hardware-based private key is used by an Attester while proving its identity as part of a mutually authenticated secure channel establishment with the Relying Party, and<a href="#section-3.1.2-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4.1.2-2.1">
+              <p id="section-4.1.2-2.1.1">Some hardware-based private key is used by an Attester while proving its identity as part of a mutually authenticated secure channel establishment with the Relying Party, and<a href="#section-4.1.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3.1.2-2.2">
-              <p id="section-3.1.2-2.2.1">this Attester identity is accepted as sufficient proof of Attester integrity.<a href="#section-3.1.2-2.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-4.1.2-2.2">
+              <p id="section-4.1.2-2.2.1">this Attester identity is accepted as sufficient proof of Attester integrity.<a href="#section-4.1.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-3.1.2-3">Effectively this means that detailed forensic capabilities of a robust Verifier are unnecessary because it is accepted that the code and operational behavior of the Attester cannot be manipulated after TEE initialization.<a href="#section-3.1.2-3" class="pilcrow">¶</a></p>
-<p id="section-3.1.2-4">An example of such a scenario may be when an SGX's MRENCLAVE and MRSIGNER values have been associated with a known QUOTE value.
-And the code running within the TEE is not modifiable after launch.<a href="#section-3.1.2-4" class="pilcrow">¶</a></p>
+<p id="section-4.1.2-3">Effectively this means that detailed forensic capabilities of a robust Verifier are unnecessary because it is accepted that the code and operational behavior of the Attester cannot be manipulated after TEE initialization.<a href="#section-4.1.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.1.2-4">An example of such a scenario may be when an SGX's MRENCLAVE and MRSIGNER values have been associated with a known QUOTE value.
+And the code running within the TEE is not modifiable after launch.<a href="#section-4.1.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="below-zero-trust">
-<section id="section-3.2">
+<section id="section-4.2">
         <h3 id="name-below-zero-trust">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-below-zero-trust" class="section-name selfRef">Below Zero Trust</a>
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-below-zero-trust" class="section-name selfRef">Below Zero Trust</a>
         </h3>
-<p id="section-3.2-1">Zero Trust Architectures are referenced in <span>[<a href="#US-Executive-Order" class="cite xref">US-Executive-Order</a>]</span> eleven times.
+<p id="section-4.2-1">Zero Trust Architectures are referenced in <span>[<a href="#US-Executive-Order" class="cite xref">US-Executive-Order</a>]</span> eleven times.
 However despite this high profile, there is an architectural gap with Zero Trust.
 The credentials used for authentication and admission control can be manipulated on the endpoint.
 Attestation can fill this gap through the generation of a compound credential called AR-augmented Evidence.
 This compound credential is rooted in the hardware based Attesting Environment of an endpoint, plus the trustworthiness of a Verifier.
 The overall solution is known as "Below Zero Trust" as the compound credential cannot be manipulated or spoofed by an administrator of an endpoint with root access.
-This solution is not adversely impacted by the potential drawbacks with pure background-check described above.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
-<p id="section-3.2-2">To kick-off the "Below Zero Trust" compound credential creation sequence, a Verifier evaluates an Attester and returns signed Attestation Results back to this original Attester no less frequently than a well-known interval.
-This interval may also be asynchronous, based on the changing of certain Evidence as described in <span>[<a href="#I-D.ietf-rats-network-device-subscription" class="cite xref">I-D.ietf-rats-network-device-subscription</a>]</span>.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
-<p id="section-3.2-3">When a Relying Party is to receive information about the Attester's trustworthiness, the Attesting Environment assembles the minimal set of Evidence which can be used to confirm or refute whether the Attester remains in the state of trustworthiness represented by the AR.
+This solution is not adversely impacted by the potential drawbacks with pure background-check described above.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-2">To kick-off the "Below Zero Trust" compound credential creation sequence, a Verifier evaluates an Attester and returns signed Attestation Results back to this original Attester no less frequently than a well-known interval.
+This interval may also be asynchronous, based on the changing of certain Evidence as described in <span>[<a href="#I-D.ietf-rats-network-device-subscription" class="cite xref">I-D.ietf-rats-network-device-subscription</a>]</span>.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2-3">When a Relying Party is to receive information about the Attester's trustworthiness, the Attesting Environment assembles the minimal set of Evidence which can be used to confirm or refute whether the Attester remains in the state of trustworthiness represented by the AR.
 To this Evidence, the Attesting Environment appends the signature from the most recent AR as well as a Relying Party Proof-of-Freshness.
-The Attesting Environment then signs the combination.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
-<p id="section-3.2-4">The Attester then assembles AR Augmented Evidence by taking the signed combination and appending the full AR. The assembly now consists of two independent but semantically bound sets of signed Evidence.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
-<p id="section-3.2-5">The AR Augmented Evidence is then sent to the Relying Party.
+The Attesting Environment then signs the combination.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.2-4">The Attester then assembles AR Augmented Evidence by taking the signed combination and appending the full AR. The assembly now consists of two independent but semantically bound sets of signed Evidence.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+<p id="section-4.2-5">The AR Augmented Evidence is then sent to the Relying Party.
 The Relying Party then can appraise these semantically bound sets of signed Evidence by applying an Appraisal Policy for Attestation Results as described below.
-This policy will consider both the AR as well as additional information about the Attester within the AR Augmented Evidence the when determining what action to take.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
-<p id="section-3.2-6">This alternative combines the <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span> Sections 5.1 Passport Model and Section 5.2 Background-Check Model.
+This policy will consider both the AR as well as additional information about the Attester within the AR Augmented Evidence the when determining what action to take.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
+<p id="section-4.2-6">This alternative combines the <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span> Sections 5.1 Passport Model and Section 5.2 Background-Check Model.
 <a href="#interactions" class="auto internal xref">Figure 1</a> describes this flow of information.
 The flows within this combined model are mapped to <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span> in the following way.
 "Verifier A" below corresponds to the "Verifier" Figure 5 within <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>.
 And "Relying Party/Verifier B" below corresponds to the union of the "Relying Party" and "Verifier" boxes within Figure 6 of <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>.
 This union is possible because Verifier B can be implemented as a simple, self-contained process.
 The resulting combined process can appraise the AR-augmented Evidence to determine whether an Attester qualifies for secure interactions with the Relying Party.
-The specific steps of this process are defined later in this section.<a href="#section-3.2-6" class="pilcrow">¶</a></p>
+The specific steps of this process are defined later in this section.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
 <span id="name-below-zero-trust-2"></span><div id="interactions">
 <figure id="figure-1">
-          <div class="alignLeft art-text artwork" id="section-3.2-7.1">
+          <div class="alignLeft art-text artwork" id="section-4.2-7.1">
 <pre>
   .----------------.
   | Attester       |
@@ -2259,185 +2332,185 @@ time(EG')(4)------AR-augmented Evidence-----------------&gt;|
 <a href="#name-below-zero-trust-2" class="selfRef">Below Zero Trust</a>
           </figcaption></figure>
 </div>
-<p id="section-3.2-8">The interaction model depicted above includes specific time related events from Appendix A of <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>.
+<p id="section-4.2-8">The interaction model depicted above includes specific time related events from Appendix A of <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>.
 With the identification of these time related events, time duration/interval tracking becomes possible.
 Such duration/interval tracking can become important if the Relying Party cares if too much time has elapsed between the Verifier PoF and Relying Party PoF.
-If too much time has elapsed, perhaps the Attestation Results themselves are no longer trustworthy.<a href="#section-3.2-8" class="pilcrow">¶</a></p>
-<p id="section-3.2-9">Note that while time intervals will often be relevant, there is a simplified case that does not require a Relying Party's PoF in step (3).
+If too much time has elapsed, perhaps the Attestation Results themselves are no longer trustworthy.<a href="#section-4.2-8" class="pilcrow">¶</a></p>
+<p id="section-4.2-9">Note that while time intervals will often be relevant, there is a simplified case that does not require a Relying Party's PoF in step (3).
 In this simplified case, the Relying Party trusts that the Attester cannot be meaningfully changed from the outside during any reportable interval.
-Based on that assumption, and when this is the case then the step of the Relying Party PoF can be safely omitted.<a href="#section-3.2-9" class="pilcrow">¶</a></p>
-<p id="section-3.2-10">In all cases, appraisal policies define the conditions and prerequisites for when an Attester does qualify for secure interactions.
-To qualify, an Attester has to be able to provide all of the mandatory affirming Trustworthiness Claims and identities needed by a Relying Party's Appraisal Policy for Attestation Results, and none of the disqualifying detracting Trustworthiness Claims.<a href="#section-3.2-10" class="pilcrow">¶</a></p>
-<p id="section-3.2-11">More details on each interaction step of Below Zero Trust are as follows.
-The numbers used in this sequence match to the numbered steps in <a href="#interactions" class="auto internal xref">Figure 1</a>:<a href="#section-3.2-11" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.2-12">
-<li id="section-3.2-12.1">
-            <p id="section-3.2-12.1.1">An Attester sends Evidence which is provably fresh to Verifier A at time(EG).
-Freshness from the perspective of Verifier A MAY be established with Verifier PoF such as a nonce.<a href="#section-3.2-12.1.1" class="pilcrow">¶</a></p>
+Based on that assumption, and when this is the case then the step of the Relying Party PoF can be safely omitted.<a href="#section-4.2-9" class="pilcrow">¶</a></p>
+<p id="section-4.2-10">In all cases, appraisal policies define the conditions and prerequisites for when an Attester does qualify for secure interactions.
+To qualify, an Attester has to be able to provide all of the mandatory affirming Trustworthiness Claims and identities needed by a Relying Party's Appraisal Policy for Attestation Results, and none of the disqualifying detracting Trustworthiness Claims.<a href="#section-4.2-10" class="pilcrow">¶</a></p>
+<p id="section-4.2-11">More details on each interaction step of Below Zero Trust are as follows.
+The numbers used in this sequence match to the numbered steps in <a href="#interactions" class="auto internal xref">Figure 1</a>:<a href="#section-4.2-11" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-4.2-12">
+<li id="section-4.2-12.1">
+            <p id="section-4.2-12.1.1">An Attester sends Evidence which is provably fresh to Verifier A at time(EG).
+Freshness from the perspective of Verifier A MAY be established with Verifier PoF such as a nonce.<a href="#section-4.2-12.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-3.2-12.2">
-            <p id="section-3.2-12.2.1">Verifier A appraises (1), then sends the following items back to that Attester within Attestation Results:<a href="#section-3.2-12.2.1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.2-12.2.2">
-<li id="section-3.2-12.2.2.1">
-                <p id="section-3.2-12.2.2.1.1">the verified identity of the Attesting Environment,<a href="#section-3.2-12.2.2.1.1" class="pilcrow">¶</a></p>
+          <li id="section-4.2-12.2">
+            <p id="section-4.2-12.2.1">Verifier A appraises (1), then sends the following items back to that Attester within Attestation Results:<a href="#section-4.2-12.2.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-4.2-12.2.2">
+<li id="section-4.2-12.2.2.1">
+                <p id="section-4.2-12.2.2.1.1">the verified identity of the Attesting Environment,<a href="#section-4.2-12.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.2.2.2">
-                <p id="section-3.2-12.2.2.2.1">the Verifier A appraised Trustworthiness Vector of an Attester,<a href="#section-3.2-12.2.2.2.1" class="pilcrow">¶</a></p>
+              <li id="section-4.2-12.2.2.2">
+                <p id="section-4.2-12.2.2.2.1">the Verifier A appraised Trustworthiness Vector of an Attester,<a href="#section-4.2-12.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.2.2.3">
-                <p id="section-3.2-12.2.2.3.1">a freshness proof associated with the Attestation Results,<a href="#section-3.2-12.2.2.3.1" class="pilcrow">¶</a></p>
+              <li id="section-4.2-12.2.2.3">
+                <p id="section-4.2-12.2.2.3.1">a freshness proof associated with the Attestation Results,<a href="#section-4.2-12.2.2.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.2.2.4">
-                <p id="section-3.2-12.2.2.4.1">a Verifier signature across (2.1) though (2.3).<a href="#section-3.2-12.2.2.4.1" class="pilcrow">¶</a></p>
-</li>
-            </ol>
-</li>
-          <li id="section-3.2-12.3">
-            <p id="section-3.2-12.3.1">At time(EG') a Relying Party PoF (such as a nonce) known to the Relying Party is sent to the Attester.<a href="#section-3.2-12.3.1" class="pilcrow">¶</a></p>
-</li>
-          <li id="section-3.2-12.4">
-            <p id="section-3.2-12.4.1">The Attester generates and sends AR-augmented Evidence to the Relying Party/Verifier B.
-This AR-augmented Evidence includes:<a href="#section-3.2-12.4.1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.2-12.4.2">
-<li id="section-3.2-12.4.2.1">
-                <p id="section-3.2-12.4.2.1.1">The Attestation Results from (2)<a href="#section-3.2-12.4.2.1.1" class="pilcrow">¶</a></p>
-</li>
-              <li id="section-3.2-12.4.2.2">
-                <p id="section-3.2-12.4.2.2.1">Any (optionally) new incremental Evidence from the Attesting Environment<a href="#section-3.2-12.4.2.2.1" class="pilcrow">¶</a></p>
-</li>
-              <li id="section-3.2-12.4.2.3">
-                <p id="section-3.2-12.4.2.3.1">Attestation Environment signature which spans a hash of the Attestation Results (such as the signature of (2.4)), the proof-of-freshness from (3), and (4.2).  Note: this construct allows the delta of time between (2.3) and (3) to be definitively calculated by the Relying Party.<a href="#section-3.2-12.4.2.3.1" class="pilcrow">¶</a></p>
+              <li id="section-4.2-12.2.2.4">
+                <p id="section-4.2-12.2.2.4.1">a Verifier signature across (2.1) though (2.3).<a href="#section-4.2-12.2.2.4.1" class="pilcrow">¶</a></p>
 </li>
             </ol>
 </li>
-          <li id="section-3.2-12.5">
-            <p id="section-3.2-12.5.1">On receipt of (4), the Relying Party applies its Appraisal Policy for Attestation Results.
-At minimum, this appraisal policy process must include the following:<a href="#section-3.2-12.5.1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.2-12.5.2">
-<li id="section-3.2-12.5.2.1">
-                <p id="section-3.2-12.5.2.1.1">Verify that (4.3) includes the nonce from (3).<a href="#section-3.2-12.5.2.1.1" class="pilcrow">¶</a></p>
+          <li id="section-4.2-12.3">
+            <p id="section-4.2-12.3.1">At time(EG') a Relying Party PoF (such as a nonce) known to the Relying Party is sent to the Attester.<a href="#section-4.2-12.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.5.2.2">
-                <p id="section-3.2-12.5.2.2.1">Use a local certificate to validate the signature (4.1).<a href="#section-3.2-12.5.2.2.1" class="pilcrow">¶</a></p>
+          <li id="section-4.2-12.4">
+            <p id="section-4.2-12.4.1">The Attester generates and sends AR-augmented Evidence to the Relying Party/Verifier B.
+This AR-augmented Evidence includes:<a href="#section-4.2-12.4.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-4.2-12.4.2">
+<li id="section-4.2-12.4.2.1">
+                <p id="section-4.2-12.4.2.1.1">The Attestation Results from (2)<a href="#section-4.2-12.4.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.5.2.3">
-                <p id="section-3.2-12.5.2.3.1">Verify that the hash from (4.3) matches (4.1)<a href="#section-3.2-12.5.2.3.1" class="pilcrow">¶</a></p>
+              <li id="section-4.2-12.4.2.2">
+                <p id="section-4.2-12.4.2.2.1">Any (optionally) new incremental Evidence from the Attesting Environment<a href="#section-4.2-12.4.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.5.2.4">
-                <p id="section-3.2-12.5.2.4.1">Use the identity of (2.1) to validate the signature of (4.3).<a href="#section-3.2-12.5.2.4.1" class="pilcrow">¶</a></p>
+              <li id="section-4.2-12.4.2.3">
+                <p id="section-4.2-12.4.2.3.1">Attestation Environment signature which spans a hash of the Attestation Results (such as the signature of (2.4)), the proof-of-freshness from (3), and (4.2).  Note: this construct allows the delta of time between (2.3) and (3) to be definitively calculated by the Relying Party.<a href="#section-4.2-12.4.2.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.5.2.5">
-                <p id="section-3.2-12.5.2.5.1">Failure of any steps (5.1) through (5.4) means the link does not meet minimum validation criteria, therefore appraise the link as having a null Verifier B Trustworthiness Vector.
-Jump to step (6.1).<a href="#section-3.2-12.5.2.5.1" class="pilcrow">¶</a></p>
+            </ol>
 </li>
-              <li id="section-3.2-12.5.2.6">
-                <p id="section-3.2-12.5.2.6.1">When there is large or uncertain time gap between time(EG) and time(EG'), the link should be assigned a null Verifier B Trustworthiness Vector.
-Jump to step (6.1).<a href="#section-3.2-12.5.2.6.1" class="pilcrow">¶</a></p>
+          <li id="section-4.2-12.5">
+            <p id="section-4.2-12.5.1">On receipt of (4), the Relying Party applies its Appraisal Policy for Attestation Results.
+At minimum, this appraisal policy process must include the following:<a href="#section-4.2-12.5.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-4.2-12.5.2">
+<li id="section-4.2-12.5.2.1">
+                <p id="section-4.2-12.5.2.1.1">Verify that (4.3) includes the nonce from (3).<a href="#section-4.2-12.5.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.5.2.7">
-                <p id="section-3.2-12.5.2.7.1">Assemble the Verifier B Trustworthiness Vector<a href="#section-3.2-12.5.2.7.1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.2-12.5.2.7.2">
-<li id="section-3.2-12.5.2.7.2.1">
-                    <p id="section-3.2-12.5.2.7.2.1.1">Copy Verifier A Trustworthiness Vector to Verifier B Trustworthiness Vector<a href="#section-3.2-12.5.2.7.2.1.1" class="pilcrow">¶</a></p>
+              <li id="section-4.2-12.5.2.2">
+                <p id="section-4.2-12.5.2.2.1">Use a local certificate to validate the signature (4.1).<a href="#section-4.2-12.5.2.2.1" class="pilcrow">¶</a></p>
 </li>
-                  <li id="section-3.2-12.5.2.7.2.2">
-                    <p id="section-3.2-12.5.2.7.2.2.1">Add implicit Trustworthiness Claims inherent to the type of TEE.<a href="#section-3.2-12.5.2.7.2.2.1" class="pilcrow">¶</a></p>
+              <li id="section-4.2-12.5.2.3">
+                <p id="section-4.2-12.5.2.3.1">Verify that the hash from (4.3) matches (4.1)<a href="#section-4.2-12.5.2.3.1" class="pilcrow">¶</a></p>
 </li>
-                  <li id="section-3.2-12.5.2.7.2.3">
-                    <p id="section-3.2-12.5.2.7.2.3.1">Prune any Trustworthiness Claims unsupportable by the Attesting Environment.<a href="#section-3.2-12.5.2.7.2.3.1" class="pilcrow">¶</a></p>
+              <li id="section-4.2-12.5.2.4">
+                <p id="section-4.2-12.5.2.4.1">Use the identity of (2.1) to validate the signature of (4.3).<a href="#section-4.2-12.5.2.4.1" class="pilcrow">¶</a></p>
 </li>
-                  <li id="section-3.2-12.5.2.7.2.4">
-                    <p id="section-3.2-12.5.2.7.2.4.1">Prune any Trustworthiness Claims the Relying Party doesn't accept from this Verifier.<a href="#section-3.2-12.5.2.7.2.4.1" class="pilcrow">¶</a></p>
+              <li id="section-4.2-12.5.2.5">
+                <p id="section-4.2-12.5.2.5.1">Failure of any steps (5.1) through (5.4) means the link does not meet minimum validation criteria, therefore appraise the link as having a null Verifier B Trustworthiness Vector.
+Jump to step (6.1).<a href="#section-4.2-12.5.2.5.1" class="pilcrow">¶</a></p>
+</li>
+              <li id="section-4.2-12.5.2.6">
+                <p id="section-4.2-12.5.2.6.1">When there is large or uncertain time gap between time(EG) and time(EG'), the link should be assigned a null Verifier B Trustworthiness Vector.
+Jump to step (6.1).<a href="#section-4.2-12.5.2.6.1" class="pilcrow">¶</a></p>
+</li>
+              <li id="section-4.2-12.5.2.7">
+                <p id="section-4.2-12.5.2.7.1">Assemble the Verifier B Trustworthiness Vector<a href="#section-4.2-12.5.2.7.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-4.2-12.5.2.7.2">
+<li id="section-4.2-12.5.2.7.2.1">
+                    <p id="section-4.2-12.5.2.7.2.1.1">Copy Verifier A Trustworthiness Vector to Verifier B Trustworthiness Vector<a href="#section-4.2-12.5.2.7.2.1.1" class="pilcrow">¶</a></p>
+</li>
+                  <li id="section-4.2-12.5.2.7.2.2">
+                    <p id="section-4.2-12.5.2.7.2.2.1">Add implicit Trustworthiness Claims inherent to the type of TEE.<a href="#section-4.2-12.5.2.7.2.2.1" class="pilcrow">¶</a></p>
+</li>
+                  <li id="section-4.2-12.5.2.7.2.3">
+                    <p id="section-4.2-12.5.2.7.2.3.1">Prune any Trustworthiness Claims unsupportable by the Attesting Environment.<a href="#section-4.2-12.5.2.7.2.3.1" class="pilcrow">¶</a></p>
+</li>
+                  <li id="section-4.2-12.5.2.7.2.4">
+                    <p id="section-4.2-12.5.2.7.2.4.1">Prune any Trustworthiness Claims the Relying Party doesn't accept from this Verifier.<a href="#section-4.2-12.5.2.7.2.4.1" class="pilcrow">¶</a></p>
 </li>
                 </ol>
 </li>
             </ol>
 </li>
-          <li id="section-3.2-12.6">
-            <p id="section-3.2-12.6.1">The Relying Party takes action based on Verifier B's appraised Trustworthiness Vector, and applies the Appraisal Policy for Attestation Results.  Following is a reasonable process for such evaluation:<a href="#section-3.2-12.6.1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.2-12.6.2">
-<li id="section-3.2-12.6.2.1">
-                <p id="section-3.2-12.6.2.1.1">Prune any Trustworthiness Claims from the Trustworthiness Vector not used in the Appraisal Policy for Attestation Results.<a href="#section-3.2-12.6.2.1.1" class="pilcrow">¶</a></p>
+          <li id="section-4.2-12.6">
+            <p id="section-4.2-12.6.1">The Relying Party takes action based on Verifier B's appraised Trustworthiness Vector, and applies the Appraisal Policy for Attestation Results.  Following is a reasonable process for such evaluation:<a href="#section-4.2-12.6.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-4.2-12.6.2">
+<li id="section-4.2-12.6.2.1">
+                <p id="section-4.2-12.6.2.1.1">Prune any Trustworthiness Claims from the Trustworthiness Vector not used in the Appraisal Policy for Attestation Results.<a href="#section-4.2-12.6.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.6.2.2">
-                <p id="section-3.2-12.6.2.2.1">Allow the information exchange from the Attester into a Relying Party context in the Appraisal Policy for Attestation Results where the Verifier B appraised Trustworthiness Vector includes all the mandatory Trustworthiness Claims are in the "Affirming" value range, and none of the disqualifying Trustworthiness Claims are in the "Contraindicated" value range.<a href="#section-3.2-12.6.2.2.1" class="pilcrow">¶</a></p>
+              <li id="section-4.2-12.6.2.2">
+                <p id="section-4.2-12.6.2.2.1">Allow the information exchange from the Attester into a Relying Party context in the Appraisal Policy for Attestation Results where the Verifier B appraised Trustworthiness Vector includes all the mandatory Trustworthiness Claims are in the "Affirming" value range, and none of the disqualifying Trustworthiness Claims are in the "Contraindicated" value range.<a href="#section-4.2-12.6.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li id="section-3.2-12.6.2.3">
-                <p id="section-3.2-12.6.2.3.1">Disallow any information exchange into a Relying Party context for which that Verifier B appraised Trustworthiness Vector is not qualified.<a href="#section-3.2-12.6.2.3.1" class="pilcrow">¶</a></p>
+              <li id="section-4.2-12.6.2.3">
+                <p id="section-4.2-12.6.2.3.1">Disallow any information exchange into a Relying Party context for which that Verifier B appraised Trustworthiness Vector is not qualified.<a href="#section-4.2-12.6.2.3.1" class="pilcrow">¶</a></p>
 </li>
             </ol>
 </li>
         </ol>
-<p id="section-3.2-13">As link layer protocols re-authenticate, steps (1) to (2) and steps (3) to (6) will independently refresh.
+<p id="section-4.2-13">As link layer protocols re-authenticate, steps (1) to (2) and steps (3) to (6) will independently refresh.
 This allows the Trustworthiness of Attester to be continuously re-appraised.
-There are only specific event triggers which will drive the refresh of Evidence generation (1), Attestation Result generation (2), or AR-augmented Evidence generation (4):<a href="#section-3.2-13" class="pilcrow">¶</a></p>
+There are only specific event triggers which will drive the refresh of Evidence generation (1), Attestation Result generation (2), or AR-augmented Evidence generation (4):<a href="#section-4.2-13" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.2-14.1">
-            <p id="section-3.2-14.1.1">life-cycle events, e.g. a change to an Authentication Secret of the Attester or an update of a software component.<a href="#section-3.2-14.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4.2-14.1">
+            <p id="section-4.2-14.1.1">life-cycle events, e.g. a change to an Authentication Secret of the Attester or an update of a software component.<a href="#section-4.2-14.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-14.2">
-            <p id="section-3.2-14.2.1">uptime-cycle events, e.g. a hard reset or a re-initialization of an Attester.<a href="#section-3.2-14.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.2-14.2">
+            <p id="section-4.2-14.2.1">uptime-cycle events, e.g. a hard reset or a re-initialization of an Attester.<a href="#section-4.2-14.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.2-14.3">
-            <p id="section-3.2-14.3.1">authentication-cycle events, e.g. a link-layer interface reset could result in a new (4).<a href="#section-3.2-14.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.2-14.3">
+            <p id="section-4.2-14.3.1">authentication-cycle events, e.g. a link-layer interface reset could result in a new (4).<a href="#section-4.2-14.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
 </div>
 <div id="mutual-attestation">
-<section id="section-3.3">
+<section id="section-4.3">
         <h3 id="name-mutual-attestation">
-<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-mutual-attestation" class="section-name selfRef">Mutual Attestation</a>
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-mutual-attestation" class="section-name selfRef">Mutual Attestation</a>
         </h3>
-<p id="section-3.3-1">In the interaction models described above, each device on either side of a secure interaction may require remote attestation of its peer.
+<p id="section-4.3-1">In the interaction models described above, each device on either side of a secure interaction may require remote attestation of its peer.
 This process is known as mutual-attestation.
-To support mutual-attestation, the interaction models listed above may be run independently on either side of the connection.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+To support mutual-attestation, the interaction models listed above may be run independently on either side of the connection.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="transport-protocol-integration">
-<section id="section-3.4">
+<section id="section-4.4">
         <h3 id="name-transport-protocol-integrat">
-<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-transport-protocol-integrat" class="section-name selfRef">Transport Protocol Integration</a>
+<a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-transport-protocol-integrat" class="section-name selfRef">Transport Protocol Integration</a>
         </h3>
-<p id="section-3.4-1">Either unidirectional attestation or mutual attestation may be supported within the protocol interactions needed for the establishment of a single transport session.
-While this document does not mandate specific transport protocols, messages containing the Attestation Results and AR Augmented Evidence can be passed within an authentication framework such the EAP protocol <span>[<a href="#RFC5247" class="cite xref">RFC5247</a>]</span> over TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-4.4-1">Either unidirectional attestation or mutual attestation may be supported within the protocol interactions needed for the establishment of a single transport session.
+While this document does not mandate specific transport protocols, messages containing the Attestation Results and AR Augmented Evidence can be passed within an authentication framework such the EAP protocol <span>[<a href="#RFC5247" class="cite xref">RFC5247</a>]</span> over TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="privacy-considerations">
-<section id="section-4">
+<section id="section-5">
       <h2 id="name-privacy-considerations">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
       </h2>
-<p id="section-4-1">Privacy Considerations Text<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">Privacy Considerations Text<a href="#section-5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
-<section id="section-5">
+<section id="section-6">
       <h2 id="name-security-considerations">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-5-1">Security Considerations Text<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">Security Considerations Text<a href="#section-6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-6">
+<section id="section-7">
       <h2 id="name-iana-considerations">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-6-1">See Body.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-7-1">See Body.<a href="#section-7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
-<section id="section-7">
+<section id="section-8">
       <h2 id="name-references">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
 <div id="sec-normative-references">
-<section id="section-7.1">
+<section id="section-8.1">
         <h3 id="name-normative-references">
-<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="GP-TEE-PP">[GP-TEE-PP]</dt>
@@ -2464,18 +2537,18 @@ While this document does not mandate specific transport protocols, messages cont
 </section>
 </div>
 <div id="sec-informative-references">
-<section id="section-7.2">
+<section id="section-8.2">
         <h3 id="name-informative-references">
-<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="I-D.ietf-rats-network-device-subscription">[I-D.ietf-rats-network-device-subscription]</dt>
         <dd>
-<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Voit, E.</span>, and <span class="refAuthor">W. Pan</span>, <span class="refTitle">"Attestation Event Stream Subscription"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-network-device-subscription-05</span>, <time datetime="2024-07-07" class="refDate">7 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-network-device-subscription-05">https://datatracker.ietf.org/doc/html/draft-ietf-rats-network-device-subscription-05</a>&gt;</span>. </dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Voit, E.</span>, and <span class="refAuthor">W. Pan</span>, <span class="refTitle">"Attestation Event Stream Subscription"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-network-device-subscription-06</span>, <time datetime="2025-01-08" class="refDate">8 January 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-network-device-subscription-06">https://datatracker.ietf.org/doc/html/draft-ietf-rats-network-device-subscription-06</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.tschofenig-rats-psa-token">[I-D.tschofenig-rats-psa-token]</dt>
         <dd>
-<span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Frost, S.</span>, <span class="refAuthor">Brossard, M.</span>, <span class="refAuthor">Shaw, A. L.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"Arm's Platform Security Architecture (PSA) Attestation Token"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-rats-psa-token-23</span>, <time datetime="2024-06-24" class="refDate">24 June 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-23">https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-23</a>&gt;</span>. </dd>
+<span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Frost, S.</span>, <span class="refAuthor">Brossard, M.</span>, <span class="refAuthor">Shaw, A. L.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"Arm's Platform Security Architecture (PSA) Attestation Token"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-rats-psa-token-24</span>, <time datetime="2024-09-23" class="refDate">23 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-24">https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-24</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IEEE802.1AR">[IEEE802.1AR]</dt>
         <dd>

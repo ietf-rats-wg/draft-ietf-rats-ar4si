@@ -5,14 +5,14 @@
 RATS Working Group                                               E. Voit
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                             H. Birkholz
-Expires: 6 March 2025                                     Fraunhofer SIT
+Expires: 7 August 2025                                    Fraunhofer SIT
                                                              T. Hardjono
                                                                      MIT
                                                               T. Fossati
                                                                   Linaro
                                                              V. Scarlata
                                                                    Intel
-                                                        2 September 2024
+                                                         3 February 2025
 
 
               Attestation Results for Secure Interactions
@@ -27,6 +27,9 @@ Abstract
    a heterogeneous mix of Attesting Environment and Verifier types,
    consistent policies can be applied to subsequent information exchange
    between each Attester and the Relying Party.
+
+   This document also defines two serialisations of the proposed
+   information model, utilising CBOR and JSON.
 
 Discussion Venues
 
@@ -50,11 +53,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 March 2025.
+   This Internet-Draft will expire on 7 August 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -86,19 +89,20 @@ Table of Contents
        2.3.6.  Trustworthiness Vector for a type of Attesting
                Environment
      2.4.  Freshness
-   3.  Secure Interactions Models
-     3.1.  Background-Check
-       3.1.1.  Verifier Retrieval
-       3.1.2.  Co-resident Verifier
-     3.2.  Below Zero Trust
-     3.3.  Mutual Attestation
-     3.4.  Transport Protocol Integration
-   4.  Privacy Considerations
-   5.  Security Considerations
-   6.  IANA Considerations
-   7.  References
-     7.1.  Normative References
-     7.2.  Informative References
+   3.  Data Model
+   4.  Secure Interactions Models
+     4.1.  Background-Check
+       4.1.1.  Verifier Retrieval
+       4.1.2.  Co-resident Verifier
+     4.2.  Below Zero Trust
+     4.3.  Mutual Attestation
+     4.4.  Transport Protocol Integration
+   5.  Privacy Considerations
+   6.  Security Considerations
+   7.  IANA Considerations
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Appendix A.  Implementation Guidance
      A.1.  Supplementing Trustworthiness Claims
    Appendix B.  Supportable Trustworthiness Claims
@@ -918,14 +922,58 @@ Table of Contents
    Claims should be cleared.  Subsequent connection re-establishment
    will allow fresh new Trustworthiness Claims to be delivered.
 
-3.  Secure Interactions Models
+3.  Data Model
+
+   The following CDDL defines the necessary AR4SI types for use in CBOR
+   and JSON serializations.
+
+   Other serializations are possible but must be defined in subsequent
+   documents.
+
+   $.start.$ = trustworthiness-vector / trust-tier / verifier-id
+   trustworthiness-vector = non-empty<{
+       ? instance-identity-label => trustworthiness-claim,
+       ? configuration-label => trustworthiness-claim,
+       ? executables-label => trustworthiness-claim,
+       ? file-system-label => trustworthiness-claim,
+       ? hardware-label => trustworthiness-claim,
+       ? runtime-opaque-label => trustworthiness-claim,
+       ? storage-opaque-label => trustworthiness-claim,
+       ? sourced-data-label => trustworthiness-claim,
+   }>
+   instance-identity-label = JC<"instance-identity", 0>
+   configuration-label = JC<"configuration", 1>
+   executables-label = JC<"executables", 2>
+   file-system-label = JC<"file-system", 3>
+   hardware-label = JC<"hardware", 4>
+   runtime-opaque-label = JC<"runtime-opaque", 5>
+   storage-opaque-label = JC<"storage-opaque", 6>
+   sourced-data-label = JC<"sourced-data", 7>
+   trustworthiness-claim = -128 .. 127
+   trust-tier-none-label = JC<"none", 0>
+   trust-tier-affirming-label = JC<"affirming", 2>
+   trust-tier-warning-label = JC<"warning", 32>
+   trust-tier-contraindicated-label = JC<"contraindicated", 96>
+   trust-tier /= trust-tier-none-label / trust-tier-affirming-label / trust-tier-warning-label / trust-tier-contraindicated-label
+   verifier-id = {
+     developer-label => text,
+     build-label => text,
+   }
+   developer-label = JC<"developer", 0>
+   build-label = JC<"build", 1>
+   non-empty<M> = M .within ({+ any => any})
+   JSON-ONLY<J> = J .feature "json"
+   CBOR-ONLY<C> = C .feature "cbor"
+   JC<J, C> = JSON-ONLY<J> / CBOR-ONLY<C>
+
+4.  Secure Interactions Models
 
    There are multiple ways of providing a Trustworthiness Vector to a
    Relying Party.  This section describes two alternatives.
 
-3.1.  Background-Check
+4.1.  Background-Check
 
-3.1.1.  Verifier Retrieval
+4.1.1.  Verifier Retrieval
 
    It is possible to for a Relying Party to follow the Background-Check
    Model defined in Section 5.2 of [RFC9334].  In this case, a Relying
@@ -953,7 +1001,7 @@ Table of Contents
    An implementer should examine these potential drawbacks before
    selecting this alternative.
 
-3.1.2.  Co-resident Verifier
+4.1.2.  Co-resident Verifier
 
    A simplified Background-Check Model may exist in a very specific
    case.  This is where the Relying Party and Verifier functions are co-
@@ -975,7 +1023,7 @@ Table of Contents
    MRSIGNER values have been associated with a known QUOTE value.  And
    the code running within the TEE is not modifiable after launch.
 
-3.2.  Below Zero Trust
+4.2.  Below Zero Trust
 
    Zero Trust Architectures are referenced in [US-Executive-Order]
    eleven times.  However despite this high profile, there is an
@@ -1187,7 +1235,7 @@ Table of Contents
    *  authentication-cycle events, e.g. a link-layer interface reset
       could result in a new (4).
 
-3.3.  Mutual Attestation
+4.3.  Mutual Attestation
 
    In the interaction models described above, each device on either side
    of a secure interaction may require remote attestation of its peer.
@@ -1195,7 +1243,7 @@ Table of Contents
    attestation, the interaction models listed above may be run
    independently on either side of the connection.
 
-3.4.  Transport Protocol Integration
+4.4.  Transport Protocol Integration
 
    Either unidirectional attestation or mutual attestation may be
    supported within the protocol interactions needed for the
@@ -1205,21 +1253,21 @@ Table of Contents
    within an authentication framework such the EAP protocol [RFC5247]
    over TLS [RFC8446].
 
-4.  Privacy Considerations
+5.  Privacy Considerations
 
    Privacy Considerations Text
 
-5.  Security Considerations
+6.  Security Considerations
 
    Security Considerations Text
 
-6.  IANA Considerations
+7.  IANA Considerations
 
    See Body.
 
-7.  References
+8.  References
 
-7.1.  Normative References
+8.1.  Normative References
 
    [GP-TEE-PP]
               "Global Platform TEE Protection Profile v1.3", September
@@ -1245,22 +1293,22 @@ Table of Contents
               Architecture", RFC 9334, DOI 10.17487/RFC9334, January
               2023, <https://www.rfc-editor.org/rfc/rfc9334>.
 
-7.2.  Informative References
+8.2.  Informative References
 
    [I-D.ietf-rats-network-device-subscription]
               Birkholz, H., Voit, E., and W. Pan, "Attestation Event
               Stream Subscription", Work in Progress, Internet-Draft,
-              draft-ietf-rats-network-device-subscription-05, 7 July
-              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              rats-network-device-subscription-05>.
+              draft-ietf-rats-network-device-subscription-06, 8 January
+              2025, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              rats-network-device-subscription-06>.
 
    [I-D.tschofenig-rats-psa-token]
               Tschofenig, H., Frost, S., Brossard, M., Shaw, A. L., and
               T. Fossati, "Arm's Platform Security Architecture (PSA)
               Attestation Token", Work in Progress, Internet-Draft,
-              draft-tschofenig-rats-psa-token-23, 24 June 2024,
+              draft-tschofenig-rats-psa-token-24, 23 September 2024,
               <https://datatracker.ietf.org/doc/html/draft-tschofenig-
-              rats-psa-token-23>.
+              rats-psa-token-24>.
 
    [IEEE802.1AR]
               "802.1AR: Secure Device Identity", 2 August 2018,
@@ -1521,7 +1569,7 @@ Appendix C.  Some issues being worked
    aggregate set of Trustworthiness Claims?
 
    There will need to be a subsequent document which documents how these
-   objects which will be translated into a protocol on a wire (e.g.  EAP
+   objects which will be translated into a protocol on a wire (e.g. EAP
    on TLS).  Some breakpoint between what is in this draft, and what is
    in specific drafts for wire encoding will need to be determined.
    Questions like architecting the cluster/hierarchy of Verifiers fall
