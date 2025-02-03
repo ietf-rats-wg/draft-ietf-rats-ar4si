@@ -47,6 +47,7 @@ normative:
   RFC2119:
   RFC8174:
   RFC9334: rats-arch
+  RFC8610: cddl
 
   OMTP-ATE:
     target: https://www.gsma.com/newsroom/wp-content/uploads/2012/03/omtpadvancedtrustedenvironmentomtptr1v11.pdf
@@ -634,7 +635,7 @@ Subsequent connection re-establishment will allow fresh new Trustworthiness Clai
 
 # Data Model {#dm}
 
-The following CDDL defines the necessary AR4SI types for use in CBOR and JSON serializations.
+The following CDDL {{-cddl}} defines the necessary AR4SI types for use in CBOR and JSON serializations.
 
 Other serializations are possible but must be defined in subsequent documents.
 
