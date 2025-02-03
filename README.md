@@ -1,6 +1,6 @@
 # Attestation Results for Secure Interactions
 
-This is the working area for the IETF [RATS Working Group](https://datatracker.ietf.org/wg/rats/documents/) Internet-Draft, "Attestation Results for Secure Interactions".
+This is the working area for the IETF [RATS Working Group](https://datatracker.ietf.org/group/rats/documents/) Internet-Draft, "Attestation Results for Secure Interactions".
 
 * [Editor's Copy](https://ietf-rats-wg.github.io/draft-ietf-rats-ar4si/#go.draft-ietf-rats-ar4si.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-rats-ar4si)
