@@ -924,47 +924,43 @@ Table of Contents
 
 3.  Data Model
 
-   The following CDDL defines the necessary AR4SI types for use in CBOR
-   and JSON serializations.
+   The following CDDL [RFC8610] defines the necessary AR4SI types for
+   use in CBOR and JSON serializations.
 
    Other serializations are possible but must be defined in subsequent
    documents.
 
    $.start.$ = trustworthiness-vector / trust-tier / verifier-id
-   trustworthiness-vector = non-empty<{
-       ? instance-identity-label => trustworthiness-claim,
-       ? configuration-label => trustworthiness-claim,
-       ? executables-label => trustworthiness-claim,
-       ? file-system-label => trustworthiness-claim,
-       ? hardware-label => trustworthiness-claim,
-       ? runtime-opaque-label => trustworthiness-claim,
-       ? storage-opaque-label => trustworthiness-claim,
-       ? sourced-data-label => trustworthiness-claim,
-   }>
-   instance-identity-label = JC<"instance-identity", 0>
-   configuration-label = JC<"configuration", 1>
-   executables-label = JC<"executables", 2>
-   file-system-label = JC<"file-system", 3>
-   hardware-label = JC<"hardware", 4>
-   runtime-opaque-label = JC<"runtime-opaque", 5>
-   storage-opaque-label = JC<"storage-opaque", 6>
-   sourced-data-label = JC<"sourced-data", 7>
+   trustworthiness-vector = ({
+           ? instance-identity-label => trustworthiness-claim,
+           ? configuration-label => trustworthiness-claim,
+           ? executables-label => trustworthiness-claim,
+           ? file-system-label => trustworthiness-claim,
+           ? hardware-label => trustworthiness-claim,
+           ? runtime-opaque-label => trustworthiness-claim,
+           ? storage-opaque-label => trustworthiness-claim,
+           ? sourced-data-label => trustworthiness-claim,
+       }) .within ({+ any => any})
+   instance-identity-label = "instance-identity" .feature "json" / 0 .feature "cbor"
+   configuration-label = "configuration" .feature "json" / 1 .feature "cbor"
+   executables-label = "executables" .feature "json" / 2 .feature "cbor"
+   file-system-label = "file-system" .feature "json" / 3 .feature "cbor"
+   hardware-label = "hardware" .feature "json" / 4 .feature "cbor"
+   runtime-opaque-label = "runtime-opaque" .feature "json" / 5 .feature "cbor"
+   storage-opaque-label = "storage-opaque" .feature "json" / 6 .feature "cbor"
+   sourced-data-label = "sourced-data" .feature "json" / 7 .feature "cbor"
    trustworthiness-claim = -128 .. 127
-   trust-tier-none-label = JC<"none", 0>
-   trust-tier-affirming-label = JC<"affirming", 2>
-   trust-tier-warning-label = JC<"warning", 32>
-   trust-tier-contraindicated-label = JC<"contraindicated", 96>
+   trust-tier-none-label = "none" .feature "json" / 0 .feature "cbor"
+   trust-tier-affirming-label = "affirming" .feature "json" / 2 .feature "cbor"
+   trust-tier-warning-label = "warning" .feature "json" / 32 .feature "cbor"
+   trust-tier-contraindicated-label = "contraindicated" .feature "json" / 96 .feature "cbor"
    trust-tier /= trust-tier-none-label / trust-tier-affirming-label / trust-tier-warning-label / trust-tier-contraindicated-label
    verifier-id = {
      developer-label => text,
      build-label => text,
    }
-   developer-label = JC<"developer", 0>
-   build-label = JC<"build", 1>
-   non-empty<M> = M .within ({+ any => any})
-   JSON-ONLY<J> = J .feature "json"
-   CBOR-ONLY<C> = C .feature "cbor"
-   JC<J, C> = JSON-ONLY<J> / CBOR-ONLY<C>
+   developer-label = "developer" .feature "json" / 0 .feature "cbor"
+   build-label = "build" .feature "json" / 1 .feature "cbor"
 
 4.  Secure Interactions Models
 
@@ -1287,6 +1283,12 @@ Table of Contents
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, "Concise Data
+              Definition Language (CDDL): A Notational Convention to
+              Express Concise Binary Object Representation (CBOR) and
+              JSON Data Structures", RFC 8610, DOI 10.17487/RFC8610,
+              June 2019, <https://www.rfc-editor.org/rfc/rfc8610>.
 
    [RFC9334]  Birkholz, H., Thaler, D., Richardson, M., Smith, N., and
               W. Pan, "Remote ATtestation procedureS (RATS)

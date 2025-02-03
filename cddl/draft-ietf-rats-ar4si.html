@@ -2168,45 +2168,41 @@ Subsequent connection re-establishment will allow fresh new Trustworthiness Clai
       <h2 id="name-data-model">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-data-model" class="section-name selfRef">Data Model</a>
       </h2>
-<p id="section-3-1">The following CDDL defines the necessary AR4SI types for use in CBOR and JSON serializations.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">The following CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> defines the necessary AR4SI types for use in CBOR and JSON serializations.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">Other serializations are possible but must be defined in subsequent documents.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <div class="lang-cddl sourcecode" id="section-3-3">
 <pre>
 $.start.$ = trustworthiness-vector / trust-tier / verifier-id
-trustworthiness-vector = non-empty&lt;{
-    ? instance-identity-label =&gt; trustworthiness-claim,
-    ? configuration-label =&gt; trustworthiness-claim,
-    ? executables-label =&gt; trustworthiness-claim,
-    ? file-system-label =&gt; trustworthiness-claim,
-    ? hardware-label =&gt; trustworthiness-claim,
-    ? runtime-opaque-label =&gt; trustworthiness-claim,
-    ? storage-opaque-label =&gt; trustworthiness-claim,
-    ? sourced-data-label =&gt; trustworthiness-claim,
-}&gt;
-instance-identity-label = JC&lt;"instance-identity", 0&gt;
-configuration-label = JC&lt;"configuration", 1&gt;
-executables-label = JC&lt;"executables", 2&gt;
-file-system-label = JC&lt;"file-system", 3&gt;
-hardware-label = JC&lt;"hardware", 4&gt;
-runtime-opaque-label = JC&lt;"runtime-opaque", 5&gt;
-storage-opaque-label = JC&lt;"storage-opaque", 6&gt;
-sourced-data-label = JC&lt;"sourced-data", 7&gt;
+trustworthiness-vector = ({
+        ? instance-identity-label =&gt; trustworthiness-claim,
+        ? configuration-label =&gt; trustworthiness-claim,
+        ? executables-label =&gt; trustworthiness-claim,
+        ? file-system-label =&gt; trustworthiness-claim,
+        ? hardware-label =&gt; trustworthiness-claim,
+        ? runtime-opaque-label =&gt; trustworthiness-claim,
+        ? storage-opaque-label =&gt; trustworthiness-claim,
+        ? sourced-data-label =&gt; trustworthiness-claim,
+    }) .within ({+ any =&gt; any})
+instance-identity-label = "instance-identity" .feature "json" / 0 .feature "cbor"
+configuration-label = "configuration" .feature "json" / 1 .feature "cbor"
+executables-label = "executables" .feature "json" / 2 .feature "cbor"
+file-system-label = "file-system" .feature "json" / 3 .feature "cbor"
+hardware-label = "hardware" .feature "json" / 4 .feature "cbor"
+runtime-opaque-label = "runtime-opaque" .feature "json" / 5 .feature "cbor"
+storage-opaque-label = "storage-opaque" .feature "json" / 6 .feature "cbor"
+sourced-data-label = "sourced-data" .feature "json" / 7 .feature "cbor"
 trustworthiness-claim = -128 .. 127
-trust-tier-none-label = JC&lt;"none", 0&gt;
-trust-tier-affirming-label = JC&lt;"affirming", 2&gt;
-trust-tier-warning-label = JC&lt;"warning", 32&gt;
-trust-tier-contraindicated-label = JC&lt;"contraindicated", 96&gt;
+trust-tier-none-label = "none" .feature "json" / 0 .feature "cbor"
+trust-tier-affirming-label = "affirming" .feature "json" / 2 .feature "cbor"
+trust-tier-warning-label = "warning" .feature "json" / 32 .feature "cbor"
+trust-tier-contraindicated-label = "contraindicated" .feature "json" / 96 .feature "cbor"
 trust-tier /= trust-tier-none-label / trust-tier-affirming-label / trust-tier-warning-label / trust-tier-contraindicated-label
 verifier-id = {
   developer-label =&gt; text,
   build-label =&gt; text,
 }
-developer-label = JC&lt;"developer", 0&gt;
-build-label = JC&lt;"build", 1&gt;
-non-empty&lt;M&gt; = M .within ({+ any =&gt; any})
-JSON-ONLY&lt;J&gt; = J .feature "json"
-CBOR-ONLY&lt;C&gt; = C .feature "cbor"
-JC&lt;J, C&gt; = JSON-ONLY&lt;J&gt; / CBOR-ONLY&lt;C&gt;
+developer-label = "developer" .feature "json" / 0 .feature "cbor"
+build-label = "build" .feature "json" / 1 .feature "cbor"
 </pre><a href="#section-3-3" class="pilcrow">¶</a>
 </div>
 </section>
@@ -2528,6 +2524,10 @@ While this document does not mandate specific transport protocols, messages cont
 <dt id="RFC8174">[RFC8174]</dt>
         <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8610">[RFC8610]</dt>
+        <dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8610">https://www.rfc-editor.org/rfc/rfc8610</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9334">[RFC9334]</dt>
       <dd>
