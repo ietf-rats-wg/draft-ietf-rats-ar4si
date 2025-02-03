@@ -97,6 +97,7 @@ This document defines reusable Attestation Result information elements.
 When these elements are offered to Relying Parties as Evidence, different aspects of Attester trustworthiness can be evaluated.
 Additionally, where the Relying Party is interfacing with a heterogeneous mix of Attesting Environment and Verifier types, consistent policies can be applied to subsequent information exchange between each Attester and the Relying Party.
 
+This document also defines two serialisations of the proposed information model, utilising CBOR and JSON.
 
 --- middle
 
@@ -630,6 +631,16 @@ There is a subset of secure interactions where the freshness of Trustworthiness 
 This subset is when trustworthiness depends on the continuous availability of a transport session between the Attester and Relying Party.
 With such connectivity dependent Attestation Results, if there is a reboot which resets transport connectivity, all established Trustworthiness Claims should be cleared.
 Subsequent connection re-establishment will allow fresh new Trustworthiness Claims to be delivered.
+
+# Data Model {#dm}
+
+The following CDDL defines the necessary AR4SI types for use in CBOR and JSON serializations.
+
+Other serializations are possible but must be defined in subsequent documents.
+
+~~~ cddl
+{::include cddl/ar4si-autogen.cddl}
+~~~
 
 # Secure Interactions Models
 

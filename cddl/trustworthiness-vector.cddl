@@ -1,0 +1,19 @@
+trustworthiness-vector = non-empty<{
+  ? instance-identity-label => trustworthiness-claim
+  ? configuration-label => trustworthiness-claim
+  ? executables-label => trustworthiness-claim
+  ? file-system-label => trustworthiness-claim
+  ? hardware-label => trustworthiness-claim
+  ? runtime-opaque-label => trustworthiness-claim
+  ? storage-opaque-label => trustworthiness-claim
+  ? sourced-data-label => trustworthiness-claim
+}>
+
+instance-identity-label = JC<"instance-identity", 0>
+configuration-label = JC<"configuration", 1>
+executables-label = JC<"executables", 2>
+file-system-label = JC<"file-system", 3>
+hardware-label = JC<"hardware", 4>
+runtime-opaque-label = JC<"runtime-opaque", 5>
+storage-opaque-label = JC<"storage-opaque", 6>
+sourced-data-label = JC<"sourced-data", 7>

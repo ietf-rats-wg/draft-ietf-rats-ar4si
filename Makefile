@@ -13,3 +13,11 @@ else
 	    https://github.com/martinthomson/i-d-template $(LIBDIR)
 endif
 endif
+
+CDDL := cddl/ar4si-autogen.cddl
+
+cddl/ar4si-autogen.cddl: ; $(MAKE) -C cddl
+
+$(drafts_txt):: $(CDDL)
+
+clean:: ; $(MAKE) -C cddl $@

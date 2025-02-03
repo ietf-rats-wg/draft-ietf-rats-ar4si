@@ -1,0 +1,3 @@
+JSON-ONLY<J> = J .feature "json"
+CBOR-ONLY<C> = C .feature "cbor"
+JC<J,C> = JSON-ONLY<J> / CBOR-ONLY<C>
