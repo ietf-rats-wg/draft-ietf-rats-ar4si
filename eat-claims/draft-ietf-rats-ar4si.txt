@@ -94,7 +94,8 @@ Table of Contents
      3.1.  Trustworthiness Vector
      3.2.  Trust Tiers
      3.3.  Verifier ID
-     3.4.  Consolitated CDDL
+     3.4.  EAT Claims
+     3.5.  Consolitated CDDL
    4.  Secure Interactions Models
      4.1.  Background-Check
        4.1.1.  Verifier Retrieval
@@ -106,8 +107,9 @@ Table of Contents
    6.  Security Considerations
    7.  IANA Considerations
      7.1.  New EAT Claims
-       7.1.1.  Trustworthiness Vector
-       7.1.2.  Verifier Software Identifier
+       7.1.1.  AR4SI Trust Tier
+       7.1.2.  Trustworthiness Vector
+       7.1.3.  Verifier Software Identifier
    8.  References
      8.1.  Normative References
      8.2.  Informative References
@@ -1030,7 +1032,16 @@ Table of Contents
    developer (mandatory)  A text string that uniquely identifies the
       organizational unit responsible for this build.
 
-3.4.  Consolitated CDDL
+3.4.  EAT Claims
+
+   This section contains the CDDL definitions for the CWT and JWT claim
+   labels registered in Section 7.1.
+
+   ar4si.status-label = JC<"ar4si.status", 1000>
+   ar4si.trustworthiness-vector-label = JC<"ar4si.trustworthiness-vector", 1001>
+   ar4si.verifier-id-label = JC<"ar4si.verifier-id", 1004>
+
+3.5.  Consolitated CDDL
 
    Figure 4 contains the CDDL of the entire AR4SI type system.
 
@@ -1072,6 +1083,10 @@ Table of Contents
    JSON-ONLY<J> = J .feature "json"
    CBOR-ONLY<C> = C .feature "cbor"
    JC<J, C> = JSON-ONLY<J> / CBOR-ONLY<C>
+   ar4si.status-label = JC<"ar4si.status", 1000>
+   ar4si.trustworthiness-vector-label = JC<"ar4si.trustworthiness-\
+                                                          vector", 1001>
+   ar4si.verifier-id-label = JC<"ar4si.verifier-id", 1004>
 
                             Figure 4: AR4SI CDDL
 
@@ -1392,7 +1407,24 @@ Table of Contents
    The "JWT Claim Name" is equivalent to the "Claim Name" in the JWT
    registry.
 
-7.1.1.  Trustworthiness Vector
+7.1.1.  AR4SI Trust Tier
+
+   *  Claim Name: ar4si.trust-tier
+
+   *  Claim Description: AR4SI Tier
+
+   *  JWT Claim Name: ar4si.trust-tier
+
+   *  Claim Key: 1000
+
+   *  Claim Value Type(s): unsigned integer (0, 2, 32, 96) or
+      corresponding string
+
+   *  Change Controller: IESG
+
+   *  Specification Document(s): Section 3.2 of RFCthis
+
+7.1.2.  Trustworthiness Vector
 
    *  Claim Name: ar4si.trustworthiness-vector
 
@@ -1408,7 +1440,7 @@ Table of Contents
 
    *  Specification Document(s): Section 3.1 of RFCthis
 
-7.1.2.  Verifier Software Identifier
+7.1.3.  Verifier Software Identifier
 
    *  Claim Name: ar4si.verifier-id
 
