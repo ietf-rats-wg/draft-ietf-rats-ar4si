@@ -47,6 +47,7 @@ normative:
   RFC2119:
   RFC8174:
   RFC9334: rats-arch
+  RFC8610: cddl
 
   OMTP-ATE:
     target: https://www.gsma.com/newsroom/wp-content/uploads/2012/03/omtpadvancedtrustedenvironmentomtptr1v11.pdf
@@ -97,6 +98,7 @@ This document defines reusable Attestation Result information elements.
 When these elements are offered to Relying Parties as Evidence, different aspects of Attester trustworthiness can be evaluated.
 Additionally, where the Relying Party is interfacing with a heterogeneous mix of Attesting Environment and Verifier types, consistent policies can be applied to subsequent information exchange between each Attester and the Relying Party.
 
+This document also defines two serialisations of the proposed information model, utilising CBOR and JSON.
 
 --- middle
 
@@ -264,7 +266,7 @@ An example complex structure might be a 'target-environment' encoded as a Softwa
 With the identity definitions and value domains, a Relying Party will have sufficient information to ensure that the Attester identities and Trustworthiness Claims asserted are actually capable of being supported by the underlying type of Attesting Environment.
 Consequently, the Relying Party SHOULD require Identity Evidence which indicates of the type of Attesting Environment when it considers its Appraisal Policy for Attestation Results.
 
-### Verifier
+### Verifier {#sec-verifier}
 
 For the Verifier identity, it is critical for a Relying Party to review the certificate and chain of trust for that Verifier.
 Additionally, the Relying Party must have confidence that the Trustworthiness Claims being relied upon from the Verifier considered the chain of trust for the Attesting Environment.
@@ -325,7 +327,7 @@ The following set of design principles have been applied in the Trustworthiness 
 
 These design principles are important to keep the number of Verifier generated claims low, and to retain the complexity in the Verifier rather than the Relying Party.
 
-### Enumeration Encoding
+### Enumeration Encoding {#sec-enum-encoding}
 
 Per design principle (2), each Trustworthiness Claim will only expose specific encoded values.
 To simplify the processing of these enumerations by the Relying Party, the enumeration will be encoded as a single signed 8 bit integer.  These value assignments for this integer will be in four Trustworthiness Tiers which follow these guidelines:
@@ -355,7 +357,7 @@ Contraindicated: The Verifier asserts the Attester is explicitly untrustworthy i
 This enumerated encoding listed above will simplify the Appraisal Policy for Attestation Results.
 Such a policies may be as simple as saying that a specific Verifier has recently asserted Trustworthiness Claims, all of which are Affirming.
 
-### Assigning a Trustworthiness Claim value
+### Assigning a Trustworthiness Claim value {#sec-assign-tc}
 
 In order to simplify design, only a single encoded value is asserted by a Verifier for any Trustworthiness Claim within a using the following process.
 
@@ -368,7 +370,7 @@ In order to simplify design, only a single encoded value is asserted by a Verifi
 7. Else a Verifier MAY assign a 0 or -1.
 
 
-### Specific Claims
+### Specific Claims {#sec-specific-claims}
 
 Following are the Trustworthiness Claims and their supported enumerations which may be asserted by a Verifier:
 
@@ -630,6 +632,72 @@ There is a subset of secure interactions where the freshness of Trustworthiness 
 This subset is when trustworthiness depends on the continuous availability of a transport session between the Attester and Relying Party.
 With such connectivity dependent Attestation Results, if there is a reboot which resets transport connectivity, all established Trustworthiness Claims should be cleared.
 Subsequent connection re-establishment will allow fresh new Trustworthiness Claims to be delivered.
+
+# Data Model {#sec-dm}
+
+The following CDDL {{-cddl}} defines the necessary AR4SI types for use in CBOR and JSON serializations.
+
+Other serializations are possible but must be defined in subsequent documents.
+
+## Trustworthiness Vector {#sec-tvector}
+
+The `trustworthiness-vector` is defined as follows:
+
+~~~cddl
+{::include cddl/trustworthiness-vector.cddl}
+
+{::include cddl/trustworthiness-claim.cddl}
+~~~
+{: #fig-cddl-tvec title="Trustworthiness Vector" }
+
+This type contains an entry for each one of the eight AR4SI appraisals that have been conducted on the submitted evidence ({{sec-specific-claims}}).
+
+The value of each entry is chosen in the -128..127 range according to the rules described in {{sec-assign-tc}} and {{sec-specific-claims}}.
+
+All categories are optional.
+
+A missing entry means that the verifier makes no claim about this specific appraisal facet because the category is not applicable to the submitted evidence.
+
+As required by the `non-empty` macro, at least one entry MUST be present in the vector.
+
+## Trust Tiers {#sec-trusttiers}
+
+The `trust-tier` type represents one of the equivalency classes in which the `trustworthiness-claim` space is partitioned.
+
+See {{sec-enum-encoding}} for the details.
+
+The allowed values for the type are as follows:
+
+~~~cddl
+{::include cddl/trust-tier.cddl}
+~~~
+{: #fig-cddl-ttiers title="Trustworthiness Tiers" }
+
+## Verifier ID {#dm-verifier-id}
+
+The `verifier-id` type identifies the software that runs the verifier according to the information model defined in {{sec-verifier}}.
+
+~~~cddl
+{::include cddl/verifier-id.cddl}
+~~~
+{: #fig-cddl-verifier-id title="Verifier ID" }
+
+The fields are:
+
+`build` (mandatory)
+: A text string that uniquely identifies the software build running the verifier.
+
+`developer` (mandatory)
+: A text string that uniquely identifies the organizational unit responsible for this `build`.
+
+## Consolitated CDDL
+
+{{fig-cddl}} contains the CDDL of the entire AR4SI type system.
+
+~~~ cddl
+{::include-fold cddl/ar4si-autogen.cddl}
+~~~
+{: #fig-cddl title="AR4SI CDDL" }
 
 # Secure Interactions Models
 

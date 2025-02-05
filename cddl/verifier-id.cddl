@@ -1,0 +1,7 @@
+verifier-id = {
+  developer-label => text
+  build-label => text
+}
+
+developer-label = JC<"developer", 0>
+build-label = JC<"build", 1>
