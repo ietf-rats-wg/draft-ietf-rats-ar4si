@@ -5,14 +5,14 @@
 RATS Working Group                                               E. Voit
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                             H. Birkholz
-Expires: 7 August 2025                                    Fraunhofer SIT
+Expires: 9 August 2025                                    Fraunhofer SIT
                                                              T. Hardjono
                                                                      MIT
                                                               T. Fossati
                                                                   Linaro
                                                              V. Scarlata
                                                                    Intel
-                                                         3 February 2025
+                                                         5 February 2025
 
 
               Attestation Results for Secure Interactions
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 August 2025.
+   This Internet-Draft will expire on 9 August 2025.
 
 Copyright Notice
 
@@ -90,6 +90,10 @@ Table of Contents
                Environment
      2.4.  Freshness
    3.  Data Model
+     3.1.  Trustworthiness Vector
+     3.2.  Trust Tiers
+     3.3.  Verifier ID
+     3.4.  Consolitated CDDL
    4.  Secure Interactions Models
      4.1.  Background-Check
        4.1.1.  Verifier Retrieval
@@ -930,37 +934,138 @@ Table of Contents
    Other serializations are possible but must be defined in subsequent
    documents.
 
+3.1.  Trustworthiness Vector
+
+   The trustworthiness-vector is defined as follows:
+
+   trustworthiness-vector = non-empty<{
+     ? instance-identity-label => trustworthiness-claim
+     ? configuration-label => trustworthiness-claim
+     ? executables-label => trustworthiness-claim
+     ? file-system-label => trustworthiness-claim
+     ? hardware-label => trustworthiness-claim
+     ? runtime-opaque-label => trustworthiness-claim
+     ? storage-opaque-label => trustworthiness-claim
+     ? sourced-data-label => trustworthiness-claim
+   }>
+
+   instance-identity-label = JC<"instance-identity", 0>
+   configuration-label = JC<"configuration", 1>
+   executables-label = JC<"executables", 2>
+   file-system-label = JC<"file-system", 3>
+   hardware-label = JC<"hardware", 4>
+   runtime-opaque-label = JC<"runtime-opaque", 5>
+   storage-opaque-label = JC<"storage-opaque", 6>
+   sourced-data-label = JC<"sourced-data", 7>
+
+   trustworthiness-claim = -128..127
+
+                      Figure 1: Trustworthiness Vector
+
+   This type contains an entry for each one of the eight AR4SI
+   appraisals that have been conducted on the submitted evidence
+   (Section 2.3.4).
+
+   The value of each entry is chosen in the -128..127 range according to
+   the rules described in Section 2.3.3 and Section 2.3.4.
+
+   All categories are optional.
+
+   A missing entry means that the verifier makes no claim about this
+   specific appraisal facet because the category is not applicable to
+   the submitted evidence.
+
+   As required by the non-empty macro, at least one entry MUST be
+   present in the vector.
+
+3.2.  Trust Tiers
+
+   The trust-tier type represents one of the equivalency classes in
+   which the trustworthiness-claim space is partitioned.
+
+   See Section 2.3.2 for the details.
+
+   The allowed values for the type are as follows:
+
+   trust-tier-none-label = JC<"none", 0>
+   trust-tier-affirming-label = JC<"affirming", 2>
+   trust-tier-warning-label = JC<"warning", 32>
+   trust-tier-contraindicated-label = JC<"contraindicated", 96>
+
+   trust-tier /= trust-tier-none-label
+   trust-tier /= trust-tier-affirming-label
+   trust-tier /= trust-tier-warning-label
+   trust-tier /= trust-tier-contraindicated-label
+
+                      Figure 2: Trustworthiness Tiers
+
+3.3.  Verifier ID
+
+   The verifier-id type identifies the software that runs the verifier
+   according to the information model defined in Section 2.2.2.
+
+   verifier-id = {
+     developer-label => text
+     build-label => text
+   }
+
+   developer-label = JC<"developer", 0>
+   build-label = JC<"build", 1>
+
+                           Figure 3: Verifier ID
+
+   The fields are:
+
+   build (mandatory)  A text string that uniquely identifies the
+      software build running the verifier.
+
+   developer (mandatory)  A text string that uniquely identifies the
+      organizational unit responsible for this build.
+
+3.4.  Consolitated CDDL
+
+   Figure 4 contains the CDDL of the entire AR4SI type system.
+
+   =============== NOTE: '\' line wrapping per RFC 8792 ================
+
    $.start.$ = trustworthiness-vector / trust-tier / verifier-id
-   trustworthiness-vector = ({
-           ? instance-identity-label => trustworthiness-claim,
-           ? configuration-label => trustworthiness-claim,
-           ? executables-label => trustworthiness-claim,
-           ? file-system-label => trustworthiness-claim,
-           ? hardware-label => trustworthiness-claim,
-           ? runtime-opaque-label => trustworthiness-claim,
-           ? storage-opaque-label => trustworthiness-claim,
-           ? sourced-data-label => trustworthiness-claim,
-       }) .within ({+ any => any})
-   instance-identity-label = "instance-identity" .feature "json" / 0 .feature "cbor"
-   configuration-label = "configuration" .feature "json" / 1 .feature "cbor"
-   executables-label = "executables" .feature "json" / 2 .feature "cbor"
-   file-system-label = "file-system" .feature "json" / 3 .feature "cbor"
-   hardware-label = "hardware" .feature "json" / 4 .feature "cbor"
-   runtime-opaque-label = "runtime-opaque" .feature "json" / 5 .feature "cbor"
-   storage-opaque-label = "storage-opaque" .feature "json" / 6 .feature "cbor"
-   sourced-data-label = "sourced-data" .feature "json" / 7 .feature "cbor"
+   trustworthiness-vector = non-empty<{
+       ? instance-identity-label => trustworthiness-claim,
+       ? configuration-label => trustworthiness-claim,
+       ? executables-label => trustworthiness-claim,
+       ? file-system-label => trustworthiness-claim,
+       ? hardware-label => trustworthiness-claim,
+       ? runtime-opaque-label => trustworthiness-claim,
+       ? storage-opaque-label => trustworthiness-claim,
+       ? sourced-data-label => trustworthiness-claim,
+   }>
+   instance-identity-label = JC<"instance-identity", 0>
+   configuration-label = JC<"configuration", 1>
+   executables-label = JC<"executables", 2>
+   file-system-label = JC<"file-system", 3>
+   hardware-label = JC<"hardware", 4>
+   runtime-opaque-label = JC<"runtime-opaque", 5>
+   storage-opaque-label = JC<"storage-opaque", 6>
+   sourced-data-label = JC<"sourced-data", 7>
    trustworthiness-claim = -128 .. 127
-   trust-tier-none-label = "none" .feature "json" / 0 .feature "cbor"
-   trust-tier-affirming-label = "affirming" .feature "json" / 2 .feature "cbor"
-   trust-tier-warning-label = "warning" .feature "json" / 32 .feature "cbor"
-   trust-tier-contraindicated-label = "contraindicated" .feature "json" / 96 .feature "cbor"
-   trust-tier /= trust-tier-none-label / trust-tier-affirming-label / trust-tier-warning-label / trust-tier-contraindicated-label
+   trust-tier-none-label = JC<"none", 0>
+   trust-tier-affirming-label = JC<"affirming", 2>
+   trust-tier-warning-label = JC<"warning", 32>
+   trust-tier-contraindicated-label = JC<"contraindicated", 96>
+   trust-tier /= trust-tier-none-label / trust-tier-affirming-label / \
+             trust-tier-warning-label / trust-tier-contraindicated-label
    verifier-id = {
      developer-label => text,
      build-label => text,
    }
-   developer-label = "developer" .feature "json" / 0 .feature "cbor"
-   build-label = "build" .feature "json" / 1 .feature "cbor"
+   developer-label = JC<"developer", 0>
+   build-label = JC<"build", 1>
+   non-empty<M> = M .within ({+ any => any})
+   JSON-ONLY<J> = J .feature "json"
+   CBOR-ONLY<C> = C .feature "cbor"
+   JC<J, C> = JSON-ONLY<J> / CBOR-ONLY<C>
+
+                            Figure 4: AR4SI CDDL
 
 4.  Secure Interactions Models
 
@@ -1062,7 +1167,7 @@ Table of Contents
    Augmented Evidence the when determining what action to take.
 
    This alternative combines the [RFC9334] Sections 5.1 Passport Model
-   and Section 5.2 Background-Check Model.  Figure 1 describes this flow
+   and Section 5.2 Background-Check Model.  Figure 5 describes this flow
    of information.  The flows within this combined model are mapped to
    [RFC9334] in the following way.  "Verifier A" below corresponds to
    the "Verifier" Figure 5 within [RFC9334].  And "Relying Party/
@@ -1098,7 +1203,7 @@ Table of Contents
                                                             ~
                                                          time(RX')
 
-                         Figure 1: Below Zero Trust
+                         Figure 5: Below Zero Trust
 
    The interaction model depicted above includes specific time related
    events from Appendix A of [RFC9334].  With the identification of
@@ -1124,7 +1229,7 @@ Table of Contents
 
    More details on each interaction step of Below Zero Trust are as
    follows.  The numbers used in this sequence match to the numbered
-   steps in Figure 1:
+   steps in Figure 5:
 
    1.  An Attester sends Evidence which is provably fresh to Verifier A
        at time(EG).  Freshness from the perspective of Verifier A MAY be
@@ -1434,7 +1539,7 @@ B.1.  Supportable Trustworthiness Claims for HSM-based CC
                                  Table 2
 
    Setting the Trustworthiness Claims may follow the following logic at
-   the Verifier A within (2) of Figure 1:
+   the Verifier A within (2) of Figure 5:
 
    Start: Evidence received starts the generation of a new
    Trustworthiness Vector.  (e.g.,  TPM Quote Received, log received,
@@ -1587,7 +1692,7 @@ Appendix C.  Some issues being worked
    Verifier A.  Do we need this type of structure to be included here?
    Should it be in subsequent documents?
 
-   Expand the variant of Figure 1 which requires no Relying Party PoF
+   Expand the variant of Figure 5 which requires no Relying Party PoF
    into its own picture.
 
    In what document (if any) do we attempt normalization of the identity

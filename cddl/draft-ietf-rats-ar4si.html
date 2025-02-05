@@ -1055,7 +1055,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Voit, et al.</td>
-<td class="center">Expires 7 August 2025</td>
+<td class="center">Expires 9 August 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1068,12 +1068,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-rats-ar4si-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-02-03" class="published">3 February 2025</time>
+<time datetime="2025-02-05" class="published">5 February 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-08-07">7 August 2025</time></dd>
+<dd class="expires"><time datetime="2025-08-09">9 August 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1134,7 +1134,7 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 7 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 9 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1224,6 +1224,20 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-data-model" class="internal xref">Data Model</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-trustworthiness-vector-2" class="internal xref">Trustworthiness Vector</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-trust-tiers" class="internal xref">Trust Tiers</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-verifier-id" class="internal xref">Verifier ID</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-consolitated-cddl" class="internal xref">Consolitated CDDL</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-secure-interactions-models" class="internal xref">Secure Interactions Models</a></p>
@@ -1577,7 +1591,7 @@ An example complex structure might be a 'target-environment' encoded as a Softwa
 Consequently, the Relying Party SHOULD require Identity Evidence which indicates of the type of Attesting Environment when it considers its Appraisal Policy for Attestation Results.<a href="#section-2.2.1-10" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="verifier">
+<div id="sec-verifier">
 <section id="section-2.2.2">
           <h4 id="name-verifier">
 <a href="#section-2.2.2" class="section-number selfRef">2.2.2. </a><a href="#name-verifier" class="section-name selfRef">Verifier</a>
@@ -1659,7 +1673,7 @@ Reason: standard types of Verifier generated Trustworthiness Claims should be ve
 <p id="section-2.3.1-4">These design principles are important to keep the number of Verifier generated claims low, and to retain the complexity in the Verifier rather than the Relying Party.<a href="#section-2.3.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="enumeration-encoding">
+<div id="sec-enum-encoding">
 <section id="section-2.3.2">
           <h4 id="name-enumeration-encoding">
 <a href="#section-2.3.2" class="section-number selfRef">2.3.2. </a><a href="#name-enumeration-encoding" class="section-name selfRef">Enumeration Encoding</a>
@@ -1709,7 +1723,7 @@ To simplify the processing of these enumerations by the Relying Party, the enume
 Such a policies may be as simple as saying that a specific Verifier has recently asserted Trustworthiness Claims, all of which are Affirming.<a href="#section-2.3.2-10" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="assigning-a-trustworthiness-claim-value">
+<div id="sec-assign-tc">
 <section id="section-2.3.3">
           <h4 id="name-assigning-a-trustworthiness">
 <a href="#section-2.3.3" class="section-number selfRef">2.3.3. </a><a href="#name-assigning-a-trustworthiness" class="section-name selfRef">Assigning a Trustworthiness Claim value</a>
@@ -1740,7 +1754,7 @@ Such a policies may be as simple as saying that a specific Verifier has recently
           </ol>
 </section>
 </div>
-<div id="specific-claims">
+<div id="sec-specific-claims">
 <section id="section-2.3.4">
           <h4 id="name-specific-claims">
 <a href="#section-2.3.4" class="section-number selfRef">2.3.4. </a><a href="#name-specific-claims" class="section-name selfRef">Specific Claims</a>
@@ -2163,47 +2177,181 @@ Subsequent connection re-establishment will allow fresh new Trustworthiness Clai
 </div>
 </section>
 </div>
-<div id="dm">
+<div id="sec-dm">
 <section id="section-3">
       <h2 id="name-data-model">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-data-model" class="section-name selfRef">Data Model</a>
       </h2>
 <p id="section-3-1">The following CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> defines the necessary AR4SI types for use in CBOR and JSON serializations.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">Other serializations are possible but must be defined in subsequent documents.<a href="#section-3-2" class="pilcrow">¶</a></p>
-<div class="lang-cddl sourcecode" id="section-3-3">
+<div id="sec-tvector">
+<section id="section-3.1">
+        <h3 id="name-trustworthiness-vector-2">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-trustworthiness-vector-2" class="section-name selfRef">Trustworthiness Vector</a>
+        </h3>
+<p id="section-3.1-1">The <code>trustworthiness-vector</code> is defined as follows:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<span id="name-trustworthiness-vector-3"></span><div id="fig-cddl-tvec">
+<figure id="figure-1">
+          <div class="lang-cddl sourcecode" id="section-3.1-2.1">
 <pre>
+trustworthiness-vector = non-empty&lt;{
+  ? instance-identity-label =&gt; trustworthiness-claim
+  ? configuration-label =&gt; trustworthiness-claim
+  ? executables-label =&gt; trustworthiness-claim
+  ? file-system-label =&gt; trustworthiness-claim
+  ? hardware-label =&gt; trustworthiness-claim
+  ? runtime-opaque-label =&gt; trustworthiness-claim
+  ? storage-opaque-label =&gt; trustworthiness-claim
+  ? sourced-data-label =&gt; trustworthiness-claim
+}&gt;
+
+instance-identity-label = JC&lt;"instance-identity", 0&gt;
+configuration-label = JC&lt;"configuration", 1&gt;
+executables-label = JC&lt;"executables", 2&gt;
+file-system-label = JC&lt;"file-system", 3&gt;
+hardware-label = JC&lt;"hardware", 4&gt;
+runtime-opaque-label = JC&lt;"runtime-opaque", 5&gt;
+storage-opaque-label = JC&lt;"storage-opaque", 6&gt;
+sourced-data-label = JC&lt;"sourced-data", 7&gt;
+
+trustworthiness-claim = -128..127
+</pre>
+</div>
+<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
+<a href="#name-trustworthiness-vector-3" class="selfRef">Trustworthiness Vector</a>
+          </figcaption></figure>
+</div>
+<p id="section-3.1-3">This type contains an entry for each one of the eight AR4SI appraisals that have been conducted on the submitted evidence (<a href="#sec-specific-claims" class="auto internal xref">Section 2.3.4</a>).<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.1-4">The value of each entry is chosen in the -128..127 range according to the rules described in <a href="#sec-assign-tc" class="auto internal xref">Section 2.3.3</a> and <a href="#sec-specific-claims" class="auto internal xref">Section 2.3.4</a>.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.1-5">All categories are optional.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.1-6">A missing entry means that the verifier makes no claim about this specific appraisal facet because the category is not applicable to the submitted evidence.<a href="#section-3.1-6" class="pilcrow">¶</a></p>
+<p id="section-3.1-7">As required by the <code>non-empty</code> macro, at least one entry MUST be present in the vector.<a href="#section-3.1-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-trusttiers">
+<section id="section-3.2">
+        <h3 id="name-trust-tiers">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-trust-tiers" class="section-name selfRef">Trust Tiers</a>
+        </h3>
+<p id="section-3.2-1">The <code>trust-tier</code> type represents one of the equivalency classes in which the <code>trustworthiness-claim</code> space is partitioned.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-2">See <a href="#sec-enum-encoding" class="auto internal xref">Section 2.3.2</a> for the details.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.2-3">The allowed values for the type are as follows:<a href="#section-3.2-3" class="pilcrow">¶</a></p>
+<span id="name-trustworthiness-tiers"></span><div id="fig-cddl-ttiers">
+<figure id="figure-2">
+          <div class="lang-cddl sourcecode" id="section-3.2-4.1">
+<pre>
+trust-tier-none-label = JC&lt;"none", 0&gt;
+trust-tier-affirming-label = JC&lt;"affirming", 2&gt;
+trust-tier-warning-label = JC&lt;"warning", 32&gt;
+trust-tier-contraindicated-label = JC&lt;"contraindicated", 96&gt;
+
+trust-tier /= trust-tier-none-label
+trust-tier /= trust-tier-affirming-label
+trust-tier /= trust-tier-warning-label
+trust-tier /= trust-tier-contraindicated-label
+</pre>
+</div>
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<a href="#name-trustworthiness-tiers" class="selfRef">Trustworthiness Tiers</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="dm-verifier-id">
+<section id="section-3.3">
+        <h3 id="name-verifier-id">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-verifier-id" class="section-name selfRef">Verifier ID</a>
+        </h3>
+<p id="section-3.3-1">The <code>verifier-id</code> type identifies the software that runs the verifier according to the information model defined in <a href="#sec-verifier" class="auto internal xref">Section 2.2.2</a>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<span id="name-verifier-id-2"></span><div id="fig-cddl-verifier-id">
+<figure id="figure-3">
+          <div class="lang-cddl sourcecode" id="section-3.3-2.1">
+<pre>
+verifier-id = {
+  developer-label =&gt; text
+  build-label =&gt; text
+}
+
+developer-label = JC&lt;"developer", 0&gt;
+build-label = JC&lt;"build", 1&gt;
+</pre>
+</div>
+<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
+<a href="#name-verifier-id-2" class="selfRef">Verifier ID</a>
+          </figcaption></figure>
+</div>
+<p id="section-3.3-3">The fields are:<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-3.3-4">
+          <dt id="section-3.3-4.1">
+<code>build</code> (mandatory)</dt>
+          <dd style="margin-left: 1.5em" id="section-3.3-4.2">
+            <p id="section-3.3-4.2.1">A text string that uniquely identifies the software build running the verifier.<a href="#section-3.3-4.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-3.3-4.3">
+<code>developer</code> (mandatory)</dt>
+          <dd style="margin-left: 1.5em" id="section-3.3-4.4">
+            <p id="section-3.3-4.4.1">A text string that uniquely identifies the organizational unit responsible for this <code>build</code>.<a href="#section-3.3-4.4.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="consolitated-cddl">
+<section id="section-3.4">
+        <h3 id="name-consolitated-cddl">
+<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-consolitated-cddl" class="section-name selfRef">Consolitated CDDL</a>
+        </h3>
+<p id="section-3.4-1"><a href="#fig-cddl" class="auto internal xref">Figure 4</a> contains the CDDL of the entire AR4SI type system.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<span id="name-ar4si-cddl"></span><div id="fig-cddl">
+<figure id="figure-4">
+          <div class="lang-cddl sourcecode" id="section-3.4-2.1">
+<pre>
+=============== NOTE: '\' line wrapping per RFC 8792 ================
+
 $.start.$ = trustworthiness-vector / trust-tier / verifier-id
-trustworthiness-vector = ({
-        ? instance-identity-label =&gt; trustworthiness-claim,
-        ? configuration-label =&gt; trustworthiness-claim,
-        ? executables-label =&gt; trustworthiness-claim,
-        ? file-system-label =&gt; trustworthiness-claim,
-        ? hardware-label =&gt; trustworthiness-claim,
-        ? runtime-opaque-label =&gt; trustworthiness-claim,
-        ? storage-opaque-label =&gt; trustworthiness-claim,
-        ? sourced-data-label =&gt; trustworthiness-claim,
-    }) .within ({+ any =&gt; any})
-instance-identity-label = "instance-identity" .feature "json" / 0 .feature "cbor"
-configuration-label = "configuration" .feature "json" / 1 .feature "cbor"
-executables-label = "executables" .feature "json" / 2 .feature "cbor"
-file-system-label = "file-system" .feature "json" / 3 .feature "cbor"
-hardware-label = "hardware" .feature "json" / 4 .feature "cbor"
-runtime-opaque-label = "runtime-opaque" .feature "json" / 5 .feature "cbor"
-storage-opaque-label = "storage-opaque" .feature "json" / 6 .feature "cbor"
-sourced-data-label = "sourced-data" .feature "json" / 7 .feature "cbor"
+trustworthiness-vector = non-empty&lt;{
+    ? instance-identity-label =&gt; trustworthiness-claim,
+    ? configuration-label =&gt; trustworthiness-claim,
+    ? executables-label =&gt; trustworthiness-claim,
+    ? file-system-label =&gt; trustworthiness-claim,
+    ? hardware-label =&gt; trustworthiness-claim,
+    ? runtime-opaque-label =&gt; trustworthiness-claim,
+    ? storage-opaque-label =&gt; trustworthiness-claim,
+    ? sourced-data-label =&gt; trustworthiness-claim,
+}&gt;
+instance-identity-label = JC&lt;"instance-identity", 0&gt;
+configuration-label = JC&lt;"configuration", 1&gt;
+executables-label = JC&lt;"executables", 2&gt;
+file-system-label = JC&lt;"file-system", 3&gt;
+hardware-label = JC&lt;"hardware", 4&gt;
+runtime-opaque-label = JC&lt;"runtime-opaque", 5&gt;
+storage-opaque-label = JC&lt;"storage-opaque", 6&gt;
+sourced-data-label = JC&lt;"sourced-data", 7&gt;
 trustworthiness-claim = -128 .. 127
-trust-tier-none-label = "none" .feature "json" / 0 .feature "cbor"
-trust-tier-affirming-label = "affirming" .feature "json" / 2 .feature "cbor"
-trust-tier-warning-label = "warning" .feature "json" / 32 .feature "cbor"
-trust-tier-contraindicated-label = "contraindicated" .feature "json" / 96 .feature "cbor"
-trust-tier /= trust-tier-none-label / trust-tier-affirming-label / trust-tier-warning-label / trust-tier-contraindicated-label
+trust-tier-none-label = JC&lt;"none", 0&gt;
+trust-tier-affirming-label = JC&lt;"affirming", 2&gt;
+trust-tier-warning-label = JC&lt;"warning", 32&gt;
+trust-tier-contraindicated-label = JC&lt;"contraindicated", 96&gt;
+trust-tier /= trust-tier-none-label / trust-tier-affirming-label / \
+          trust-tier-warning-label / trust-tier-contraindicated-label
 verifier-id = {
   developer-label =&gt; text,
   build-label =&gt; text,
 }
-developer-label = "developer" .feature "json" / 0 .feature "cbor"
-build-label = "build" .feature "json" / 1 .feature "cbor"
-</pre><a href="#section-3-3" class="pilcrow">¶</a>
+developer-label = JC&lt;"developer", 0&gt;
+build-label = JC&lt;"build", 1&gt;
+non-empty&lt;M&gt; = M .within ({+ any =&gt; any})
+JSON-ONLY&lt;J&gt; = J .feature "json"
+CBOR-ONLY&lt;C&gt; = C .feature "cbor"
+JC&lt;J, C&gt; = JSON-ONLY&lt;J&gt; / CBOR-ONLY&lt;C&gt;
+</pre>
+</div>
+<figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
+<a href="#name-ar4si-cddl" class="selfRef">AR4SI CDDL</a>
+          </figcaption></figure>
+</div>
+</section>
 </div>
 </section>
 </div>
@@ -2288,7 +2436,7 @@ The Attesting Environment then signs the combination.<a href="#section-4.2-3" cl
 The Relying Party then can appraise these semantically bound sets of signed Evidence by applying an Appraisal Policy for Attestation Results as described below.
 This policy will consider both the AR as well as additional information about the Attester within the AR Augmented Evidence the when determining what action to take.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
 <p id="section-4.2-6">This alternative combines the <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span> Sections 5.1 Passport Model and Section 5.2 Background-Check Model.
-<a href="#interactions" class="auto internal xref">Figure 1</a> describes this flow of information.
+<a href="#interactions" class="auto internal xref">Figure 5</a> describes this flow of information.
 The flows within this combined model are mapped to <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span> in the following way.
 "Verifier A" below corresponds to the "Verifier" Figure 5 within <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>.
 And "Relying Party/Verifier B" below corresponds to the union of the "Relying Party" and "Verifier" boxes within Figure 6 of <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>.
@@ -2296,7 +2444,7 @@ This union is possible because Verifier B can be implemented as a simple, self-c
 The resulting combined process can appraise the AR-augmented Evidence to determine whether an Attester qualifies for secure interactions with the Relying Party.
 The specific steps of this process are defined later in this section.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
 <span id="name-below-zero-trust-2"></span><div id="interactions">
-<figure id="figure-1">
+<figure id="figure-5">
           <div class="alignLeft art-text artwork" id="section-4.2-7.1">
 <pre>
   .----------------.
@@ -2324,7 +2472,7 @@ time(EG')(4)------AR-augmented Evidence-----------------&gt;|
                                                       time(RX')
 </pre>
 </div>
-<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
 <a href="#name-below-zero-trust-2" class="selfRef">Below Zero Trust</a>
           </figcaption></figure>
 </div>
@@ -2338,7 +2486,7 @@ Based on that assumption, and when this is the case then the step of the Relying
 <p id="section-4.2-10">In all cases, appraisal policies define the conditions and prerequisites for when an Attester does qualify for secure interactions.
 To qualify, an Attester has to be able to provide all of the mandatory affirming Trustworthiness Claims and identities needed by a Relying Party's Appraisal Policy for Attestation Results, and none of the disqualifying detracting Trustworthiness Claims.<a href="#section-4.2-10" class="pilcrow">¶</a></p>
 <p id="section-4.2-11">More details on each interaction step of Below Zero Trust are as follows.
-The numbers used in this sequence match to the numbered steps in <a href="#interactions" class="auto internal xref">Figure 1</a>:<a href="#section-4.2-11" class="pilcrow">¶</a></p>
+The numbers used in this sequence match to the numbered steps in <a href="#interactions" class="auto internal xref">Figure 5</a>:<a href="#section-4.2-11" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-4.2-12">
 <li id="section-4.2-12.1">
             <p id="section-4.2-12.1.1">An Attester sends Evidence which is provably fresh to Verifier A at time(EG).
@@ -2675,7 +2823,7 @@ Note that claims MAY BE implicit to an Attesting Environment type, and therefore
             </tr>
           </tbody>
         </table>
-<p id="appendix-B.1-3">Setting the Trustworthiness Claims may follow the following logic at the Verifier A within (2) of <a href="#interactions" class="auto internal xref">Figure 1</a>:<a href="#appendix-B.1-3" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-3">Setting the Trustworthiness Claims may follow the following logic at the Verifier A within (2) of <a href="#interactions" class="auto internal xref">Figure 5</a>:<a href="#appendix-B.1-3" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="appendix-B.1-4">
 <pre>
 Start: Evidence received starts the generation of a new
@@ -2847,7 +2995,7 @@ One way this could be done would be a URI which identifies the policy used at Ve
 As the URI also could encode the version of the software, it might also act as a mechanism to signal the Relying Party to refresh/re-evaluate its view of Verifier A.
 Do we need this type of structure to be included here?
 Should it be in subsequent documents?<a href="#appendix-C-3" class="pilcrow">¶</a></p>
-<p id="appendix-C-4">Expand the variant of <a href="#interactions" class="auto internal xref">Figure 1</a> which requires no Relying Party PoF into its own picture.<a href="#appendix-C-4" class="pilcrow">¶</a></p>
+<p id="appendix-C-4">Expand the variant of <a href="#interactions" class="auto internal xref">Figure 5</a> which requires no Relying Party PoF into its own picture.<a href="#appendix-C-4" class="pilcrow">¶</a></p>
 <p id="appendix-C-5">In what document (if any) do we attempt normalization of the identity claims between different types of TEE.   E.g., does MRSIGNER plus extra loaded software = the sum of TrustZone Signer IDs for loaded components?<a href="#appendix-C-5" class="pilcrow">¶</a></p>
 </section>
 </div>
