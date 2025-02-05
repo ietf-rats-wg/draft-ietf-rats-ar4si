@@ -5,14 +5,14 @@
 RATS Working Group                                               E. Voit
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                             H. Birkholz
-Expires: 2 September 2024                                 Fraunhofer SIT
+Expires: 9 August 2025                                    Fraunhofer SIT
                                                              T. Hardjono
                                                                      MIT
                                                               T. Fossati
                                                                   Linaro
                                                              V. Scarlata
                                                                    Intel
-                                                            1 March 2024
+                                                         5 February 2025
 
 
               Attestation Results for Secure Interactions
@@ -27,6 +27,9 @@ Abstract
    a heterogeneous mix of Attesting Environment and Verifier types,
    consistent policies can be applied to subsequent information exchange
    between each Attester and the Relying Party.
+
+   This document also defines two serialisations of the proposed
+   information model, utilising CBOR and JSON.
 
 Discussion Venues
 
@@ -50,11 +53,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 September 2024.
+   This Internet-Draft will expire on 9 August 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -86,19 +89,24 @@ Table of Contents
        2.3.6.  Trustworthiness Vector for a type of Attesting
                Environment
      2.4.  Freshness
-   3.  Secure Interactions Models
-     3.1.  Background-Check
-       3.1.1.  Verifier Retrieval
-       3.1.2.  Co-resident Verifier
-     3.2.  Below Zero Trust
-     3.3.  Mutual Attestation
-     3.4.  Transport Protocol Integration
-   4.  Privacy Considerations
-   5.  Security Considerations
-   6.  IANA Considerations
-   7.  References
-     7.1.  Normative References
-     7.2.  Informative References
+   3.  Data Model
+     3.1.  Trustworthiness Vector
+     3.2.  Trust Tiers
+     3.3.  Verifier ID
+     3.4.  Consolitated CDDL
+   4.  Secure Interactions Models
+     4.1.  Background-Check
+       4.1.1.  Verifier Retrieval
+       4.1.2.  Co-resident Verifier
+     4.2.  Below Zero Trust
+     4.3.  Mutual Attestation
+     4.4.  Transport Protocol Integration
+   5.  Privacy Considerations
+   6.  Security Considerations
+   7.  IANA Considerations
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Appendix A.  Implementation Guidance
      A.1.  Supplementing Trustworthiness Claims
    Appendix B.  Supportable Trustworthiness Claims
@@ -918,14 +926,155 @@ Table of Contents
    Claims should be cleared.  Subsequent connection re-establishment
    will allow fresh new Trustworthiness Claims to be delivered.
 
-3.  Secure Interactions Models
+3.  Data Model
+
+   The following CDDL [RFC8610] defines the necessary AR4SI types for
+   use in CBOR and JSON serializations.
+
+   Other serializations are possible but must be defined in subsequent
+   documents.
+
+3.1.  Trustworthiness Vector
+
+   The trustworthiness-vector is defined as follows:
+
+   trustworthiness-vector = non-empty<{
+     ? instance-identity-label => trustworthiness-claim
+     ? configuration-label => trustworthiness-claim
+     ? executables-label => trustworthiness-claim
+     ? file-system-label => trustworthiness-claim
+     ? hardware-label => trustworthiness-claim
+     ? runtime-opaque-label => trustworthiness-claim
+     ? storage-opaque-label => trustworthiness-claim
+     ? sourced-data-label => trustworthiness-claim
+   }>
+
+   instance-identity-label = JC<"instance-identity", 0>
+   configuration-label = JC<"configuration", 1>
+   executables-label = JC<"executables", 2>
+   file-system-label = JC<"file-system", 3>
+   hardware-label = JC<"hardware", 4>
+   runtime-opaque-label = JC<"runtime-opaque", 5>
+   storage-opaque-label = JC<"storage-opaque", 6>
+   sourced-data-label = JC<"sourced-data", 7>
+
+   trustworthiness-claim = -128..127
+
+                      Figure 1: Trustworthiness Vector
+
+   This type contains an entry for each one of the eight AR4SI
+   appraisals that have been conducted on the submitted evidence
+   (Section 2.3.4).
+
+   The value of each entry is chosen in the -128..127 range according to
+   the rules described in Section 2.3.3 and Section 2.3.4.
+
+   All categories are optional.
+
+   A missing entry means that the verifier makes no claim about this
+   specific appraisal facet because the category is not applicable to
+   the submitted evidence.
+
+   As required by the non-empty macro, at least one entry MUST be
+   present in the vector.
+
+3.2.  Trust Tiers
+
+   The trust-tier type represents one of the equivalency classes in
+   which the trustworthiness-claim space is partitioned.
+
+   See Section 2.3.2 for the details.
+
+   The allowed values for the type are as follows:
+
+   trust-tier-none-label = JC<"none", 0>
+   trust-tier-affirming-label = JC<"affirming", 2>
+   trust-tier-warning-label = JC<"warning", 32>
+   trust-tier-contraindicated-label = JC<"contraindicated", 96>
+
+   trust-tier /= trust-tier-none-label
+   trust-tier /= trust-tier-affirming-label
+   trust-tier /= trust-tier-warning-label
+   trust-tier /= trust-tier-contraindicated-label
+
+                      Figure 2: Trustworthiness Tiers
+
+3.3.  Verifier ID
+
+   The verifier-id type identifies the software that runs the verifier
+   according to the information model defined in Section 2.2.2.
+
+   verifier-id = {
+     developer-label => text
+     build-label => text
+   }
+
+   developer-label = JC<"developer", 0>
+   build-label = JC<"build", 1>
+
+                           Figure 3: Verifier ID
+
+   The fields are:
+
+   build (mandatory)  A text string that uniquely identifies the
+      software build running the verifier.
+
+   developer (mandatory)  A text string that uniquely identifies the
+      organizational unit responsible for this build.
+
+3.4.  Consolitated CDDL
+
+   Figure 4 contains the CDDL of the entire AR4SI type system.
+
+   =============== NOTE: '\' line wrapping per RFC 8792 ================
+
+   $.start.$ = trustworthiness-vector / trust-tier / verifier-id
+   trustworthiness-vector = non-empty<{
+       ? instance-identity-label => trustworthiness-claim,
+       ? configuration-label => trustworthiness-claim,
+       ? executables-label => trustworthiness-claim,
+       ? file-system-label => trustworthiness-claim,
+       ? hardware-label => trustworthiness-claim,
+       ? runtime-opaque-label => trustworthiness-claim,
+       ? storage-opaque-label => trustworthiness-claim,
+       ? sourced-data-label => trustworthiness-claim,
+   }>
+   instance-identity-label = JC<"instance-identity", 0>
+   configuration-label = JC<"configuration", 1>
+   executables-label = JC<"executables", 2>
+   file-system-label = JC<"file-system", 3>
+   hardware-label = JC<"hardware", 4>
+   runtime-opaque-label = JC<"runtime-opaque", 5>
+   storage-opaque-label = JC<"storage-opaque", 6>
+   sourced-data-label = JC<"sourced-data", 7>
+   trustworthiness-claim = -128 .. 127
+   trust-tier-none-label = JC<"none", 0>
+   trust-tier-affirming-label = JC<"affirming", 2>
+   trust-tier-warning-label = JC<"warning", 32>
+   trust-tier-contraindicated-label = JC<"contraindicated", 96>
+   trust-tier /= trust-tier-none-label / trust-tier-affirming-label / \
+             trust-tier-warning-label / trust-tier-contraindicated-label
+   verifier-id = {
+     developer-label => text,
+     build-label => text,
+   }
+   developer-label = JC<"developer", 0>
+   build-label = JC<"build", 1>
+   non-empty<M> = M .within ({+ any => any})
+   JSON-ONLY<J> = J .feature "json"
+   CBOR-ONLY<C> = C .feature "cbor"
+   JC<J, C> = JSON-ONLY<J> / CBOR-ONLY<C>
+
+                            Figure 4: AR4SI CDDL
+
+4.  Secure Interactions Models
 
    There are multiple ways of providing a Trustworthiness Vector to a
    Relying Party.  This section describes two alternatives.
 
-3.1.  Background-Check
+4.1.  Background-Check
 
-3.1.1.  Verifier Retrieval
+4.1.1.  Verifier Retrieval
 
    It is possible to for a Relying Party to follow the Background-Check
    Model defined in Section 5.2 of [RFC9334].  In this case, a Relying
@@ -953,7 +1102,7 @@ Table of Contents
    An implementer should examine these potential drawbacks before
    selecting this alternative.
 
-3.1.2.  Co-resident Verifier
+4.1.2.  Co-resident Verifier
 
    A simplified Background-Check Model may exist in a very specific
    case.  This is where the Relying Party and Verifier functions are co-
@@ -975,7 +1124,7 @@ Table of Contents
    MRSIGNER values have been associated with a known QUOTE value.  And
    the code running within the TEE is not modifiable after launch.
 
-3.2.  Below Zero Trust
+4.2.  Below Zero Trust
 
    Zero Trust Architectures are referenced in [US-Executive-Order]
    eleven times.  However despite this high profile, there is an
@@ -1018,7 +1167,7 @@ Table of Contents
    Augmented Evidence the when determining what action to take.
 
    This alternative combines the [RFC9334] Sections 5.1 Passport Model
-   and Section 5.2 Background-Check Model.  Figure 1 describes this flow
+   and Section 5.2 Background-Check Model.  Figure 5 describes this flow
    of information.  The flows within this combined model are mapped to
    [RFC9334] in the following way.  "Verifier A" below corresponds to
    the "Verifier" Figure 5 within [RFC9334].  And "Relying Party/
@@ -1054,7 +1203,7 @@ Table of Contents
                                                             ~
                                                          time(RX')
 
-                         Figure 1: Below Zero Trust
+                         Figure 5: Below Zero Trust
 
    The interaction model depicted above includes specific time related
    events from Appendix A of [RFC9334].  With the identification of
@@ -1080,7 +1229,7 @@ Table of Contents
 
    More details on each interaction step of Below Zero Trust are as
    follows.  The numbers used in this sequence match to the numbered
-   steps in Figure 1:
+   steps in Figure 5:
 
    1.  An Attester sends Evidence which is provably fresh to Verifier A
        at time(EG).  Freshness from the perspective of Verifier A MAY be
@@ -1187,7 +1336,7 @@ Table of Contents
    *  authentication-cycle events, e.g. a link-layer interface reset
       could result in a new (4).
 
-3.3.  Mutual Attestation
+4.3.  Mutual Attestation
 
    In the interaction models described above, each device on either side
    of a secure interaction may require remote attestation of its peer.
@@ -1195,7 +1344,7 @@ Table of Contents
    attestation, the interaction models listed above may be run
    independently on either side of the connection.
 
-3.4.  Transport Protocol Integration
+4.4.  Transport Protocol Integration
 
    Either unidirectional attestation or mutual attestation may be
    supported within the protocol interactions needed for the
@@ -1205,21 +1354,21 @@ Table of Contents
    within an authentication framework such the EAP protocol [RFC5247]
    over TLS [RFC8446].
 
-4.  Privacy Considerations
+5.  Privacy Considerations
 
    Privacy Considerations Text
 
-5.  Security Considerations
+6.  Security Considerations
 
    Security Considerations Text
 
-6.  IANA Considerations
+7.  IANA Considerations
 
    See Body.
 
-7.  References
+8.  References
 
-7.1.  Normative References
+8.1.  Normative References
 
    [GP-TEE-PP]
               "Global Platform TEE Protection Profile v1.3", September
@@ -1240,27 +1389,33 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
+   [RFC8610]  Birkholz, H., Vigano, C., and C. Bormann, "Concise Data
+              Definition Language (CDDL): A Notational Convention to
+              Express Concise Binary Object Representation (CBOR) and
+              JSON Data Structures", RFC 8610, DOI 10.17487/RFC8610,
+              June 2019, <https://www.rfc-editor.org/rfc/rfc8610>.
+
    [RFC9334]  Birkholz, H., Thaler, D., Richardson, M., Smith, N., and
               W. Pan, "Remote ATtestation procedureS (RATS)
               Architecture", RFC 9334, DOI 10.17487/RFC9334, January
               2023, <https://www.rfc-editor.org/rfc/rfc9334>.
 
-7.2.  Informative References
+8.2.  Informative References
 
    [I-D.ietf-rats-network-device-subscription]
               Birkholz, H., Voit, E., and W. Pan, "Attestation Event
               Stream Subscription", Work in Progress, Internet-Draft,
-              draft-ietf-rats-network-device-subscription-04, 10
-              September 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-rats-network-device-subscription-04>.
+              draft-ietf-rats-network-device-subscription-06, 8 January
+              2025, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              rats-network-device-subscription-06>.
 
    [I-D.tschofenig-rats-psa-token]
               Tschofenig, H., Frost, S., Brossard, M., Shaw, A. L., and
               T. Fossati, "Arm's Platform Security Architecture (PSA)
               Attestation Token", Work in Progress, Internet-Draft,
-              draft-tschofenig-rats-psa-token-22, 21 February 2024,
+              draft-tschofenig-rats-psa-token-24, 23 September 2024,
               <https://datatracker.ietf.org/doc/html/draft-tschofenig-
-              rats-psa-token-22>.
+              rats-psa-token-24>.
 
    [IEEE802.1AR]
               "802.1AR: Secure Device Identity", 2 August 2018,
@@ -1384,7 +1539,7 @@ B.1.  Supportable Trustworthiness Claims for HSM-based CC
                                  Table 2
 
    Setting the Trustworthiness Claims may follow the following logic at
-   the Verifier A within (2) of Figure 1:
+   the Verifier A within (2) of Figure 5:
 
    Start: Evidence received starts the generation of a new
    Trustworthiness Vector.  (e.g.,  TPM Quote Received, log received,
@@ -1521,7 +1676,7 @@ Appendix C.  Some issues being worked
    aggregate set of Trustworthiness Claims?
 
    There will need to be a subsequent document which documents how these
-   objects which will be translated into a protocol on a wire (e.g.  EAP
+   objects which will be translated into a protocol on a wire (e.g. EAP
    on TLS).  Some breakpoint between what is in this draft, and what is
    in specific drafts for wire encoding will need to be determined.
    Questions like architecting the cluster/hierarchy of Verifiers fall
@@ -1537,7 +1692,7 @@ Appendix C.  Some issues being worked
    Verifier A.  Do we need this type of structure to be included here?
    Should it be in subsequent documents?
 
-   Expand the variant of Figure 1 which requires no Relying Party PoF
+   Expand the variant of Figure 5 which requires no Relying Party PoF
    into its own picture.
 
    In what document (if any) do we attempt normalization of the identity
