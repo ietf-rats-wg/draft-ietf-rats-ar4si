@@ -9,6 +9,7 @@ FRAGMENTS += trust-tier.cddl
 FRAGMENTS += verifier-id.cddl 
 FRAGMENTS += non-empty.cddl
 FRAGMENTS += jc.cddl
+FRAGMENTS += eat-claims.cddl
 
 CDDLC_FLAGS := -u -2t cddl
 

@@ -1,0 +1,3 @@
+ar4si.status-label = JC<"ar4si.status", 1000>
+ar4si.trustworthiness-vector-label = JC<"ar4si.trustworthiness-vector", 1001>
+ar4si.verifier-id-label = JC<"ar4si.verifier-id", 1004>

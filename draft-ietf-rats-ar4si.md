@@ -704,6 +704,14 @@ The fields are:
 `developer` (mandatory)
 : A text string that uniquely identifies the organizational unit responsible for this `build`.
 
+## EAT Claims
+
+This section contains the CDDL definitions for the CWT and JWT claim labels registered in {{sec-iana-eat-claims}}.
+
+~~~cddl
+{::include cddl/eat-claims.cddl}
+~~~
+
 ## Consolitated CDDL
 
 {{fig-cddl}} contains the CDDL of the entire AR4SI type system.
@@ -907,6 +915,16 @@ The "Claim Key" and "Claim Value Types(s)" are for the CWT registry only.
 The "Claim Name" is as defined for the CWT registry, not the JWT registry.
 
 The "JWT Claim Name" is equivalent to the "Claim Name" in the JWT registry.
+
+### AR4SI Trust Tier
+
+* Claim Name: ar4si.trust-tier
+* Claim Description: AR4SI Tier
+* JWT Claim Name: ar4si.trust-tier
+* Claim Key: 1000
+* Claim Value Type(s): unsigned integer (0, 2, 32, 96) or corresponding string
+* Change Controller: IESG
+* Specification Document(s): {{sec-trusttiers}} of {{&SELF}}
 
 ### Trustworthiness Vector
 
