@@ -48,6 +48,13 @@ normative:
   RFC8174:
   RFC9334: rats-arch
   RFC8610: cddl
+  STD90:
+    -: json
+    =: RFC8259
+  STD94:
+    -: cbor
+    =: RFC8949
+  I-D.ietf-rats-eat: eat
 
   OMTP-ATE:
     target: https://www.gsma.com/newsroom/wp-content/uploads/2012/03/omtpadvancedtrustedenvironmentomtptr1v11.pdf
@@ -91,6 +98,11 @@ informative:
     target: https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/
     title: "Executive Order on Improving the Nation's Cybersecurity"
     date: 2021-05-12
+  IANA.cwt:
+  IANA.jwt:
+
+entity:
+    SELF: "RFCthis"
 
 --- abstract
 
@@ -98,7 +110,7 @@ This document defines reusable Attestation Result information elements.
 When these elements are offered to Relying Parties as Evidence, different aspects of Attester trustworthiness can be evaluated.
 Additionally, where the Relying Party is interfacing with a heterogeneous mix of Attesting Environment and Verifier types, consistent policies can be applied to subsequent information exchange between each Attester and the Relying Party.
 
-This document also defines two serialisations of the proposed information model, utilising CBOR and JSON.
+This document also defines two serialisations of the proposed information model, utilising CBOR and JSON, and the associated EAT claims.
 
 --- middle
 
@@ -132,6 +144,8 @@ The business need therefore is for common Attestation Result information element
 With these definitions, consistent interaction or connectivity decisions can be made by a Relying Party where there is a heterogenous mix of Attesting Environment types and Verifier types.
 
 This document defines information elements for Attestation Results in a way which normalizes the trustworthiness assertions that can be made from a diverse set of Attesters.
+
+This document also defines two serialisations of the proposed information model, utilising CBOR {{-cbor}} and JSON {{-json}}, and the associated EAT {{-eat}} claims.
 
 ## Requirements Notation
 
@@ -673,7 +687,7 @@ The allowed values for the type are as follows:
 ~~~
 {: #fig-cddl-ttiers title="Trustworthiness Tiers" }
 
-## Verifier ID {#dm-verifier-id}
+## Verifier ID {#sec-verifier-id}
 
 The `verifier-id` type identifies the software that runs the verifier according to the information model defined in {{sec-verifier}}.
 
@@ -880,7 +894,39 @@ Security Considerations Text
 
 # IANA Considerations
 
-See Body.
+## New EAT Claims {#sec-iana-eat-claims}
+
+This specification adds the following values to the "JSON Web Token Claims" registry {{IANA.jwt}} and the "CBOR Web Token Claims" registry {{IANA.cwt}}.
+
+Each entry below is an addition to both registries.
+
+The "Claim Description", "Change Controller" and "Specification Documents" are common and equivalent for the JWT and CWT registries.
+
+The "Claim Key" and "Claim Value Types(s)" are for the CWT registry only.
+
+The "Claim Name" is as defined for the CWT registry, not the JWT registry.
+
+The "JWT Claim Name" is equivalent to the "Claim Name" in the JWT registry.
+
+### Trustworthiness Vector
+
+* Claim Name: ar4si.trustworthiness-vector
+* Claim Description: AR4SI Trustworthiness Vector
+* JWT Claim Name: ar4si.trustworthiness-vector
+* Claim Key: 1001
+* Claim Value Type(s): map
+* Change Controller: IESG
+* Specification Document(s): {{sec-tvector}} of {{&SELF}}
+
+### Verifier Software Identifier
+
+* Claim Name: ar4si.verifier-id
+* Claim Description: AR4SI Verifier Software Identifier
+* JWT Claim Name: ar4si.verifier-id
+* Claim Key: 1004
+* Claim Value Type(s): map
+* Change Controller: IESG
+* Specification Document(s): {{sec-verifier-id}} of {{&SELF}}
 
 --- back
 
