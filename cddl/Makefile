@@ -10,7 +10,7 @@ FRAGMENTS += verifier-id.cddl
 FRAGMENTS += non-empty.cddl
 FRAGMENTS += jc.cddl
 
-CDDLC_FLAGS := -r -x -f -u -2t cddl
+CDDLC_FLAGS := -u -2t cddl
 
 ar4si-autogen.cddl: ; $(cddlc) $(CDDLC_FLAGS) $(FRAGMENTS) > $@
 
