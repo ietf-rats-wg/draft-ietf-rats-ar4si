@@ -660,16 +660,16 @@ A missing entry means that the verifier makes no claim about this specific appra
 
 As required by the `non-empty` macro, at least one entry MUST be present in the vector.
 
-## Trust Tiers {#sec-trusttiers}
+## Trustworthiness Tiers {#sec-trusttiers}
 
-The `trust-tier` type represents one of the equivalency classes in which the `trustworthiness-claim` space is partitioned.
+The `trustworthiness-tier` type represents one of the equivalency classes in which the `trustworthiness-claim` space is partitioned.
 
 See {{sec-enum-encoding}} for the details.
 
 The allowed values for the type are as follows:
 
 ~~~cddl
-{::include cddl/trust-tier.cddl}
+{::include cddl/trustworthiness-tier.cddl}
 ~~~
 {: #fig-cddl-ttiers title="Trustworthiness Tiers" }
 
