@@ -1,1 +1,4 @@
-$.start.$ = trustworthiness-vector / trust-tier / verifier-id
+$.start.$ = trustworthiness-vector /
+            trustworthiness-tier /
+            verifier-id /
+            trustworthiness-claim

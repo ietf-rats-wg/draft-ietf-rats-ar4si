@@ -3,10 +3,10 @@ SHELL := /bin/bash
 .DEFAULT_GOAL := check
 
 FRAGMENTS += start.cddl
-FRAGMENTS += trustworthiness-vector.cddl 
-FRAGMENTS += trustworthiness-claim.cddl 
-FRAGMENTS += trust-tier.cddl 
-FRAGMENTS += verifier-id.cddl 
+FRAGMENTS += trustworthiness-vector.cddl
+FRAGMENTS += trustworthiness-claim.cddl
+FRAGMENTS += trustworthiness-tier.cddl
+FRAGMENTS += verifier-id.cddl
 FRAGMENTS += non-empty.cddl
 FRAGMENTS += jc.cddl
 

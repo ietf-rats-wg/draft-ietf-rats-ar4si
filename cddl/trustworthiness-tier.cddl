@@ -1,0 +1,9 @@
+trustworthiness-tier-none-label = JC<"none", 0>
+trustworthiness-tier-affirming-label = JC<"affirming", 2>
+trustworthiness-tier-warning-label = JC<"warning", 32>
+trustworthiness-tier-contraindicated-label = JC<"contraindicated", 96>
+
+trustworthiness-tier /= trustworthiness-tier-none-label
+trustworthiness-tier /= trustworthiness-tier-affirming-label
+trustworthiness-tier /= trustworthiness-tier-warning-label
+trustworthiness-tier /= trustworthiness-tier-contraindicated-label
