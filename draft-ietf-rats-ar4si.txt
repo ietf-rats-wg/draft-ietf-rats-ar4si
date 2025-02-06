@@ -5,14 +5,14 @@
 RATS Working Group                                               E. Voit
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                             H. Birkholz
-Expires: 9 August 2025                                    Fraunhofer SIT
+Expires: 10 August 2025                                   Fraunhofer SIT
                                                              T. Hardjono
                                                                      MIT
                                                               T. Fossati
                                                                   Linaro
                                                              V. Scarlata
                                                                    Intel
-                                                         5 February 2025
+                                                         6 February 2025
 
 
               Attestation Results for Secure Interactions
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 August 2025.
+   This Internet-Draft will expire on 10 August 2025.
 
 Copyright Notice
 
@@ -91,7 +91,7 @@ Table of Contents
      2.4.  Freshness
    3.  Data Model
      3.1.  Trustworthiness Vector
-     3.2.  Trust Tiers
+     3.2.  Trustworthiness Tiers
      3.3.  Verifier ID
      3.4.  Consolitated CDDL
    4.  Secure Interactions Models
@@ -978,24 +978,24 @@ Table of Contents
    As required by the non-empty macro, at least one entry MUST be
    present in the vector.
 
-3.2.  Trust Tiers
+3.2.  Trustworthiness Tiers
 
-   The trust-tier type represents one of the equivalency classes in
-   which the trustworthiness-claim space is partitioned.
+   The trustworthiness-tier type represents one of the equivalency
+   classes in which the trustworthiness-claim space is partitioned.
 
    See Section 2.3.2 for the details.
 
    The allowed values for the type are as follows:
 
-   trust-tier-none-label = JC<"none", 0>
-   trust-tier-affirming-label = JC<"affirming", 2>
-   trust-tier-warning-label = JC<"warning", 32>
-   trust-tier-contraindicated-label = JC<"contraindicated", 96>
+   trustworthiness-tier-none-label = JC<"none", 0>
+   trustworthiness-tier-affirming-label = JC<"affirming", 2>
+   trustworthiness-tier-warning-label = JC<"warning", 32>
+   trustworthiness-tier-contraindicated-label = JC<"contraindicated", 96>
 
-   trust-tier /= trust-tier-none-label
-   trust-tier /= trust-tier-affirming-label
-   trust-tier /= trust-tier-warning-label
-   trust-tier /= trust-tier-contraindicated-label
+   trustworthiness-tier /= trustworthiness-tier-none-label
+   trustworthiness-tier /= trustworthiness-tier-affirming-label
+   trustworthiness-tier /= trustworthiness-tier-warning-label
+   trustworthiness-tier /= trustworthiness-tier-contraindicated-label
 
                       Figure 2: Trustworthiness Tiers
 
@@ -1028,7 +1028,8 @@ Table of Contents
 
    =============== NOTE: '\' line wrapping per RFC 8792 ================
 
-   $.start.$ = trustworthiness-vector / trust-tier / verifier-id
+   $.start.$ = trustworthiness-vector / trustworthiness-tier / verifier\
+                                             -id / trustworthiness-claim
    trustworthiness-vector = non-empty<{
        ? instance-identity-label => trustworthiness-claim,
        ? configuration-label => trustworthiness-claim,
@@ -1048,12 +1049,14 @@ Table of Contents
    storage-opaque-label = JC<"storage-opaque", 6>
    sourced-data-label = JC<"sourced-data", 7>
    trustworthiness-claim = -128 .. 127
-   trust-tier-none-label = JC<"none", 0>
-   trust-tier-affirming-label = JC<"affirming", 2>
-   trust-tier-warning-label = JC<"warning", 32>
-   trust-tier-contraindicated-label = JC<"contraindicated", 96>
-   trust-tier /= trust-tier-none-label / trust-tier-affirming-label / \
-             trust-tier-warning-label / trust-tier-contraindicated-label
+   trustworthiness-tier-none-label = JC<"none", 0>
+   trustworthiness-tier-affirming-label = JC<"affirming", 2>
+   trustworthiness-tier-warning-label = JC<"warning", 32>
+   trustworthiness-tier-contraindicated-label = JC<"contraindicated", \
+                                                                     96>
+   trustworthiness-tier /= trustworthiness-tier-none-label / \
+   trustworthiness-tier-affirming-label / trustworthiness-tier-warning-\
+                      label / trustworthiness-tier-contraindicated-label
    verifier-id = {
      developer-label => text,
      build-label => text,

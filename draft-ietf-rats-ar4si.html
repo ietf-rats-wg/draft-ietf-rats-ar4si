@@ -1055,7 +1055,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Voit, et al.</td>
-<td class="center">Expires 9 August 2025</td>
+<td class="center">Expires 10 August 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1068,12 +1068,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-rats-ar4si-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-02-05" class="published">5 February 2025</time>
+<time datetime="2025-02-06" class="published">6 February 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-08-09">9 August 2025</time></dd>
+<dd class="expires"><time datetime="2025-08-10">10 August 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1134,7 +1134,7 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 9 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 10 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1229,7 +1229,7 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-trustworthiness-vector-2" class="internal xref">Trustworthiness Vector</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-trust-tiers" class="internal xref">Trust Tiers</a></p>
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-trustworthiness-tiers" class="internal xref">Trustworthiness Tiers</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-verifier-id" class="internal xref">Verifier ID</a></p>
@@ -2230,29 +2230,29 @@ trustworthiness-claim = -128..127
 </div>
 <div id="sec-trusttiers">
 <section id="section-3.2">
-        <h3 id="name-trust-tiers">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-trust-tiers" class="section-name selfRef">Trust Tiers</a>
+        <h3 id="name-trustworthiness-tiers">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-trustworthiness-tiers" class="section-name selfRef">Trustworthiness Tiers</a>
         </h3>
-<p id="section-3.2-1">The <code>trust-tier</code> type represents one of the equivalency classes in which the <code>trustworthiness-claim</code> space is partitioned.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">The <code>trustworthiness-tier</code> type represents one of the equivalency classes in which the <code>trustworthiness-claim</code> space is partitioned.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2">See <a href="#sec-enum-encoding" class="auto internal xref">Section 2.3.2</a> for the details.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 <p id="section-3.2-3">The allowed values for the type are as follows:<a href="#section-3.2-3" class="pilcrow">¶</a></p>
-<span id="name-trustworthiness-tiers"></span><div id="fig-cddl-ttiers">
+<span id="name-trustworthiness-tiers-2"></span><div id="fig-cddl-ttiers">
 <figure id="figure-2">
           <div class="lang-cddl sourcecode" id="section-3.2-4.1">
 <pre>
-trust-tier-none-label = JC&lt;"none", 0&gt;
-trust-tier-affirming-label = JC&lt;"affirming", 2&gt;
-trust-tier-warning-label = JC&lt;"warning", 32&gt;
-trust-tier-contraindicated-label = JC&lt;"contraindicated", 96&gt;
+trustworthiness-tier-none-label = JC&lt;"none", 0&gt;
+trustworthiness-tier-affirming-label = JC&lt;"affirming", 2&gt;
+trustworthiness-tier-warning-label = JC&lt;"warning", 32&gt;
+trustworthiness-tier-contraindicated-label = JC&lt;"contraindicated", 96&gt;
 
-trust-tier /= trust-tier-none-label
-trust-tier /= trust-tier-affirming-label
-trust-tier /= trust-tier-warning-label
-trust-tier /= trust-tier-contraindicated-label
+trustworthiness-tier /= trustworthiness-tier-none-label
+trustworthiness-tier /= trustworthiness-tier-affirming-label
+trustworthiness-tier /= trustworthiness-tier-warning-label
+trustworthiness-tier /= trustworthiness-tier-contraindicated-label
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
-<a href="#name-trustworthiness-tiers" class="selfRef">Trustworthiness Tiers</a>
+<a href="#name-trustworthiness-tiers-2" class="selfRef">Trustworthiness Tiers</a>
           </figcaption></figure>
 </div>
 </section>
@@ -2309,7 +2309,8 @@ build-label = JC&lt;"build", 1&gt;
 <pre>
 =============== NOTE: '\' line wrapping per RFC 8792 ================
 
-$.start.$ = trustworthiness-vector / trust-tier / verifier-id
+$.start.$ = trustworthiness-vector / trustworthiness-tier / verifier\
+                                          -id / trustworthiness-claim
 trustworthiness-vector = non-empty&lt;{
     ? instance-identity-label =&gt; trustworthiness-claim,
     ? configuration-label =&gt; trustworthiness-claim,
@@ -2329,12 +2330,14 @@ runtime-opaque-label = JC&lt;"runtime-opaque", 5&gt;
 storage-opaque-label = JC&lt;"storage-opaque", 6&gt;
 sourced-data-label = JC&lt;"sourced-data", 7&gt;
 trustworthiness-claim = -128 .. 127
-trust-tier-none-label = JC&lt;"none", 0&gt;
-trust-tier-affirming-label = JC&lt;"affirming", 2&gt;
-trust-tier-warning-label = JC&lt;"warning", 32&gt;
-trust-tier-contraindicated-label = JC&lt;"contraindicated", 96&gt;
-trust-tier /= trust-tier-none-label / trust-tier-affirming-label / \
-          trust-tier-warning-label / trust-tier-contraindicated-label
+trustworthiness-tier-none-label = JC&lt;"none", 0&gt;
+trustworthiness-tier-affirming-label = JC&lt;"affirming", 2&gt;
+trustworthiness-tier-warning-label = JC&lt;"warning", 32&gt;
+trustworthiness-tier-contraindicated-label = JC&lt;"contraindicated", \
+                                                                  96&gt;
+trustworthiness-tier /= trustworthiness-tier-none-label / \
+trustworthiness-tier-affirming-label / trustworthiness-tier-warning-\
+                   label / trustworthiness-tier-contraindicated-label
 verifier-id = {
   developer-label =&gt; text,
   build-label =&gt; text,
