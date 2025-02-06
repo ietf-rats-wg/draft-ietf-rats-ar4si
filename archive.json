@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-12-07T00:42:14.925601+00:00",
+  "timestamp": "2025-02-06T01:44:40.979751+00:00",
   "repo": "ietf-rats-wg/draft-ietf-rats-ar4si",
   "labels": [
     {
@@ -57,7 +57,7 @@
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/1",
       "state": "OPEN",
       "author": "ericvoit",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "In April, Vinnie asked for an interaction model which doesn't require a Verifier.  This is for things like SGX where the provable identity of the MRSIGNER is sufficient to the Relying Party.  The specific comment was: The question then is whether we need some form of time interval tracking between Verifiers A & B.  I believe it to be useful to understand the delta in time between the creation of the original Attestation Results, and their receipt on the Relying Party.  The one time I can think of when this might *not* be necessary is when the Relying Party trusts that the Attester cannot be meaningfully changed from the outside over time.  (E.g., a specific MRENCLAVE can expose no changing Evidence to Verifier A over time, and this MRENCLAVE is trusted to be unable to mimic another MRENCLAVE or replay Attestation Evidence about another MRENCLAVE.)  In such a case, nonce#2 from figure 1 can be safely dropped.   I will propose text to this effect into the draft.",
@@ -73,7 +73,7 @@
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/2",
       "state": "OPEN",
       "author": "ericvoit",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Ned asserts that specific wording appears to conflict with other adopted drafts.  E.g., Section 2.1 \u2013 Non-reputable Identity Evidence and subsequent use of \u2018non-reputable\u2019 in the context of identifying the Attester or an Attesting Environment. Given a DAA key as Attesting Environment identity, the objective is to allow reputable Attester instance identity but non-reputable Attester class identity. Eric responded that in DAA, perhaps the term DAA credential should be formally defined.  What DAA says now is \"Attestation Evidence SHOULD be cryptographically associated with an identity document that is a randomised DAA credential.\" Additionally, perhaps the \"Attester Identity ('attesterIdentity')\"  principle in Section 5 should be refined to \"Anonymous Attester Identity\"?   In any case, DAA seems to have a more narrow definition of identity than draft-voit-rats-attestation-results.  In this draft, the non-reputable class itself be considered a form of identity.  So I think the *intent* of both sets of text don't conflict, even if we don't have all the terms right.  Also draft-voit-rats-attestation-results could easily import terms like \"Anonymous Attester Identity\" from DAA as being a valid form of identity.  Having the group being identified is quite useful.",
@@ -89,7 +89,7 @@
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/3",
       "state": "OPEN",
       "author": "ericvoit",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Prior to the start of the IETF meeting, IANA takes a look at the documents that will be discussed on the agendas for working groups and we do a quick review to see if there are any IANA Considerations related issues.  We reviewed draft-voit-rats-attestation-results. The IANA Considerations section currently says \"See body\". Any actions being requested need to be included in the IANA Considerations section.  This includes any new registries being created, registrations in existing registries or adding this document as a reference to existing registries or registrations.  RFC8126 and https://www.iana.org/help/protocol-registration offers some guidance as to what to include in the IANA section.",
@@ -105,7 +105,7 @@
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/4",
       "state": "OPEN",
       "author": "ericvoit",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "There are several ways for this to be determined by the Verifier.  But it is a hard problem.  Is there consensus that solution-level trustworthiness claims are ready to be tackled by the RATS WG?",
@@ -121,7 +121,7 @@
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/5",
       "state": "OPEN",
       "author": "ericvoit",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Thomas H has agreed to provide some text on the following issue:  \r\n-------------------\r\nIn discussions in the GSA TIES trusted supply-chains group, there has been some usage of the term \"trust score\".\r\n\r\nSo there could be the situation in which (a) the supply-chain entities have their collective understanding of the \"trust score\" of the composition of BOM/SBOM items, and (b) the Verifier and RP have a slightly different (or very different) notion of \"trust score\" from folks in (a).\r\n",
@@ -137,12 +137,225 @@
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/6",
       "state": "OPEN",
       "author": "ericvoit",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Need to convert to affirming, warning, contraindicated vs 0 & 1",
       "createdAt": "2021-12-06T19:02:12Z",
       "updatedAt": "2021-12-06T19:02:12Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 11,
+      "id": "I_kwDOGeKE6M5FEJ9z",
+      "title": "MUST vs must",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/11",
+      "state": "OPEN",
+      "author": "ericvoit",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Every must is a MUST and will be fixed to all caps by rfced (if that syntax reaches that gateway function). The multi-person discussion has to happen and we do not have to do that now in this PR.",
+      "createdAt": "2022-03-03T17:48:38Z",
+      "updatedAt": "2022-03-03T17:48:38Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 13,
+      "id": "I_kwDOGeKE6M5FH2WO",
+      "title": "reuse CCC terminology",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/13",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "When we have the new CC-related definitions being worked in the CCC nailed down, we should update the draft accordingly.\r\n\r\nEDIT: To be clear, here \"terminology\" refers to CC models and their mapping to Attester and Attesting Environments (i.e.,  \u00a72.2.1 OF -03).",
+      "createdAt": "2022-03-04T14:07:18Z",
+      "updatedAt": "2023-02-06T13:08:35Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The work in CCC is now complete.  See:  https://github.com/confidential-computing/governance/blob/main/terminology/common-terminology.md",
+          "createdAt": "2023-02-06T12:41:52Z",
+          "updatedAt": "2023-02-06T12:41:52Z"
+        },
+        {
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "body": "> hardware signed report (an \"attestation report\")\r\n\r\nIs CCC doing the mapping or shall AR4SI do the mapping?",
+          "createdAt": "2023-02-06T12:53:57Z",
+          "updatedAt": "2023-02-06T12:53:57Z"
+        },
+        {
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > hardware signed report (an \"attestation report\")\r\n> \r\n> Is CCC doing the mapping or shall AR4SI do the mapping?\r\n\r\nin the sentence you quote, CCC should have used existing RATS terminology.\r\n",
+          "createdAt": "2023-02-06T13:08:34Z",
+          "updatedAt": "2023-02-06T13:08:34Z"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "id": "I_kwDOGeKE6M5Fq_fk",
+      "title": "HSM-based to tpm-pcr-hashing",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/16",
+      "state": "OPEN",
+      "author": "ericvoit",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Hi Laurence, \r\n\r\nFrom: Laurence Lundblade, March 14, 2022 2:18 PM\r\n\r\nHi Eric,\r\n\r\nHashing is one thing and HSM security is another.\r\n\r\nYou can have an attester that has HSM security and does no hashing. An example of this is a purpose-built HW that just provides identity.\r\n\r\nYou can have an attester that does lots of hashing of lots of things and isn\u2019t an HSM in any sense. An example of this is an attester built into an operating system.\r\n\r\n_<eric> In my opinion, it is mandatory for the RATS WG to provide guidance on what AR claims might be legitimately be made about from different categories of Attesters.   The objective of ar4si section 2.2.1 is to differentiate categories of Attester.   I do accept your point that there are HSMs which don't do hashing.  This insight helps improve the document.  So I have just added a tracking issue with a suggestion to change the category name to \"tpm-pcr-hashing\"._  \r\n\r\nIf you want to propose additional HSM types which generate non-hash based evidence, that would be helpful.   The intention/goal of a category should be to help restrict what AR claims might legitimately be made about an Attester.\r\n\r\nWhen I copied text from the security levels definition, it was all about hardware security, not hashing. I don\u2019t think any sort of hashing in an attesters architecture can stand in for hardware security. (And the security levels text could probably be improved).\r\n\r\n(You know what I mean about hardware security right? These are defenses against attacks on the HW. For example, extra electrical circuits that shutdown the chip if the supply voltage is too low to prevent manipulation of the supply voltage to get the hardware to execute incorrectly. There are lots of these.)\r\n\r\n_<eric> Can you point to a definition for Hardware security?  While I know in general what it means, but you can't define just the term based on examples.  Nor can you define it with by saying \"substantial defense\".  What is needed are one or more sentences which says what is covered and what is not._\r\n\r\nEric  \r\n\r\n",
+      "createdAt": "2022-03-14T21:00:38Z",
+      "updatedAt": "2022-03-14T21:00:38Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 17,
+      "id": "I_kwDOGeKE6M5cqq4S",
+      "title": "Trustworthiness Claim enumeration for configuration, needs to be extended",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/17",
+      "state": "OPEN",
+      "author": "yogeshbdeshpande",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "As per the latest draft of AR4SI, specific Trustworthiness Claim enumeration for configuration is as under:\r\n\r\n0:  No assertion\r\n1:  Verifier cannot parse unexpected Evidence.\r\n-1: Verifier malfunction\r\n2:  The configuration is a known and approved config.\r\n3:  The configuration includes or exposes no known vulnerabilities.\r\n32: The configuration includes or exposes known vulnerabilities.\r\n96: The configuration is unsupportable as it exposes unacceptable security vulnerabilities.\r\n99: Cryptographic validation of the Evidence has failed.\r\n\r\nHowever, there could be a use case where the Verifier is not aware of \r\na specific Attester Configuration. So it cannot say anything concrete about the \r\nspecific configuration.\r\n\r\nHence we propose, we add another enumeration example below:\r\n36: The configuration is unknown to the Verifier",
+      "createdAt": "2023-01-24T10:15:18Z",
+      "updatedAt": "2023-01-24T14:27:19Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "ericvoit",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi Yogesh,\n\n \n\nThanks very much for the proposal.  What do you think about the following tweak?:\n\n36: Elements of the configuration relevant to security are unavailable to the Verifier\n\nEric\n\n \n\nFrom: Yogesh Deshpande ***@***.***> \nSent: Tuesday, January 24, 2023 5:16 AM\nTo: ietf-rats-wg/draft-ietf-rats-ar4si ***@***.***>\nCc: Subscribed ***@***.***>\nSubject: [ietf-rats-wg/draft-ietf-rats-ar4si] Trustworthiness Claim enumeration for configuration, needs to be extended (Issue #17)\n\n \n\nAs per the latest draft of AR4SI, specific Trustworthiness Claim for configuration is as under:\n\n0: No assertion\n1: Verifier cannot parse unexpected Evidence.\n-1: Verifier malfunction\n2: The configuration is a known and approved config.\n3: The configuration includes or exposes no known vulnerabilities.\n32: The configuration includes or exposes known vulnerabilities.\n96: The configuration is unsupportable as it exposes unacceptable security vulnerabilities.\n99: Cryptographic validation of the Evidence has failed.\n\nHowever, there could be a use case where the Verifier is not aware of\na specific Attester Configuration. So it cannot say anything concrete about the\nspecific configuration.\n\nHence we propose, we add another enumeration example below:\n36: The configuration is unknown to the Verifier\n\n\u2014\nReply to this email directly, view it on GitHub <https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/17> , or unsubscribe <https://github.com/notifications/unsubscribe-auth/ADPW7IHMARDRK44CBHVND5TWT6TULANCNFSM6AAAAAAUE4OCOU> .\nYou are receiving this because you are subscribed to this thread.  <https://github.com/notifications/beacon/ADPW7IHKOT2WOELX27MQVVTWT6TULA5CNFSM6AAAAAAUE4OCOWWGG33NNVSW45C7OR4XAZNFJFZXG5LFVJRW63LNMVXHIX3JMTHFZKVOCI.gif> Message ID: ***@***.*** ***@***.***> >\n\n",
+          "createdAt": "2023-01-24T14:21:48Z",
+          "updatedAt": "2023-01-24T14:21:48Z"
+        },
+        {
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "NONE",
+          "body": "@ericvoit Thanks for a quick reply. I am happy with your proposal.\r\n\r\n36: _Elements of the configuration relevant to security are unavailable to the Verifier_\r\n\r\nis perfectly fine!",
+          "createdAt": "2023-01-24T14:27:19Z",
+          "updatedAt": "2023-01-24T14:27:19Z"
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "id": "I_kwDOGeKE6M5dup5w",
+      "title": "mapping evidence formats to trustworthiness vector categories",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/20",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Should we RECOMMEND that new evidence formats that want to be  compatible with AR4SI define which claims are relevant to each trustworthiness vector bucket?\r\n\r\n(The recommendation could go as far as even suggest appropriate values for specific circumstances.)\r\n\r\nFor reference, we have started looking at this for PSA [here](https://github.com/thomas-fossati/draft-psa-token/issues/71)",
+      "createdAt": "2023-02-06T12:49:08Z",
+      "updatedAt": "2023-02-06T13:01:08Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Basically, this means asking Evidence formats creators to provide their own instantiation of Appendix B.",
+          "createdAt": "2023-02-06T13:01:07Z",
+          "updatedAt": "2023-02-06T13:01:07Z"
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "id": "I_kwDOGeKE6M5jBDwW",
+      "title": "ar4si CDDL definition",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/23",
+      "state": "OPEN",
+      "author": "nedmsmith",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Currently there isn't a CDDL description of an ar4si structure even though the prose seems fairly specific about a structure. Based on careful reading of the I-D, I have the following suggested CDDL:\r\n```\r\nar-augmented-bundle = [ + $ar-augmented-type-choice ]\r\n$ar-augmented-type-choice /= ar-augmented-map\r\nar-augmented-map = {\r\n     &(signed-ar: 0) => signed-ar-map ; presumably ar-augmented-bundle is a COSE payload?\r\n     &(rp-pof: 1) => $pof-type-choice ; aka nonce\r\n     &(v-pof: 2) => $pof-type-choice ; time since appraisal\r\n     * $$ar-augmented-map-extension\r\n}\r\n\u000bsigned-ar-map = { \r\n     &(identity-ev: 0) => $identity-claim-type-choice \r\n     ? &(trust-vector: 1) => [ + trustworthiness-claim-map ] ; results claims\r\n     * $$signed-ar-map-extension\r\n}\r\n$identity-claim-type-choice /= stateful-environment-map ; for example a CoRIM defined triple\r\ntrustworthiness-claim-map = {\r\n     &(trust-tier: 0) => trustworthiness-tier ; is associated with each trust claim\r\n     &(trust-quanta: 1) => $trustworthiness-quanta-type-choice\r\n     ? &(trust-policy: 2) => $policy-type-choice\r\n     * $$trustworthiness-claim-map-extension\r\n}\r\ntrustworthiness-tier = &(none: 0, affirmed: 1, contraindicated: 2, warning: 3 )\r\n$trustworthiness-quanta-type-choice /= bytes ; assigned by verifier based on appraisal policy\r\n$policy-type-choice /= text ; could be a policy ID?\r\n```\r\nHowever, such a structure might not be fully warranted given other work related to the definition of an attestation results message. Nevertheless, having CDDL definitions makes it easier to clarify the author's intended meaning.\r\n",
+      "createdAt": "2023-04-10T19:11:49Z",
+      "updatedAt": "2023-04-15T19:18:39Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "ericvoit",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi Ned,\n\n \n\nI like where you are going with this.  What would you think of containing something like this within a new appendix?\n\n \n\nEric\n\n \n\nFrom: Ned Smith ***@***.***> \nSent: Monday, April 10, 2023 3:12 PM\nTo: ietf-rats-wg/draft-ietf-rats-ar4si ***@***.***>\nCc: Subscribed ***@***.***>\nSubject: [ietf-rats-wg/draft-ietf-rats-ar4si] ar4si CDDL definition (Issue #23)\n\n \n\nCurrently there isn't a CDDL description of an ar4si structure even though the prose seems fairly specific about a structure. Based on careful reading of the I-D, I have the following suggested CDDL:\n\nar-augmented-bundle = [ + $ar-augmented-type-choice ]\n$ar-augmented-type-choice /= ar-augmented-map\nar-augmented-map = {\n     &(signed-ar: 0) => signed-ar-map ; presumably ar-augmented-bundle is a COSE payload?\n     &(rp-pof: 1) => $pof-type-choice ; aka nonce\n     &(v-pof: 2) => $pof-type-choice ; time since appraisal\n     * $$ar-augmented-map-extension\n}\n\ufffdsigned-ar-map = { \n     &(identity-ev: 0) => $identity-claim-type-choice \n     ? &(trust-vector: 1) => [ + trustworthiness-claim-map ] ; results claims\n     * $$signed-ar-map-extension\n}\n$identity-claim-type-choice /= stateful-environment-map ; contains identity triple\ntrustworthiness-claim-map = {\n     &(trust-tier: 0) => trustworthiness-tier ; is associated with each trust claim\n     &(trust-quanta: 1) => $trustworthiness-quanta-type-choice\n     ? &(trust-policy: 2) => $policy-type-choice\n     * $$trustworthiness-claim-map-extension\n}\ntrustworthiness-tier = &(none: 0, affirmed: 1, contraindicated: 2, warning: 3 )\n$trustworthiness-quanta-type-choice /= bytes ; assigned by verifier based on appraisal policy\n$policy-type-choice /= text ; could be a policy ID?\n\nHowever, such a structure might not be fully warranted given other work related to the definition of an attestation results message. Nevertheless, having CDDL definitions makes it easier to clarify the author's intended meaning.\n\n\u2014\nReply to this email directly, view it on GitHub <https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/23> , or unsubscribe <https://github.com/notifications/unsubscribe-auth/ADPW7IF7VCVLUBJYCTGKCT3XARLQDANCNFSM6AAAAAAWZJ44UQ> .\nYou are receiving this because you are subscribed to this thread.  <https://github.com/notifications/beacon/ADPW7IG4RLJGAOYNMW4BXD3XARLQDA5CNFSM6AAAAAAWZJ44USWGG33NNVSW45C7OR4XAZNFJFZXG5LFVJRW63LNMVXHIX3JMTHGGBB4CY.gif> Message ID: ***@***.*** ***@***.***> >\n\n",
+          "createdAt": "2023-04-15T19:18:39Z",
+          "updatedAt": "2023-04-15T19:18:39Z"
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "id": "I_kwDOGeKE6M5kj5y_",
+      "title": "applicability of `executables`'s codepoint 33 ",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/24",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "If we wanted to say \"this (transient) element in the boot chain process is not recognised\", would  `executables`'s [codepoint 33](https://www.ietf.org/archive/id/draft-ietf-rats-ar4si-04.html#section-2.3.4-2.4.2.14.1) do the job?\r\n\r\nIt looks like it would not, at least as currently phrased, but I'm wondering if we should expand scope to also cover these ephemeral guys.\r\n",
+      "createdAt": "2023-04-27T15:56:42Z",
+      "updatedAt": "2023-04-27T15:56:42Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 27,
+      "id": "I_kwDOGeKE6M5y55X0",
+      "title": "\u00a73.2, bullet point 6.2: clunky prose",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/27",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As noted by [Haiguang Wang](https://mailarchive.ietf.org/arch/msg/rats/rsAVVCpVLC7tlCGDNAB-YxfK83Q/) the prose in [\u00a73.2, bullet point 6.2](https://www.ietf.org/archive/id/draft-ietf-rats-ar4si-05.html#section-3.2-12.6.2.2) is a bit clunky and difficult to disentangle.\r\n\r\nIt also looks slightly off from a grammar perspective, so we definitely need to do some fixing and streamlining.",
+      "createdAt": "2023-10-05T09:12:51Z",
+      "updatedAt": "2023-10-05T09:12:51Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 28,
+      "id": "I_kwDOGeKE6M6VWIIz",
+      "title": "executables-related claims granularity",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/28",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "# Codepointing the Executables Bucket\r\n\r\n## AR4SI's State of Art and CCA mappings\r\n\r\nCurrently, the Executables bucket defines 5 codepoints:\r\n* two affirming\r\n* two warnings\r\n* one contraindicated\r\n\r\nWhile mapping AR4SI to CCA, we identified a few problems with the current state of affairs in the Executable bucket:\r\n* the codepoints are not sufficient to cover the cases we need to potentially describe,\r\n* the conflation of boostrap and runtime executables complicates the expression of intent\r\n\r\n## Verifier Statements about Executables\r\n\r\nStarting from first principles, the verifier needs to make the following statements to a RP (or a downstream verifier):\r\n\r\n* \u2705 : _\"checks done, all components are known-good\"_\r\n* \u274c : _\"checks done, at least one component is known-bad\"_\r\n* \u2753 : _\"checks done, at least one component is unrecognized\"_\r\n\r\nTo these three, we need to add a fourth \"\u2796\", meaning _\"no checks done\"_ - either because no executables pop up in evidence, or because the verifier is not authoritative for the executable bits of that piece of evidence. \r\n\r\nThe possible combinations of the three main \"checks done\" statements are:\r\n\r\n|\u2705|\u2753|\u274c| Semantics |\r\n|---|---|---|---|\r\n| 1 | 0 | 0 | all recognized and known-good |\r\n| 0 | 0 | 1 | all recognized, at least one known-bad |\r\n| 0 | 1 | 0 | no known-bad, at least one unrecognized |\r\n| 0 | 1 | 1 | at least one known-bad and at least one unrecognized |\r\n\r\n### Keeping all the eggs in one bucket\r\n\r\nIf the Executables bucket needs to carry statements about boot and runtime executables, since there are 4 possible of them, it means their cross-product will burn a good chunk of the standard available codepoints.  This is not ideal.\r\n\r\nThe table below tries to capture all combined boot+runtime statements and assign them a codepoint[^1].\r\nNote that we also need to cater for Runtime not being checked, which adds 4 other codepoints, for a total of 20.\r\nThat looks like _**a lot**_, especially considering that the Contraindicated space is smaller than the Warning space (30 vs 60).\r\n\r\n[^1]: All codepoints are computed as deltas from a `warning_tier_offset` and `contraindicated_tier_offset` still TBD.\r\n\r\n| Boot | Runtime | AR4SI codepoint |\r\n| :-: | :-: | :-: |\r\n|\u2705|\u2705|2|\r\n|\u2705|\u274c|+1|\r\n|\u2705|\u2753|+2|\r\n|\u2705|\u274c\u2753|+3|\r\n||||\r\n|\u274c|\u2705|+4|\r\n|\u274c|\u274c|+5|\r\n|\u274c|\u2753|+6|\r\n|\u274c|\u274c\u2753|+7|\r\n||||\r\n|\u2753|\u2705|+8|\r\n|\u2753|\u274c|+9|\r\n|\u2753|\u2753|+10|\r\n|\u2753|\u274c\u2753|+11|\r\n||||\r\n|\u274c\u2753|\u2705|+12|\r\n|\u274c\u2753|\u274c|+13|\r\n|\u274c\u2753|\u2753|+14|\r\n|\u274c\u2753|\u274c\u2753|+15|\r\n||||\r\n|\u2705|\u2796|+16|\r\n|\u274c|\u2796|+17|\r\n|\u2753|\u2796|+18|\r\n|\u274c\u2753|\u2796|+19|\r\n\r\n## Splitting the Executable bucket in two\r\n\r\nIf instead we split the Executables bucket into separate Boot and Runtime buckets, the codepoints pressure drops dramatically:\r\n\r\n| Boot/Runtime Executable | AR4SI codepoint |\r\n| :-: | :-: |\r\n|\u2705|2|\r\n|\u274c|+1|\r\n|\u2753|+2|\r\n|\u274c\u2753|+3|\r\n\r\nIn this scenario, the \u2796 (not checked) condition, would result in the corresponding bucket being missing or 0-scored.\r\n",
+      "createdAt": "2024-09-04T14:56:36Z",
+      "updatedAt": "2024-09-06T15:48:18Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 30,
+      "id": "I_kwDOGeKE6M6o3Umh",
+      "title": "Verifier Identification",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/30",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We should take a deeper look at the verifier's identification attributes:\n\nCurrently, we have:\n\n* [x] software components (name and version)\n\nBut there might be good reasons to also include:\n\n* [ ] public key material (e.g., certs, raw public keys)\n* [ ] attestation in case it's running in a TEE (optional)",
+      "createdAt": "2025-02-05T14:16:26Z",
+      "updatedAt": "2025-02-05T14:16:26Z",
       "closedAt": null,
       "comments": []
     }
@@ -153,24 +366,26 @@
       "id": "PR_kwDOGeKE6M4vdUbs",
       "title": "Update draft-ietf-rats-ar4si.md",
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/7",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "ericvoit",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Includes stuff from Lawrence (as discussed on list), as well as text for Vinnie",
       "createdAt": "2021-12-06T19:39:55Z",
-      "updatedAt": "2021-12-06T19:39:56Z",
+      "updatedAt": "2022-03-02T15:26:27Z",
       "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
       "baseRefName": "main",
       "baseRefOid": "ac4525bf195430787074c6ce965fdb6f79d9887c",
       "headRepository": "ericvoit/draft-ietf-rats-ar4si",
       "headRefName": "patch-2",
       "headRefOid": "71eb638c59828aaa8f5d9c05f65a4daf53033831",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2022-03-02T15:26:27Z",
+      "mergedAt": "2022-03-02T15:26:27Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "ff42aaa2f350e0a676a44afc65af3916dc3c8487"
+      },
       "comments": [],
       "reviews": []
     },
@@ -179,34 +394,781 @@
       "id": "PR_kwDOGeKE6M4veADG",
       "title": "Fix for Issue #8",
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/8",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "ericvoit",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2021-12-06T23:41:58Z",
-      "updatedAt": "2021-12-06T23:42:50Z",
+      "updatedAt": "2022-03-02T15:26:50Z",
       "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
       "baseRefName": "main",
       "baseRefOid": "ac4525bf195430787074c6ce965fdb6f79d9887c",
       "headRepository": "ericvoit/draft-ietf-rats-ar4si",
       "headRefName": "patch-3",
       "headRefOid": "e9df4eff2a27bb2c7f7263c69fd88c2525072fdf",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2022-03-02T15:26:50Z",
+      "mergedAt": "2022-03-02T15:26:49Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "f02013e19d2a05a4f7e7ee11d73c4b2ea136f83a"
+      },
       "comments": [
         {
           "author": "ericvoit",
-          "authorAssociation": "NONE",
+          "authorAssociation": "COLLABORATOR",
           "body": "Misnamed the Issue number.   It is actually issue #6 ",
           "createdAt": "2021-12-06T23:42:49Z",
           "updatedAt": "2021-12-06T23:42:49Z"
         }
       ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M41glps",
+          "commit": {
+            "abbreviatedOid": "e9df4ef"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-03-02T15:25:35Z",
+          "updatedAt": "2022-03-02T15:25:35Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOGeKE6M4z1MjC",
+      "title": "Resulting from earlier Lawrence suggestions",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/9",
+      "state": "CLOSED",
+      "author": "ericvoit",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-03-02T13:59:15Z",
+      "updatedAt": "2022-03-02T14:00:40Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "ac4525bf195430787074c6ce965fdb6f79d9887c",
+      "headRepository": "ericvoit/draft-ietf-rats-ar4si",
+      "headRefName": "patch-4",
+      "headRefOid": "b3718a37db67803541210a4447fc0f8c230697a6",
+      "closedAt": "2022-03-02T14:00:40Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
       "reviews": []
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOGeKE6M4z5d4g",
+      "title": "Update draft-ietf-rats-ar4si.md",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/10",
+      "state": "MERGED",
+      "author": "ericvoit",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-03-03T15:16:49Z",
+      "updatedAt": "2022-03-03T17:49:28Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "f02013e19d2a05a4f7e7ee11d73c4b2ea136f83a",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "ericvoit-minor-tweaks",
+      "headRefOid": "1c67ca53d0d07ae2d62c4fbc2d98a43839e57fef",
+      "closedAt": "2022-03-03T17:49:28Z",
+      "mergedAt": "2022-03-03T17:49:28Z",
+      "mergedBy": "ericvoit",
+      "mergeCommit": {
+        "oid": "8f61684ea929890fdca3ea15b13c4b75035786c8"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M41mZ59",
+          "commit": {
+            "abbreviatedOid": "f6b6581"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-03T17:25:24Z",
+          "updatedAt": "2022-03-03T17:29:19Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "```suggestion\r\nThis is accomplished via satisfying two requirements.\r\n```",
+              "createdAt": "2022-03-03T17:25:24Z",
+              "updatedAt": "2022-03-03T17:29:19Z"
+            },
+            {
+              "originalPosition": 20,
+              "body": "Should we start capitalize MUSTs? There are several low cap musts in the text and this one caught my attention. It is mandatory that we check all occurrences. If it is not a \"MUST\" maybe we MUST use non-normative language that is not \"must\".",
+              "createdAt": "2022-03-03T17:29:08Z",
+              "updatedAt": "2022-03-03T17:30:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGeKE6M41me7p",
+          "commit": {
+            "abbreviatedOid": "1c67ca5"
+          },
+          "author": "ericvoit",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-03T17:38:54Z",
+          "updatedAt": "2022-03-03T17:38:54Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "I guess it depends what we consider normative from this document.   It certainly is a MUST from the perspective of the architecture document.   We likely should have a multi-person discussion on what to capitalize in this doc.",
+              "createdAt": "2022-03-03T17:38:54Z",
+              "updatedAt": "2022-03-03T17:38:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGeKE6M41mfoD",
+          "commit": {
+            "abbreviatedOid": "1c67ca5"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-03T17:41:22Z",
+          "updatedAt": "2022-03-03T17:41:23Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "Every must is a MUST and will be fixed to all caps by rfced (if that syntax reaches that gateway function). The multi-person discussion has to happen and we do not have to do that now in this PR.",
+              "createdAt": "2022-03-03T17:41:22Z",
+              "updatedAt": "2022-03-03T17:41:23Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGeKE6M41mf0i",
+          "commit": {
+            "abbreviatedOid": "1c67ca5"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-03-03T17:41:49Z",
+          "updatedAt": "2022-03-03T17:41:49Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGeKE6M41miXn",
+          "commit": {
+            "abbreviatedOid": "1c67ca5"
+          },
+          "author": "ericvoit",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-03T17:49:16Z",
+          "updatedAt": "2022-03-03T17:49:16Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "New Issue generated",
+              "createdAt": "2022-03-03T17:49:16Z",
+              "updatedAt": "2022-03-03T17:49:16Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "PR_kwDOGeKE6M4z6qPA",
+      "title": "Tweak to the HSM definition",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/12",
+      "state": "MERGED",
+      "author": "ericvoit",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-03-03T21:05:48Z",
+      "updatedAt": "2022-03-07T21:27:00Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "8f61684ea929890fdca3ea15b13c4b75035786c8",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "ericvoit-patch-1",
+      "headRefOid": "f74b09a1516297ca56cffb4848f9b5479ffeb484",
+      "closedAt": "2022-03-07T21:27:00Z",
+      "mergedAt": "2022-03-07T21:27:00Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "760889cfc30b086653ce1b64ada610f2d056f3c0"
+      },
+      "comments": [
+        {
+          "author": "ericvoit",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I want to wait until we have the new definitions being worked in the CCC nailed down. (They look like they are getting close.)  Then we can just reference or copy these.\n\n\nEric\n\n \n\nFrom: Thomas Fossati ***@***.***> \nSent: Friday, March 4, 2022 4:41 AM\nTo: ietf-rats-wg/draft-ietf-rats-ar4si ***@***.***>\nCc: Eric Voit (evoit) ***@***.***>; Author ***@***.***>\nSubject: Re: [ietf-rats-wg/draft-ietf-rats-ar4si] Tweak to the HSM definition (PR #12)\n\n \n\n@thomas-fossati approved this pull request.\n\nLGTM, I've left a note unrelated to the change, but close enough to maybe deserve being addressed in the same PR?\n\n  _____  \n\nIn draft-ietf-rats-ar4si.md <https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/12#discussion_r819412032> :\n\n> @@ -227,7 +230,7 @@ After the Verifier performs its appraisal, it will include sufficient informatio\n \n This document recognizes three general categories of Attesters.\n \n-1. HSM-based: A Hardware Security Module (HSM) based cryptoprocessor which continually hashes security measurements in a way which prevents an Attester from lying about measurements which have been extended into the Attesting Environment (e.g., TPM2.0.)\n+1. HSM-based: A Hardware Security Module (HSM) based cryptoprocessor which hashes one or more streams of security measurements from an Attester within the Attesting Environment. Maintenance of this hash enables detection of an Attester which is lying about the set of security measurements taken. An example of a HSM is a TPM2.0 {{TPM2.0}}.\n 2. Process-based: An individual process which has its runtime memory encrypted by an Attesting Environment in a way that no other processes can read and decrypt that memory (e.g., {{SGX}} or {{-PSA}}.)\n\nOut of scope note re: points 2 and 3. The text seems overly prescriptive: encryption is one (but not the only) technique to achieve memory isolation.\n\n\u2014\nReply to this email directly, view it on GitHub <https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/12#pullrequestreview-900004723> , or unsubscribe <https://github.com/notifications/unsubscribe-auth/ADPW7ICJLKTHKB5JDEGE7S3U6HLA7ANCNFSM5P3TU6RA> .\nTriage notifications on the go with GitHub Mobile for iOS <https://apps.apple.com/app/apple-store/id1477376905?ct=notification-email&mt=8&pt=524675>  or Android <https://play.google.com/store/apps/details?id=com.github.android&referrer=utm_campaign%3Dnotification-email%26utm_medium%3Demail%26utm_source%3Dgithub> . \nYou are receiving this because you authored the thread.  <https://github.com/notifications/beacon/ADPW7IFJLOGSYO4E75WN37LU6HLA7A5CNFSM5P3TU6RKYY3PNVWWK3TUL52HS4DFWFIHK3DMKJSXC5LFON2FEZLWNFSXPKTDN5WW2ZLOORPWSZGOGWSPW4Y.gif> Message ID: ***@***.*** ***@***.***> >\n\n",
+          "createdAt": "2022-03-04T13:49:02Z",
+          "updatedAt": "2022-03-04T13:49:02Z"
+        },
+        {
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I want to wait until we have the new definitions being worked in the CCC nailed down. (They look like they are getting close.) Then we can just reference or copy these.\r\n\r\nWFM.  I have raised #13 to track this.",
+          "createdAt": "2022-03-04T14:07:42Z",
+          "updatedAt": "2022-03-04T14:07:42Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M41pPtz",
+          "commit": {
+            "abbreviatedOid": "f74b09a"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM, I've left a note unrelated to the change, but close enough to maybe deserve being addressed in the same PR?",
+          "createdAt": "2022-03-04T09:38:44Z",
+          "updatedAt": "2022-03-04T09:40:20Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "Out of scope note re: points 2 and 3.  The text seems overly prescriptive: encryption is one (but not the only) technique to achieve memory isolation.",
+              "createdAt": "2022-03-04T09:38:44Z",
+              "updatedAt": "2022-03-04T09:40:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGeKE6M41x5Ye",
+          "commit": {
+            "abbreviatedOid": "f74b09a"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-03-07T21:26:54Z",
+          "updatedAt": "2022-03-07T21:26:54Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "PR_kwDOGeKE6M4z-XpN",
+      "title": "driven by comparison table with swresults",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/14",
+      "state": "MERGED",
+      "author": "ericvoit",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-03-04T20:22:43Z",
+      "updatedAt": "2022-03-07T21:28:45Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "8f61684ea929890fdca3ea15b13c4b75035786c8",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "ericvoit-patch-2",
+      "headRefOid": "961e90a39389f3c699585114593256efa3506c81",
+      "closedAt": "2022-03-07T21:28:44Z",
+      "mergedAt": "2022-03-07T21:28:44Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "917b03b71fb81ec8e9aea71a6ed4a9e99440cfb0"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M41x5tE",
+          "commit": {
+            "abbreviatedOid": "d2dfe0e"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-07T21:28:14Z",
+          "updatedAt": "2022-03-07T21:28:32Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n:  A Verifier has evaluated a specific set of directories within the Attester's file system.  (Note: the Verifier may or may not indicate what these directory and expected files are via an unspecified management interface.)\r\n```",
+              "createdAt": "2022-03-07T21:28:14Z",
+              "updatedAt": "2022-03-07T21:28:32Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "PR_kwDOGeKE6M40aeMw",
+      "title": "Lawrence comment",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/15",
+      "state": "MERGED",
+      "author": "ericvoit",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-03-14T17:52:35Z",
+      "updatedAt": "2023-02-27T15:35:58Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "917b03b71fb81ec8e9aea71a6ed4a9e99440cfb0",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "ericvoit-patch-3",
+      "headRefOid": "45226d8ff0a99fe84d889aac34937baf02162b73",
+      "closedAt": "2023-02-27T15:35:46Z",
+      "mergedAt": "2023-02-27T15:35:46Z",
+      "mergedBy": "ericvoit",
+      "mergeCommit": {
+        "oid": "257b6b6595326cdb05a0a1e23ba4bb4999c23d53"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 18,
+      "id": "PR_kwDOGeKE6M5IcGmJ",
+      "title": "Update draft-ietf-rats-ar4si.md",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/18",
+      "state": "MERGED",
+      "author": "ericvoit",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Based on request from Yogesh for a new Configuration encoded claim.",
+      "createdAt": "2023-01-24T15:51:54Z",
+      "updatedAt": "2023-02-27T15:35:30Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "917b03b71fb81ec8e9aea71a6ed4a9e99440cfb0",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "ericvoit-patch-4",
+      "headRefOid": "b77f62acc498fbc4c58537293c404081e0f54e2b",
+      "closedAt": "2023-02-27T15:35:30Z",
+      "mergedAt": "2023-02-27T15:35:30Z",
+      "mergedBy": "ericvoit",
+      "mergeCommit": {
+        "oid": "7d81ec8f705f81474b18446e77ef19c76a3ce463"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M5Lk216",
+          "commit": {
+            "abbreviatedOid": "b77f62a"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Thanks Eric!  As you may have guessed, we have an immediate use for this 36 :-)",
+          "createdAt": "2023-01-24T17:34:19Z",
+          "updatedAt": "2023-01-24T17:34:19Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "PR_kwDOGeKE6M5Izpdj",
+      "title": "typo in \u00a72.2.2",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/19",
+      "state": "MERGED",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "_\"There are two categorizations Verifier identities defined in this document\"_ does not read awesomely.\r\n\r\nI am putting forward a (maybe even worse) alternative.\r\n\r\nFeel free to English-ise it.",
+      "createdAt": "2023-01-30T11:46:14Z",
+      "updatedAt": "2023-01-30T14:44:36Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "917b03b71fb81ec8e9aea71a6ed4a9e99440cfb0",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "verifier-identity-typo",
+      "headRefOid": "c516a8e47421361630a1be5720fc26f380dd7fd3",
+      "closedAt": "2023-01-30T14:44:36Z",
+      "mergedAt": "2023-01-30T14:44:36Z",
+      "mergedBy": "ericvoit",
+      "mergeCommit": {
+        "oid": "df0207a6b1b82faf956fcbbd7f11ce69e84b3cf4"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M5MA5oH",
+          "commit": {
+            "abbreviatedOid": "c516a8e"
+          },
+          "author": "ericvoit",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Looks like an improvement",
+          "createdAt": "2023-01-30T14:43:48Z",
+          "updatedAt": "2023-01-30T14:43:48Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "id": "PR_kwDOGeKE6M5K2bvh",
+      "title": "Update draft-ietf-rats-ar4si.md",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/21",
+      "state": "MERGED",
+      "author": "ericvoit",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-02-27T16:32:56Z",
+      "updatedAt": "2023-03-02T16:57:44Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "257b6b6595326cdb05a0a1e23ba4bb4999c23d53",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "ericvoit-unknown-evidence",
+      "headRefOid": "33c0a79b0ac05792462c0290e1f33436a88409f7",
+      "closedAt": "2023-03-02T16:27:48Z",
+      "mergedAt": "2023-03-02T16:27:48Z",
+      "mergedBy": "ericvoit",
+      "mergeCommit": {
+        "oid": "205efadfe264e9a3c9c6572ce5aa44d5d9c840e6"
+      },
+      "comments": [
+        {
+          "author": "ericvoit",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Include changes from Sergei's semantic musings.",
+          "createdAt": "2023-02-27T16:33:36Z",
+          "updatedAt": "2023-02-27T16:33:36Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M5Od3w_",
+          "commit": {
+            "abbreviatedOid": "af4e42b"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM, I have inlined an editorial suggestion.",
+          "createdAt": "2023-02-27T21:22:22Z",
+          "updatedAt": "2023-02-27T21:23:00Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n* Value 1: The Evidence received contains unknown elements which the Verifier is unable to evaluate. An example might be that the wrong type of Evidence has been delivered.  Another  case is that of Evidence coming from a composite Attester: a Verifier may only understand only part of it and leave as \"unknown\" the Trustworthiness claims related to features it can't appraise.\r\n```",
+              "createdAt": "2023-02-27T21:22:22Z",
+              "updatedAt": "2023-02-27T21:23:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGeKE6M5Oz95b",
+          "commit": {
+            "abbreviatedOid": "33c0a79"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "a little late, but this is an easy one",
+          "createdAt": "2023-03-02T16:57:44Z",
+          "updatedAt": "2023-03-02T16:57:44Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "id": "PR_kwDOGeKE6M5LJetB",
+      "title": "remove redundant \"only\"",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/22",
+      "state": "MERGED",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I introduced a typo in an editorial suggestion in #21 :-(",
+      "createdAt": "2023-03-02T16:57:52Z",
+      "updatedAt": "2023-03-02T20:38:42Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "205efadfe264e9a3c9c6572ce5aa44d5d9c840e6",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "typo",
+      "headRefOid": "c7c985cc423c037eb4da6749f4fd3c27fe4df8f9",
+      "closedAt": "2023-03-02T20:38:38Z",
+      "mergedAt": "2023-03-02T20:38:38Z",
+      "mergedBy": "thomas-fossati",
+      "mergeCommit": {
+        "oid": "ddc1082164edb06124742f936ffba33e46a092bc"
+      },
+      "comments": [
+        {
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> okay\r\n\r\nalright",
+          "createdAt": "2023-03-02T17:43:25Z",
+          "updatedAt": "2023-03-02T17:43:25Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M5Oz-zx",
+          "commit": {
+            "abbreviatedOid": "c7c985c"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "okay",
+          "createdAt": "2023-03-02T16:59:45Z",
+          "updatedAt": "2023-03-02T16:59:45Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "id": "PR_kwDOGeKE6M5TdwpM",
+      "title": "typo in terminology",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/25",
+      "state": "MERGED",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "spotted by @setrofim",
+      "createdAt": "2023-06-20T18:19:17Z",
+      "updatedAt": "2023-06-20T18:25:52Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "ddc1082164edb06124742f936ffba33e46a092bc",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "typo-in-terminology",
+      "headRefOid": "e114d0cc6ca2a7fbe3ce0e98f5252107acb229c3",
+      "closedAt": "2023-06-20T18:25:48Z",
+      "mergedAt": "2023-06-20T18:25:48Z",
+      "mergedBy": "thomas-fossati",
+      "mergeCommit": {
+        "oid": "ec10ddc079d43ce4cc90a2c3c62a8b2b806ab0c9"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M5YvHZp",
+          "commit": {
+            "abbreviatedOid": "e114d0c"
+          },
+          "author": "ericvoit",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-06-20T18:20:08Z",
+          "updatedAt": "2023-06-20T18:20:08Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "id": "PR_kwDOGeKE6M5ZJAnw",
+      "title": "update ref to RATS arch + remove spurious tab",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/26",
+      "state": "MERGED",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "in preparation for a refresh just before expiry",
+      "createdAt": "2023-08-30T13:28:18Z",
+      "updatedAt": "2023-08-30T13:59:34Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "ec10ddc079d43ce4cc90a2c3c62a8b2b806ab0c9",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "pre-05",
+      "headRefOid": "0abedaef6d47e3f4d3c1f1b48d92250e22d9520f",
+      "closedAt": "2023-08-30T13:59:34Z",
+      "mergedAt": "2023-08-30T13:59:34Z",
+      "mergedBy": "thomas-fossati",
+      "mergeCommit": {
+        "oid": "ee8f3a13c792e88dd439fde3eaa6352e62038110"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M5fh81p",
+          "commit": {
+            "abbreviatedOid": "0abedae"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-08-30T13:38:04Z",
+          "updatedAt": "2023-08-30T13:38:04Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "id": "PR_kwDOGeKE6M6J1FEX",
+      "title": "Add CDDL",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/29",
+      "state": "MERGED",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add CDDL that defines the CBOR/JSON serialisation of the AR4SI types.\r\n\r\nRendered at https://ietf-rats-wg.github.io/draft-ietf-rats-ar4si/cddl/draft-ietf-rats-ar4si.html#section-3\r\n\r\nAddress #23 ",
+      "createdAt": "2025-02-03T10:41:26Z",
+      "updatedAt": "2025-02-05T17:23:46Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "b26354e76b1bc49fdc7bb36bd2e216b50e263e2e",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "cddl",
+      "headRefOid": "393539b6b6290def13aae672a1569f3fc55e7d21",
+      "closedAt": "2025-02-05T17:23:46Z",
+      "mergedAt": "2025-02-05T17:23:46Z",
+      "mergedBy": "thomas-fossati",
+      "mergeCommit": {
+        "oid": "f26c26f15c89e33c51699259542600140724f853"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M6akFTd",
+          "commit": {
+            "abbreviatedOid": "22751fc"
+          },
+          "author": "carl-wallace",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-04T15:00:17Z",
+          "updatedAt": "2025-02-04T15:00:17Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGeKE6M6awYNs",
+          "commit": {
+            "abbreviatedOid": "393539b"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "v4, cddl & cddlc ftw",
+          "createdAt": "2025-02-05T16:39:56Z",
+          "updatedAt": "2025-02-05T16:39:56Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "id": "PR_kwDOGeKE6M6KLSCb",
+      "title": "add EAT claims registrations for the AR4SI types",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/31",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-05T17:58:37Z",
+      "updatedAt": "2025-02-05T19:28:22Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "f26c26f15c89e33c51699259542600140724f853",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "eat-claims",
+      "headRefOid": "30b25e48459fd28172670896dc55820309a12a49",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M6axQDo",
+          "commit": {
+            "abbreviatedOid": "040f777"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-05T18:12:01Z",
+          "updatedAt": "2025-02-05T18:12:01Z",
+          "comments": [
+            {
+              "originalPosition": 31,
+              "body": "```suggestion\r\nThis document also specifies the proposed information elements and corresponding EAT claims, utilizing CBOR and JSON serializations.\r\n```",
+              "createdAt": "2025-02-05T18:12:01Z",
+              "updatedAt": "2025-02-05T18:12:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGeKE6M6axQV9",
+          "commit": {
+            "abbreviatedOid": "040f777"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-05T18:12:34Z",
+          "updatedAt": "2025-02-05T18:12:35Z",
+          "comments": [
+            {
+              "originalPosition": 39,
+              "body": "errr... line 113 clone? merge",
+              "createdAt": "2025-02-05T18:12:35Z",
+              "updatedAt": "2025-02-05T18:12:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGeKE6M6axQlr",
+          "commit": {
+            "abbreviatedOid": "040f777"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "CHANGES_REQUESTED",
+          "body": "mostly harmless, but some redundancy",
+          "createdAt": "2025-02-05T18:13:03Z",
+          "updatedAt": "2025-02-05T18:13:03Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
