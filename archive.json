@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-06T01:44:40.979751+00:00",
+  "timestamp": "2025-02-09T01:48:29.130203+00:00",
   "repo": "ietf-rats-wg/draft-ietf-rats-ar4si",
   "labels": [
     {
@@ -1095,25 +1095,33 @@
       "id": "PR_kwDOGeKE6M6KLSCb",
       "title": "add EAT claims registrations for the AR4SI types",
       "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/31",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "thomas-fossati",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-02-05T17:58:37Z",
-      "updatedAt": "2025-02-05T19:28:22Z",
+      "updatedAt": "2025-02-06T09:13:02Z",
       "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
       "baseRefName": "main",
       "baseRefOid": "f26c26f15c89e33c51699259542600140724f853",
       "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
       "headRefName": "eat-claims",
       "headRefOid": "30b25e48459fd28172670896dc55820309a12a49",
-      "closedAt": null,
+      "closedAt": "2025-02-06T09:13:02Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@henkbirkholz, thanks for the review. On second thought I am going to close this PR for now.  I will raise the question on the RATS WG first.",
+          "createdAt": "2025-02-06T09:13:02Z",
+          "updatedAt": "2025-02-06T09:13:02Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOGeKE6M6axQDo",
@@ -1166,6 +1174,56 @@
           "body": "mostly harmless, but some redundancy",
           "createdAt": "2025-02-05T18:13:03Z",
           "updatedAt": "2025-02-05T18:13:03Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 32,
+      "id": "PR_kwDOGeKE6M6KRcwM",
+      "title": "Small edits",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/32",
+      "state": "MERGED",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "1. s/trust-tier/trustworthiness-tier/\r\n2. add trustworthiness-claim to the start symbol",
+      "createdAt": "2025-02-06T12:43:12Z",
+      "updatedAt": "2025-02-06T13:11:15Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "f26c26f15c89e33c51699259542600140724f853",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "small-edits",
+      "headRefOid": "603165587789c55db866ea9c83ffaa92b1ca4913",
+      "closedAt": "2025-02-06T13:11:09Z",
+      "mergedAt": "2025-02-06T13:11:09Z",
+      "mergedBy": "thomas-fossati",
+      "mergeCommit": {
+        "oid": "88c1a01e7e41e995b1d2e8e19814e695b2680304"
+      },
+      "comments": [
+        {
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "body": "cc @setrofim",
+          "createdAt": "2025-02-06T12:43:30Z",
+          "updatedAt": "2025-02-06T12:43:30Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M6a45MB",
+          "commit": {
+            "abbreviatedOid": "6031655"
+          },
+          "author": "setrofim",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2025-02-06T13:00:43Z",
+          "updatedAt": "2025-02-06T13:00:43Z",
           "comments": []
         }
       ]
