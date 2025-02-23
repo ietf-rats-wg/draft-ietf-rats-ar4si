@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-20T01:46:05.841671+00:00",
+  "timestamp": "2025-02-23T01:52:06.400089+00:00",
   "repo": "ietf-rats-wg/draft-ietf-rats-ar4si",
   "labels": [
     {
@@ -358,6 +358,37 @@
       "updatedAt": "2025-02-05T14:16:26Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 33,
+      "id": "I_kwDOGeKE6M6qyrCu",
+      "title": "inconsistent `non-empty<>` around `trustworthiness-vector`",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/33",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "@carl-wallace notes:\n\n> ar4si states a relying party should make no \"distinction between\n> a Trustworthiness Claim with enumeration '0', and no Trustworthiness\n> Claim being provided.\" This seems a bit in conflict with EAR's\n> requirement for at least one entry in the submods field.",
+      "createdAt": "2025-02-20T08:16:21Z",
+      "updatedAt": "2025-02-20T14:58:10Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "ericvoit",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The intent of the requirement so that a missing claim is treated the same as a claim with a \"0\" enumerated value for the claim. I.e., it is functionally equivalent to include claim types with no value assigned.  Why would this be a conflict with EAR?",
+          "createdAt": "2025-02-20T14:48:10Z",
+          "updatedAt": "2025-02-20T14:48:10Z"
+        },
+        {
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Why would this be a conflict with EAR?\n\nThe problem is just with using the CDDL macro `non-empty<>` that requires at least one entry in the trustworthiness vector.  But if there are none it's just as good.",
+          "createdAt": "2025-02-20T14:58:08Z",
+          "updatedAt": "2025-02-20T14:58:08Z"
+        }
+      ]
     }
   ],
   "pulls": [
