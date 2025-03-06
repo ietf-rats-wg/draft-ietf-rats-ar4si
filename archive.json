@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-04T01:49:53.695619+00:00",
+  "timestamp": "2025-03-06T01:49:58.709586+00:00",
   "repo": "ietf-rats-wg/draft-ietf-rats-ar4si",
   "labels": [
     {
@@ -389,6 +389,22 @@
           "updatedAt": "2025-02-20T14:58:08Z"
         }
       ]
+    },
+    {
+      "number": 34,
+      "id": "I_kwDOGeKE6M6spuPc",
+      "title": "Provide shorthands for trustvector codepoints",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/34",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As an implementer of AR4SI-based libraries, I typically need to define [human-readable aliases](https://github.com/veraison/ear/blob/b3d008076cb7270218e4b333cd111a54add6d74f/trustclaim.go#L32-L84) for the trust vector codepoints.\n\nTo prevent a proliferation of different names that mean the same thing and the resulting cognitive dissonance, it would be beneficial for AR4SI to define the shorthands that each implementation can reuse.\n\nIdeally, this should be defined in the [AR4SI CDDL](https://www.ietf.org/archive/id/draft-ietf-rats-ar4si-08.html#section-3.4), and the formatting should use C constant conventions - i.e., with only capital letters and underscores.  E.g.: `VERIFIER_MALFUNCTION` for -1.",
+      "createdAt": "2025-03-05T08:33:45Z",
+      "updatedAt": "2025-03-05T08:33:45Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
