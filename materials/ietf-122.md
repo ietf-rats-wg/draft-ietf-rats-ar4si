@@ -47,6 +47,7 @@ Hot topics:
 
 * "Executables" bucket split: boot-time and run-time [#28](https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/28)
 * Better Verifier identification [#30](https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/30)
+
 ^finer-grained identification of the verifier
 
 ---
@@ -55,13 +56,17 @@ Hot topics:
 
 ^application domains that have been exercised: confidential computing, attestation in IoT, network equipment
 
-EAR is adopted in some major open source verifiers, including Veraison, CoCo Trustee, and Keylime (WIP)
+EAR is adopted in some major open source verifiers, including Veraison, CoCo Trustee, and Keylime[^1]
 
-OSS implementations in Rust, C, Golang and Python (WIP)
+OSS implementations in Rust, C, Golang and Python[^1]
 
-Collecting claim names from different attesters - WIP by Yogesh 
+Collecting claim names from different attesters[^2]
 
 ^to come to a shared understanding between verifiers and RPs
+
+[^1]: In progress at [https://github.com/orgs/veraison/projects/8](https://github.com/orgs/veraison/projects/8)
+
+[^2]: In progress at [https://github.com/thomas-fossati/draft-ear/wiki/Eat-Attestation-Results-Claim-Sets](https://github.com/thomas-fossati/draft-ear/wiki/Eat-Attestation-Results-Claim-Sets)
 
 ---
 
