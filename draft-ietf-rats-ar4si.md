@@ -404,8 +404,8 @@ configuration:
    99:
    : Cryptographic validation of the Evidence has failed.
 
-executables:
-: A Verifier has appraised and evaluated relevant runtime files, scripts, and/or other objects which have been loaded into the Target environment's memory.
+boot-time-executables:
+: A Verifier has appraised and evaluated relevant boot-time components which have been loaded into the Target Environment's memory.
 
    0:
    : No assertion
@@ -417,19 +417,49 @@ executables:
    : Verifier malfunction
 
    2:
-   : Only a recognized genuine set of approved executables, scripts, files, and/or objects have been loaded during and after the boot process.
-
-   3:
-   : Only a recognized genuine set of approved executables have been loaded during the boot process.
+   : Only a recognized genuine set of approved components have been loaded during the boot process.
 
    32:
-   : Only a recognized genuine set of executables, scripts, files, and/or objects have been loaded.  However the Verifier cannot vouch for a subset of these due to known bugs or other known vulnerabilities.
+   : Only a recognized genuine set of components have been loaded.  However the Verifier cannot vouch for a subset of these due to known bugs or other known vulnerabilities.
 
    33:
-   : Runtime memory includes executables, scripts, files, and/or objects which are not recognized.
+   : Components loaded at boot-time include executables, scripts, files, and/or objects that are not recognized.
+
+   34:
+   : Components loaded at boot-time include executables, scripts, files, and/or objects that are not recognized, and the Verifier cannot vouch for a subset of the recognized components due to known bugs or other known vulnerabilities.
 
    96:
-   : Runtime memory includes executables, scripts, files, and/or object which are contraindicated.
+   : Boot-time components include executables, scripts, files, and/or objects that are contraindicated.  (The contraindicated components may be unrecognized or known to contain vulnerabilities.)
+
+   99:
+   : Cryptographic validation of the Evidence has failed.
+
+run-time-executables:
+: A Verifier has appraised and evaluated relevant components which have been loaded into the Target Environment's run-time memory.
+
+   0:
+   : No assertion
+
+   1:
+   : Evidence contains unknown elements which inhibit Verifer evaluation.
+
+   -1:
+   : Verifier malfunction
+
+   2:
+   : Only a recognized genuine set of approved components have been loaded in run-time memory.
+
+   32:
+   : Only a recognized genuine set of components have been loaded.  However the Verifier cannot vouch for a subset of these due to known bugs or other known vulnerabilities.
+
+   33:
+   : Components loaded into run-time memory include executables, scripts, files, and/or objects that are not recognized.
+
+   34:
+   : Components loaded into run-time memory include executables, scripts, files, and/or objects that are not recognized, and the Verifier cannot vouch for a subset of the recognized components due to known bugs or other known vulnerabilities.
+
+   96:
+   : Run-time components include executables, scripts, files, and/or objects that are contraindicated.  (The contraindicated components may be unrecognized or known to contain vulnerabilities.)
 
    99:
    : Cryptographic validation of the Evidence has failed.
@@ -907,7 +937,8 @@ Following are Trustworthiness Claims which MAY be set for a HSM-based Confidenti
 | Trustworthiness Claim | Required? | Appraisal Method |
 | :--- | :--- |:--- |
 | configuration | Optional | Verifier evaluation of Attester reveals no configuration lines which expose the Attester to known security vulnerabilities.  This may be done with or without the involvement of a TPM PCR. |
-| executables | Yes | Checks the TPM PCRs for the static operating system, and for any tracked files subsequently loaded |
+| boot-time-executables | Yes | Checks the TPM PCRs for the boot-time firmware and configuration |
+| run-time-executables | Yes | Checks the TPM PCRs for the static operating system, and for any tracked files subsequently loaded |
 | file-system | No  | Can be supported, but TPM tracking is unlikely |
 | hardware | Yes | If TPM PCR check ok from BIOS checks, through Master Boot Record configuration |
 | instance-identity | Optional | Check IDevID |
@@ -928,23 +959,27 @@ Step 0: set Trustworthiness Vector = Null
 
 Step 1: Is there sufficient fresh signed evidence to appraise?
   (yes) - No Action
-  (no) -  Goto Step 6
+  (no) -  Goto Step 7
 
 Step 2: Appraise Hardware Integrity PCRs
    if (hardware NOT "0") - push onto vector
-   if (hardware NOT affirming or warning), go to Step 6
+   if (hardware NOT affirming or warning), go to Step 7
 
 Step 3: Appraise Attesting Environment identity
    if (instance-identity <> "0") - push onto vector
 
-Step 4: Appraise executable loaded and filesystem integrity
-   if (executables NOT "0") - push onto vector
-   if (executables NOT affirming or warning), go to Step 6
+Step 4: Appraise boot-time executables
+   if (boot-time-executables NOT "0") - push onto vector
+   if (boot-time-executables NOT affirming or warning), go to Step 7
 
-Step 5: Appraise all remaining Trustworthiness Claims
+Step 5: Appraise run-time executables and filesystem integrity
+   if (run-time-executables NOT "0") - push onto vector
+   if (run-time-executables NOT affirming or warning), go to Step 7
+
+Step 6: Appraise all remaining Trustworthiness Claims
         Independently and set as appropriate.
 
-Step 6: Assemble Attestation Results, and push to Attester
+Step 7: Assemble Attestation Results, and push to Attester
 
 End
 
@@ -959,7 +994,8 @@ Following are Trustworthiness Claims which MAY be set for a process-based Confid
 | :--- | :--- |:--- |
 | instance-identity | Optional | Internally available in TEE.  But keys might not be known/exposed to the Relying Party by the Attesting Environment.   |
 | configuration | Optional | If done, this is at the Application Layer.  Plus each process needs it own protection mechanism as the protection is limited to the process itself.   |
-| executables | Optional | Internally available in TEE.  But keys might not be known/exposed to the Relying Party by the Attesting Environment.  |
+| boot-time-executables | Mandatory | From the TEE |
+| run-time-executables | Optional | Internally available in TEE.  But keys might not be known/exposed to the Relying Party by the Attesting Environment.  |
 | file-system | Optional | Can be supported by application, but process-based CC is not a sufficient technology base for this Trustworthiness Claim. |
 | hardware | Implicit in signature | At least the TEE is protected here. Other elements of the system outside of the TEE might need additional protections is used by the application process.  |
 | runtime-opaque | Implicit in signature |  From the TEE  |
@@ -976,7 +1012,8 @@ Following are Trustworthiness Claims which MAY be set for a VM-based Confidentia
 | :--- | :--- |:--- |
 | instance-identity | Optional | Internally available in TEE.  But keys might not be known/exposed to the Relying Party by the Attesting Environment.   |
 | configuration | Optional | Requires application integration.  Easier than with process-based solution, as the whole protected machine can be evaluated.  |
-| executables | Optional | Internally available in TEE.  But keys might not be known/exposed to the Relying Party by the Attesting Environment.  |
+| boot-time-executables | Mandatory | From the TEE |
+| run-time-executables | Optional | Internally available in TEE.  But keys might not be known/exposed to the Relying Party by the Attesting Environment.  |
 | file-system | Optional | Can be supported by application |
 | hardware | Chip dependent | At least the TEE is protected here. Other elements of the system outside of the TEE might need additional protections is used by the application process.  |
 | runtime-opaque | Implicit in signature |  From the TEE  |
