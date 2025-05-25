@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-30T02:00:44.196629+00:00",
+  "timestamp": "2025-05-25T02:10:45.827914+00:00",
   "repo": "ietf-rats-wg/draft-ietf-rats-ar4si",
   "labels": [
     {
@@ -1274,6 +1274,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 35,
+      "id": "PR_kwDOGeKE6M6XXSaj",
+      "title": "feat!: Split executables bucket in two",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/pull/35",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "* Split executables bucket in two buckets: boot-time and run-time.\r\n* Add warning-level codepoint 34 for \"at least one known-bad and at least one unrecognized\".\r\n\r\nBREAKING CHANGE: Dependent specifications (e.g., EAR) must provide explicit signalling to their consumers.  For example, modifying the profile identifier.\r\n\r\nFix #28",
+      "createdAt": "2025-05-23T10:25:37Z",
+      "updatedAt": "2025-05-23T10:25:46Z",
+      "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "baseRefName": "main",
+      "baseRefOid": "88c1a01e7e41e995b1d2e8e19814e695b2680304",
+      "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
+      "headRefName": "boot-vs-run-time-bucket-split",
+      "headRefOid": "8de134522bad28e4912c9af36a05b363285ffed5",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
