@@ -417,7 +417,7 @@ boot-time-executables:
    : Verifier malfunction
 
    2:
-   : Only a recognized genuine set of approved components have been loaded during the boot process.
+   : Only a recognized, genuine set of approved components has been loaded during the boot process.
 
    32:
    : Only a recognized, genuine set of components has been loaded.  However, the Verifier cannot vouch for a subset of these due to known bugs or other known, non-exploitable vulnerabilities.
