@@ -420,7 +420,7 @@ boot-time-executables:
    : Only a recognized genuine set of approved components have been loaded during the boot process.
 
    32:
-   : Only a recognized genuine set of components have been loaded.  However the Verifier cannot vouch for a subset of these due to known bugs or other known vulnerabilities.
+   : Only a recognized, genuine set of components has been loaded.  However, the Verifier cannot vouch for a subset of these due to known bugs or other known, non-exploitable vulnerabilities.
 
    33:
    : Components loaded at boot-time include executables, scripts, files, and/or objects that are not recognized.
