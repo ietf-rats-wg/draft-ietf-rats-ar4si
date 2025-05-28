@@ -426,7 +426,7 @@ boot-time-executables:
    : Components loaded at boot-time include executables, scripts, files, and/or objects that are not recognized.
 
    34:
-   : Components loaded at boot-time include executables, scripts, files, and/or objects that are not recognized, and the Verifier cannot vouch for a subset of the recognized components due to known bugs or other known vulnerabilities.
+   : Components loaded at boot-time include executables, scripts, files, and/or objects that are not recognized, and the Verifier cannot vouch for a subset of the recognized components due to known bugs or other known, non-exploitable vulnerabilities.
 
    96:
    : Boot-time components include executables, scripts, files, and/or objects that are contraindicated.  (The contraindicated components may be unrecognized or known to contain vulnerabilities.)
