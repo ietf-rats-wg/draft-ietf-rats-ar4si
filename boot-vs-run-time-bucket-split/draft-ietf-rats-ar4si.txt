@@ -5,14 +5,14 @@
 RATS Working Group                                               E. Voit
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                             H. Birkholz
-Expires: 24 November 2025                                 Fraunhofer SIT
+Expires: 29 November 2025                                 Fraunhofer SIT
                                                              T. Hardjono
                                                                      MIT
                                                               T. Fossati
                                                                   Linaro
                                                              V. Scarlata
                                                                    Intel
-                                                             23 May 2025
+                                                             28 May 2025
 
 
               Attestation Results for Secure Interactions
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 November 2025.
+   This Internet-Draft will expire on 29 November 2025.
 
 Copyright Notice
 
@@ -679,9 +679,9 @@ Table of Contents
       2:  Only a recognized genuine set of approved components have been
          loaded during the boot process.
 
-      32:  Only a recognized genuine set of components have been loaded.
-         However the Verifier cannot vouch for a subset of these due to
-         known bugs or other known vulnerabilities.
+      32:  Only a recognized, genuine set of components has been loaded.
+         However, the Verifier cannot vouch for a subset of these due to
+         known bugs or other known, non-exploitable vulnerabilities.
 
       33:  Components loaded at boot-time include executables, scripts,
          files, and/or objects that are not recognized.
