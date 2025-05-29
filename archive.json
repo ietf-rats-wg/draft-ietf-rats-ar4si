@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-25T02:10:45.827914+00:00",
+  "timestamp": "2025-05-29T02:02:26.533586+00:00",
   "repo": "ietf-rats-wg/draft-ietf-rats-ar4si",
   "labels": [
     {
@@ -403,6 +403,22 @@
       "body": "As an implementer of AR4SI-based libraries, I typically need to define [human-readable aliases](https://github.com/veraison/ear/blob/b3d008076cb7270218e4b333cd111a54add6d74f/trustclaim.go#L32-L84) for the trust vector codepoints.\n\nTo prevent a proliferation of different names that mean the same thing and the resulting cognitive dissonance, it would be beneficial for AR4SI to define the shorthands that each implementation can reuse.\n\nIdeally, this should be defined in the [AR4SI CDDL](https://www.ietf.org/archive/id/draft-ietf-rats-ar4si-08.html#section-3.4), and the formatting should use C constant conventions - i.e., with only capital letters and underscores.  E.g.: `VERIFIER_MALFUNCTION` for -1.",
       "createdAt": "2025-03-05T08:33:45Z",
       "updatedAt": "2025-03-05T08:33:45Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 36,
+      "id": "I_kwDOGeKE6M64cVtQ",
+      "title": "Unrecognized claim should be contraindicated tier.",
+      "url": "https://github.com/ietf-rats-wg/draft-ietf-rats-ar4si/issues/36",
+      "state": "OPEN",
+      "author": "setrofim",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Relying parties that only base decision on tiers, rather than individual claims should reject attesters that present unrecongized values. So that whever a claim indicates that something wasn't recognized, it should be in the contraindicated tier. \n\nRight now, this is handled correctly for hardware (`unrecognized_hw` is  contraindicatd), but not for executables (where unrecognized exe's are a warning).\n\nWe should go thorugh all claims and to make sure that \"unrecognzied\" is in contraindicated tier in all cases.\n\n(note: we should still preserve the distincition between \"unrecognized\" and \"recognized but contraindicated\" in separate claims to make it possible to implement blacklist-style policies, but for Relying parties that don't care about specific claims, \"unrecognized\" should result in rejection).",
+      "createdAt": "2025-05-27T15:57:07Z",
+      "updatedAt": "2025-05-27T15:57:07Z",
       "closedAt": null,
       "comments": []
     }
@@ -1287,19 +1303,159 @@
       "labels": [],
       "body": "* Split executables bucket in two buckets: boot-time and run-time.\r\n* Add warning-level codepoint 34 for \"at least one known-bad and at least one unrecognized\".\r\n\r\nBREAKING CHANGE: Dependent specifications (e.g., EAR) must provide explicit signalling to their consumers.  For example, modifying the profile identifier.\r\n\r\nFix #28",
       "createdAt": "2025-05-23T10:25:37Z",
-      "updatedAt": "2025-05-23T10:25:46Z",
+      "updatedAt": "2025-05-28T13:53:54Z",
       "baseRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
       "baseRefName": "main",
       "baseRefOid": "88c1a01e7e41e995b1d2e8e19814e695b2680304",
       "headRepository": "ietf-rats-wg/draft-ietf-rats-ar4si",
       "headRefName": "boot-vs-run-time-bucket-split",
-      "headRefOid": "8de134522bad28e4912c9af36a05b363285ffed5",
+      "headRefOid": "d9d3b2ee9e28cf9090075f2d7229ce0b82aae4ef",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOGeKE6M6rICpN",
+          "commit": {
+            "abbreviatedOid": "8de1345"
+          },
+          "author": "setrofim",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "Given that boot/run-time compoinents  include more than executables, prehaps itts best to drop the `-exectuables` suffix? so just `\"boot-time\"` and `\"run-time\"` (or, alternatively, replace it with the wider-encompassing `-components` suffx)?",
+          "createdAt": "2025-05-27T13:08:01Z",
+          "updatedAt": "2025-05-27T13:08:01Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGeKE6M6rIFCe",
+          "commit": {
+            "abbreviatedOid": "8de1345"
+          },
+          "author": "setrofim",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-27T13:10:47Z",
+          "updatedAt": "2025-05-27T13:11:57Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "Would this not fall under \"contraindicated\"?  If some components are unrecognized, and those that are recognized contain vulns (i.e. are contrainicated), then take the more severe condition.",
+              "createdAt": "2025-05-27T13:10:48Z",
+              "updatedAt": "2025-05-27T13:11:57Z"
+            },
+            {
+              "originalPosition": 59,
+              "body": "Same comment as for `34` above.",
+              "createdAt": "2025-05-27T13:11:18Z",
+              "updatedAt": "2025-05-27T13:11:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGeKE6M6rXOEZ",
+          "commit": {
+            "abbreviatedOid": "8de1345"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-28T13:09:03Z",
+          "updatedAt": "2025-05-28T13:09:04Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "```suggestion\r\n   : Only a recognized, genuine set of components has been loaded.  However, the Verifier cannot vouch for a subset of these due to known bugs or other known, non-exploitable vulnerabilities.\r\n```",
+              "createdAt": "2025-05-28T13:09:03Z",
+              "updatedAt": "2025-05-28T13:09:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGeKE6M6rXQgA",
+          "commit": {
+            "abbreviatedOid": "1227798"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-28T13:10:36Z",
+          "updatedAt": "2025-05-28T13:10:37Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "```suggestion\r\n   : Only a recognized, genuine set of approved components has been loaded during the boot process.\r\n```",
+              "createdAt": "2025-05-28T13:10:36Z",
+              "updatedAt": "2025-05-28T13:10:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGeKE6M6rXjRt",
+          "commit": {
+            "abbreviatedOid": "a84c659"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-28T13:22:21Z",
+          "updatedAt": "2025-05-28T13:22:22Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "> Would this not fall under \"contraindicated\"? If some components are unrecognized, \r\n\r\nWhether \u201cunrecognised\u201d warrants \u201ccontraindicated\" rather than \u201cwarning\u201d is debatable.  Logically, this seems similar/equivalent to the \u201cunrecognised HW\u201d condition that we map to \u201ccontraindicated\".  If you look at it like that, yes, it's pretty natural to treat this the same way.  However, I believe that for higher layer software components the situation is more nuanced due to the higher dynamicity/flexibility of the assembly.  Operationally, it\u2019s far more difficult to impose a rigid view of the upper-layers of the TCB than it is for the HW RoT and adjacent layers.  Therefore, in this case I reckon it\u2019s reasonable to relax the signal strength \u2014 i.e., encode in the warning tier.\r\n\r\n> and those that are recognized contain vulns (i.e. are contrainicated), then take the more severe condition.\r\n\r\nI will clarify that the vulnerabilities contemplated here are of the no-known CVE kind, and therefore compatible with the warning tier.\r\n\r\n",
+              "createdAt": "2025-05-28T13:22:22Z",
+              "updatedAt": "2025-05-28T13:22:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGeKE6M6rXlFj",
+          "commit": {
+            "abbreviatedOid": "a84c659"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-28T13:23:42Z",
+          "updatedAt": "2025-05-28T13:23:42Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "```suggestion\r\n   : Components loaded at boot-time include executables, scripts, files, and/or objects that are not recognized, and the Verifier cannot vouch for a subset of the recognized components due to known bugs or other known, non-exploitable vulnerabilities.\r\n```",
+              "createdAt": "2025-05-28T13:23:42Z",
+              "updatedAt": "2025-05-28T13:23:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGeKE6M6rYE8H",
+          "commit": {
+            "abbreviatedOid": "8de1345"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-28T13:53:53Z",
+          "updatedAt": "2025-05-28T13:53:54Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "On second thought, my argument applies to run-time executables rather than boot-time.\r\n\r\nWhich also, at a deeper level, affects the core reasoning behind the split proposed in #28.  I am starting to wonder whether the \u201chardware\u201d bucket (which comprises HW and FW \u2014 i.e., the entire \u201cplatform\" TCB) is what needs more subtle encoding rather than \u201cexecutables\u201d.",
+              "createdAt": "2025-05-28T13:53:53Z",
+              "updatedAt": "2025-05-28T13:53:54Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
