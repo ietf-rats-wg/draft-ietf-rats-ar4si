@@ -5,14 +5,14 @@
 RATS Working Group                                               E. Voit
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                             H. Birkholz
-Expires: 24 November 2025                                 Fraunhofer SIT
+Expires: 16 February 2026                                 Fraunhofer SIT
                                                              T. Hardjono
                                                                      MIT
                                                               T. Fossati
                                                                   Linaro
                                                              V. Scarlata
                                                                    Intel
-                                                             23 May 2025
+                                                          15 August 2025
 
 
               Attestation Results for Secure Interactions
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 November 2025.
+   This Internet-Draft will expire on 16 February 2026.
 
 Copyright Notice
 
@@ -364,13 +364,13 @@ Table of Contents
    2.  Process-based: An individual process which has its runtime memory
        encrypted by an Attesting Environment in a way that no other
        processes can read and decrypt that memory (e.g., [SGX] or
-       [I-D.tschofenig-rats-psa-token].)
+       [RFC9783].)
 
    3.  VM-based: An entire Guest VM (or a set of containers within a
        host) have been encrypted as a walled-garden unit by an Attesting
        Environment.  The result is that the host operating system cannot
        read and decrypt what is executing within that VM (e.g.,
-       [SEV-SNP] or [TDX].)
+       [SEV-SNP], [TDX] or [ARM-CCA].)
 
    Each of these categories of Attesters above will be capable of
    generating Evidence which is protected using private keys /
@@ -392,17 +392,17 @@ Table of Contents
       'chip-vendor'
 
    *  target-environment: a unique instance of a software build running
-      in an Attester (e.g., MRENCLAVE [SGX], an Instance ID
-      [I-D.tschofenig-rats-psa-token], an Identity Block [SEV-SNP], or a
-      hash which represents a set of software loaded since boot (e.g.,
-      TPM based integrity verification.))
+      in an Attester (e.g., MRENCLAVE [SGX], an Identity Block
+      [SEV-SNP], a Realm Initial Measurement (RIM) [ARM-CCA], or a hash
+      which represents a set of software loaded since boot (e.g., TPM
+      based integrity verification.))
 
    *  target-developer: the organizational unit responsible for a
       particular 'target-environment' (e.g., MRSIGNER [SGX])
 
    *  instance: a unique instantiated instance of an Attesting
       Environment running on 'chip-hardware' (e.g., an LDevID
-      [IEEE802.1AR])
+      [IEEE802.1AR], an Instance ID [RFC9783] [ARM-CCA])
 
    Based on the category of the Attesting Environment, different types
    of identities might be exposed by an Attester.
@@ -426,9 +426,9 @@ Table of Contents
    It is expected that drafts subsequent to this specification will
    provide the definitions and value domains for specific identities,
    each of which falling within the Attester identity types listed
-   above.  In some cases the actual unique identities might encoded as
-   complex structures.  An example complex structure might be a 'target-
-   environment' encoded as a Software Bill of Materials (SBOM).
+   above.  In some cases the actual unique identities might be encoded
+   as complex structures.  An example complex structure might be a
+   'target-environment' encoded as a Software Bill of Materials (SBOM).
 
    With the identity definitions and value domains, a Relying Party will
    have sufficient information to ensure that the Attester identities
@@ -883,7 +883,7 @@ Table of Contents
 
    Some Trustworthiness Claims are implicit based on the underlying type
    of Attesting Environment.  For example, a validated MRSIGNER identity
-   can be present where the underlying [SGX] hardware is 'hw-authentic'.
+   can be present where the underlying [SGX] hardware is authentic.
    Where such implicit Trustworthiness Claims exist, they do not have to
    be explicitly included in the Trustworthiness Vector.  However, these
    implicit Trustworthiness Claims SHOULD be considered as being present
@@ -1167,7 +1167,7 @@ Table of Contents
    signed Evidence by applying an Appraisal Policy for Attestation
    Results as described below.  This policy will consider both the AR as
    well as additional information about the Attester within the AR
-   Augmented Evidence the when determining what action to take.
+   Augmented Evidence when determining what action to take.
 
    This alternative combines the [RFC9334] Sections 5.1 Passport Model
    and Section 5.2 Background-Check Model.  Figure 5 describes this flow
@@ -1405,20 +1405,19 @@ Table of Contents
 
 8.2.  Informative References
 
+   [ARM-CCA]  Frost, S., Fossati, T., and G. Mandyam, "Arm's
+              Confidential Compute Architecture Reference Attestation
+              Token", Work in Progress, Internet-Draft, draft-ffm-rats-
+              cca-token-01, 3 March 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ffm-rats-cca-
+              token-01>.
+
    [I-D.ietf-rats-network-device-subscription]
               Birkholz, H., Voit, E., and W. Pan, "Attestation Event
               Stream Subscription", Work in Progress, Internet-Draft,
-              draft-ietf-rats-network-device-subscription-06, 8 January
+              draft-ietf-rats-network-device-subscription-07, 21 July
               2025, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              rats-network-device-subscription-06>.
-
-   [I-D.tschofenig-rats-psa-token]
-              Tschofenig, H., Frost, S., Brossard, M., Shaw, A. L., and
-              T. Fossati, "Arm's Platform Security Architecture (PSA)
-              Attestation Token", Work in Progress, Internet-Draft,
-              draft-tschofenig-rats-psa-token-24, 23 September 2024,
-              <https://datatracker.ietf.org/doc/html/draft-tschofenig-
-              rats-psa-token-24>.
+              rats-network-device-subscription-07>.
 
    [IEEE802.1AR]
               "802.1AR: Secure Device Identity", 2 August 2018,
@@ -1432,6 +1431,11 @@ Table of Contents
    [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
               <https://www.rfc-editor.org/rfc/rfc8446>.
+
+   [RFC9783]  Tschofenig, H., Frost, S., Brossard, M., Shaw, A., and T.
+              Fossati, "Arm's Platform Security Architecture (PSA)
+              Attestation Token", RFC 9783, DOI 10.17487/RFC9783, June
+              2025, <https://www.rfc-editor.org/rfc/rfc9783>.
 
    [SEV-SNP]  "AMD SEV-SNP: Stregthening VM Isolation with Integrity
               Protection and More", 2020,
