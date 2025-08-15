@@ -4,3 +4,6 @@ gem 'json_pure'
 gem 'cddl', ['>=0.9.1', '!=0.10.5' ]
 gem 'cbor-diag', '=0.8.1'
 gem 'cddlc'
+gem 'base64'
+gem 'pstore'
+gem 'ostruct'
