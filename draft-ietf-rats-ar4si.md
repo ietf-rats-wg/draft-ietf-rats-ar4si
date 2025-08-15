@@ -89,7 +89,7 @@ informative:
     target: https://trustedcomputinggroup.org/wp-content/uploads/TPM-Rev-2.0-Part-1-Architecture-01.07-2014-03-13.pdf
     title: "Trusted Platform Module Library - Part 1: Architecture"
   US-Executive-Order:
-    target: https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/
+    target: https://bidenwhitehouse.archives.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/
     title: "Executive Order on Improving the Nation's Cybersecurity"
     date: 2021-05-12
 
