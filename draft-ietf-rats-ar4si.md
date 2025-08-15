@@ -78,11 +78,12 @@ informative:
     target:   https://software.intel.com/content/dam/develop/external/us/en/documents/tdx-whitepaper-final9-17.pdf
     title: "Intel Trust Domain Extensions"
     date: 2020
+  ARM-CCA: I-D.ffm-rats-cca-token
   IEEE802.1AR:
     target: https://ieeexplore.ieee.org/document/8423794
     title: "802.1AR: Secure Device Identity"
     date: 2018-08-02
-  I-D.tschofenig-rats-psa-token: PSA
+  RFC9783: PSA
   I-D.ietf-rats-network-device-subscription: subscription
   TPM2.0:
     target: https://trustedcomputinggroup.org/wp-content/uploads/TPM-Rev-2.0-Part-1-Architecture-01.07-2014-03-13.pdf
@@ -234,7 +235,7 @@ This document recognizes three general categories of Attesters.
 
 1. HSM-based: A Hardware Security Module (HSM) based cryptoprocessor which hashes one or more streams of security measurements from an Attester within the Attesting Environment. Maintenance of this hash enables detection of an Attester which is not reporting the exact set of security measurements (such as log entries) taken within the Attesting Environment. An example of a HSM is a TPM2.0 {{TPM2.0}}.
 2. Process-based: An individual process which has its runtime memory encrypted by an Attesting Environment in a way that no other processes can read and decrypt that memory (e.g., {{SGX}} or {{-PSA}}.)
-3. VM-based: An entire Guest VM (or a set of containers within a host) have been encrypted as a walled-garden unit by an Attesting Environment.  The result is that the host operating system cannot read and decrypt what is executing within that VM (e.g., {{SEV-SNP}} or {{TDX}}.)
+3. VM-based: An entire Guest VM (or a set of containers within a host) have been encrypted as a walled-garden unit by an Attesting Environment.  The result is that the host operating system cannot read and decrypt what is executing within that VM (e.g., {{SEV-SNP}}, {{TDX}} or {{ARM-CCA}}.)
 
 Each of these categories of Attesters above will be capable of generating Evidence which is protected using private keys / certificates which are not accessible outside of the corresponding Attesting Environment.
 The owner of these secrets is the owner of the identity which is bound within the Attesting Environment.
@@ -245,9 +246,9 @@ There are several types of Attester identities defined in this document.  This l
 
 * chip-vendor: the vendor of the hardware chip used for the Attesting Environment (e.g., a primary Endorsement Key from a TPM)
 * chip-hardware: specific hardware with specific firmware from an 'chip-vendor'
-* target-environment: a unique instance of a software build running in an Attester (e.g., MRENCLAVE {{SGX}}, an Instance ID {{-PSA}}, an Identity Block {{SEV-SNP}}, or a hash which represents a set of software loaded since boot (e.g., TPM based integrity verification.))
+* target-environment: a unique instance of a software build running in an Attester (e.g., MRENCLAVE {{SGX}}, an Identity Block {{SEV-SNP}}, a Realm Initial Measurement (RIM) {{ARM-CCA}}, or a hash which represents a set of software loaded since boot (e.g., TPM based integrity verification.))
 * target-developer: the organizational unit responsible for a particular 'target-environment' (e.g., MRSIGNER {{SGX}})
-* instance: a unique instantiated instance of an Attesting Environment running on 'chip-hardware' (e.g., an LDevID {{IEEE802.1AR}})
+* instance: a unique instantiated instance of an Attesting Environment running on 'chip-hardware' (e.g., an LDevID {{IEEE802.1AR}}, an Instance ID {{-PSA}} {{ARM-CCA}})
 
 Based on the category of the Attesting Environment, different types of identities might be exposed by an Attester.
 
@@ -260,7 +261,7 @@ Based on the category of the Attesting Environment, different types of identitie
 | instance | Optional | Optional | Optional |
 
 It is expected that drafts subsequent to this specification will provide the definitions and value domains for specific identities, each of which falling within the Attester identity types listed above.
-In some cases the actual unique identities might encoded as complex structures.
+In some cases the actual unique identities might be encoded as complex structures.
 An example complex structure might be a 'target-environment' encoded as a Software Bill of Materials (SBOM).
 
 With the identity definitions and value domains, a Relying Party will have sufficient information to ensure that the Attester identities and Trustworthiness Claims asserted are actually capable of being supported by the underlying type of Attesting Environment.
@@ -608,7 +609,7 @@ In this case, the Verifier is making no Trustworthiness Claims but is confirming
 ### Trustworthiness Vector for a type of Attesting Environment
 
 Some Trustworthiness Claims are implicit based on the underlying type of Attesting Environment.
-For example, a validated MRSIGNER identity can be present where the underlying {{SGX}} hardware is 'hw-authentic'.
+For example, a validated MRSIGNER identity can be present where the underlying {{SGX}} hardware is authentic.
 Where such implicit Trustworthiness Claims exist, they do not have to be explicitly included in the Trustworthiness Vector.
 However, these implicit Trustworthiness Claims SHOULD be considered as being present by the Relying Party.
 Another way of saying this is if a Trustworthiness Claim is automatically supported as a result of coming from a specific type of TEE, that claim need not be redundantly articulated. Such implicit Trustworthiness Claims can be seen in the tables within {{process-based-claims}} and {{VM-based-claims}}.
@@ -708,7 +709,7 @@ This section describes two alternatives.
 
 ### Verifier Retrieval
 
-It is possible to for a Relying Party to follow the Background-Check Model defined in Section 5.2 of {{-rats-arch}}.
+It is possible to for a Relying Party to follow the Background-Check Model defined in {{Section 5.2 of -rats-arch}}.
 In this case, a Relying Party will receive Attestation Results containing the Trustworthiness Vector directly from a Verifier.
 These Attestation Results can then be used by the Relying Party in determining the appropriate treatment for interactions with the Attester.
 
@@ -756,7 +757,7 @@ The Attester then assembles AR Augmented Evidence by taking the signed combinati
 
 The AR Augmented Evidence is then sent to the Relying Party.
 The Relying Party then can appraise these semantically bound sets of signed Evidence by applying an Appraisal Policy for Attestation Results as described below.
-This policy will consider both the AR as well as additional information about the Attester within the AR Augmented Evidence the when determining what action to take.
+This policy will consider both the AR as well as additional information about the Attester within the AR Augmented Evidence when determining what action to take.
 
 This alternative combines the {{-rats-arch}} Sections 5.1 Passport Model and Section 5.2 Background-Check Model.
 {{interactions}} describes this flow of information.
