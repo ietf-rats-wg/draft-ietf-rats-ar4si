@@ -16,22 +16,22 @@ When these elements are offered to Relying Parties as Evidence, different aspect
 Additionally, where the Relying Party is interfacing with a heterogeneous mix of Attesting Environment and Verifier types, consistent policies can be applied to subsequent information exchange between each Attester and the Relying Party. 
        This document also defines two serialisations of the proposed information model, utilising CBOR and JSON. 
     " name="description">
-<meta content="xml2rfc 3.26.0" name="generator">
+<meta content="xml2rfc 3.30.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-rats-ar4si-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.26.0
-    Python 3.12.8
+  xml2rfc 3.30.0
+    Python 3.12.11
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
-    Jinja2 3.1.5
-    lxml 5.3.0
-    platformdirs 4.3.6
+    Jinja2 3.1.6
+    lxml 5.3.1
+    platformdirs 4.3.8
     pycountry 24.6.1
     PyYAML 6.0.2
-    requests 2.32.3
-    setuptools 70.3.0
+    requests 2.32.4
+    setuptools 80.9.0
     wcwidth 0.2.13
 -->
 <link href="draft-ietf-rats-ar4si.xml" rel="alternate" type="application/rfc+xml">
@@ -442,7 +442,7 @@ dl {
     margin-bottom: 0;
   }
 }
-dl > dt {
+dl:not(.dlNewline) > dt {
   float: left;
   margin-right: 2ch;
   min-width: 8ch;
@@ -1051,11 +1051,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Attestation Results</td>
-<td class="right">February 2025</td>
+<td class="right">August 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Voit, et al.</td>
-<td class="center">Expires 10 August 2025</td>
+<td class="center">Expires 16 February 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1068,12 +1068,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-rats-ar4si-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-02-06" class="published">6 February 2025</time>
+<time datetime="2025-08-15" class="published">15 August 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-08-10">10 August 2025</time></dd>
+<dd class="expires"><time datetime="2026-02-16">16 February 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1134,7 +1134,7 @@ Additionally, where the Relying Party is interfacing with a heterogeneous mix of
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 10 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 16 February 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1512,10 +1512,10 @@ After the Verifier performs its appraisal, it will include sufficient informatio
               <p id="section-2.2.1-3.1.1">HSM-based: A Hardware Security Module (HSM) based cryptoprocessor which hashes one or more streams of security measurements from an Attester within the Attesting Environment. Maintenance of this hash enables detection of an Attester which is not reporting the exact set of security measurements (such as log entries) taken within the Attesting Environment. An example of a HSM is a TPM2.0 <span>[<a href="#TPM2.0" class="cite xref">TPM2.0</a>]</span>.<a href="#section-2.2.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
             <li id="section-2.2.1-3.2">
-              <p id="section-2.2.1-3.2.1">Process-based: An individual process which has its runtime memory encrypted by an Attesting Environment in a way that no other processes can read and decrypt that memory (e.g., <span>[<a href="#SGX" class="cite xref">SGX</a>]</span> or <span>[<a href="#I-D.tschofenig-rats-psa-token" class="cite xref">I-D.tschofenig-rats-psa-token</a>]</span>.)<a href="#section-2.2.1-3.2.1" class="pilcrow">¶</a></p>
+              <p id="section-2.2.1-3.2.1">Process-based: An individual process which has its runtime memory encrypted by an Attesting Environment in a way that no other processes can read and decrypt that memory (e.g., <span>[<a href="#SGX" class="cite xref">SGX</a>]</span> or <span>[<a href="#RFC9783" class="cite xref">RFC9783</a>]</span>.)<a href="#section-2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
             <li id="section-2.2.1-3.3">
-              <p id="section-2.2.1-3.3.1">VM-based: An entire Guest VM (or a set of containers within a host) have been encrypted as a walled-garden unit by an Attesting Environment.  The result is that the host operating system cannot read and decrypt what is executing within that VM (e.g., <span>[<a href="#SEV-SNP" class="cite xref">SEV-SNP</a>]</span> or <span>[<a href="#TDX" class="cite xref">TDX</a>]</span>.)<a href="#section-2.2.1-3.3.1" class="pilcrow">¶</a></p>
+              <p id="section-2.2.1-3.3.1">VM-based: An entire Guest VM (or a set of containers within a host) have been encrypted as a walled-garden unit by an Attesting Environment.  The result is that the host operating system cannot read and decrypt what is executing within that VM (e.g., <span>[<a href="#SEV-SNP" class="cite xref">SEV-SNP</a>]</span>, <span>[<a href="#TDX" class="cite xref">TDX</a>]</span> or <span>[<a href="#ARM-CCA" class="cite xref">ARM-CCA</a>]</span>.)<a href="#section-2.2.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
           </ol>
 <p id="section-2.2.1-4">Each of these categories of Attesters above will be capable of generating Evidence which is protected using private keys / certificates which are not accessible outside of the corresponding Attesting Environment.
@@ -1531,13 +1531,13 @@ It is upon this root of trust that unique, non-repudiable Attester identities ma
               <p id="section-2.2.1-6.2.1">chip-hardware: specific hardware with specific firmware from an 'chip-vendor'<a href="#section-2.2.1-6.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.2.1-6.3">
-              <p id="section-2.2.1-6.3.1">target-environment: a unique instance of a software build running in an Attester (e.g., MRENCLAVE <span>[<a href="#SGX" class="cite xref">SGX</a>]</span>, an Instance ID <span>[<a href="#I-D.tschofenig-rats-psa-token" class="cite xref">I-D.tschofenig-rats-psa-token</a>]</span>, an Identity Block <span>[<a href="#SEV-SNP" class="cite xref">SEV-SNP</a>]</span>, or a hash which represents a set of software loaded since boot (e.g., TPM based integrity verification.))<a href="#section-2.2.1-6.3.1" class="pilcrow">¶</a></p>
+              <p id="section-2.2.1-6.3.1">target-environment: a unique instance of a software build running in an Attester (e.g., MRENCLAVE <span>[<a href="#SGX" class="cite xref">SGX</a>]</span>, an Identity Block <span>[<a href="#SEV-SNP" class="cite xref">SEV-SNP</a>]</span>, a Realm Initial Measurement (RIM) <span>[<a href="#ARM-CCA" class="cite xref">ARM-CCA</a>]</span>, or a hash which represents a set of software loaded since boot (e.g., TPM based integrity verification.))<a href="#section-2.2.1-6.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.2.1-6.4">
               <p id="section-2.2.1-6.4.1">target-developer: the organizational unit responsible for a particular 'target-environment' (e.g., MRSIGNER <span>[<a href="#SGX" class="cite xref">SGX</a>]</span>)<a href="#section-2.2.1-6.4.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-2.2.1-6.5">
-              <p id="section-2.2.1-6.5.1">instance: a unique instantiated instance of an Attesting Environment running on 'chip-hardware' (e.g., an LDevID <span>[<a href="#IEEE802.1AR" class="cite xref">IEEE802.1AR</a>]</span>)<a href="#section-2.2.1-6.5.1" class="pilcrow">¶</a></p>
+              <p id="section-2.2.1-6.5.1">instance: a unique instantiated instance of an Attesting Environment running on 'chip-hardware' (e.g., an LDevID <span>[<a href="#IEEE802.1AR" class="cite xref">IEEE802.1AR</a>]</span>, an Instance ID <span>[<a href="#RFC9783" class="cite xref">RFC9783</a>]</span> <span>[<a href="#ARM-CCA" class="cite xref">ARM-CCA</a>]</span>)<a href="#section-2.2.1-6.5.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-2.2.1-7">Based on the category of the Attesting Environment, different types of identities might be exposed by an Attester.<a href="#section-2.2.1-7" class="pilcrow">¶</a></p>
@@ -1585,7 +1585,7 @@ It is upon this root of trust that unique, non-repudiable Attester identities ma
             </tbody>
           </table>
 <p id="section-2.2.1-9">It is expected that drafts subsequent to this specification will provide the definitions and value domains for specific identities, each of which falling within the Attester identity types listed above.
-In some cases the actual unique identities might encoded as complex structures.
+In some cases the actual unique identities might be encoded as complex structures.
 An example complex structure might be a 'target-environment' encoded as a Software Bill of Materials (SBOM).<a href="#section-2.2.1-9" class="pilcrow">¶</a></p>
 <p id="section-2.2.1-10">With the identity definitions and value domains, a Relying Party will have sufficient information to ensure that the Attester identities and Trustworthiness Claims asserted are actually capable of being supported by the underlying type of Attesting Environment.
 Consequently, the Relying Party SHOULD require Identity Evidence which indicates of the type of Attesting Environment when it considers its Appraisal Policy for Attestation Results.<a href="#section-2.2.1-10" class="pilcrow">¶</a></p>
@@ -2148,7 +2148,7 @@ In this case, the Verifier is making no Trustworthiness Claims but is confirming
 <a href="#section-2.3.6" class="section-number selfRef">2.3.6. </a><a href="#name-trustworthiness-vector-for-" class="section-name selfRef">Trustworthiness Vector for a type of Attesting Environment</a>
           </h4>
 <p id="section-2.3.6-1">Some Trustworthiness Claims are implicit based on the underlying type of Attesting Environment.
-For example, a validated MRSIGNER identity can be present where the underlying <span>[<a href="#SGX" class="cite xref">SGX</a>]</span> hardware is 'hw-authentic'.
+For example, a validated MRSIGNER identity can be present where the underlying <span>[<a href="#SGX" class="cite xref">SGX</a>]</span> hardware is authentic.
 Where such implicit Trustworthiness Claims exist, they do not have to be explicitly included in the Trustworthiness Vector.
 However, these implicit Trustworthiness Claims SHOULD be considered as being present by the Relying Party.
 Another way of saying this is if a Trustworthiness Claim is automatically supported as a result of coming from a specific type of TEE, that claim need not be redundantly articulated. Such implicit Trustworthiness Claims can be seen in the tables within <a href="#process-based-claims" class="auto internal xref">Appendix B.2</a> and <a href="#VM-based-claims" class="auto internal xref">Appendix B.3</a>.<a href="#section-2.3.6-1" class="pilcrow">¶</a></p>
@@ -2375,7 +2375,7 @@ This section describes two alternatives.<a href="#section-4-1" class="pilcrow">�
           <h4 id="name-verifier-retrieval">
 <a href="#section-4.1.1" class="section-number selfRef">4.1.1. </a><a href="#name-verifier-retrieval" class="section-name selfRef">Verifier Retrieval</a>
           </h4>
-<p id="section-4.1.1-1">It is possible to for a Relying Party to follow the Background-Check Model defined in Section 5.2 of <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>.
+<p id="section-4.1.1-1">It is possible to for a Relying Party to follow the Background-Check Model defined in <span><a href="https://rfc-editor.org/rfc/rfc9334#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>.
 In this case, a Relying Party will receive Attestation Results containing the Trustworthiness Vector directly from a Verifier.
 These Attestation Results can then be used by the Relying Party in determining the appropriate treatment for interactions with the Attester.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
 <p id="section-4.1.1-2">While applicable in some cases, the utilization of the Background-Check Model without modification has potential drawbacks in other cases.
@@ -2437,7 +2437,7 @@ The Attesting Environment then signs the combination.<a href="#section-4.2-3" cl
 <p id="section-4.2-4">The Attester then assembles AR Augmented Evidence by taking the signed combination and appending the full AR. The assembly now consists of two independent but semantically bound sets of signed Evidence.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
 <p id="section-4.2-5">The AR Augmented Evidence is then sent to the Relying Party.
 The Relying Party then can appraise these semantically bound sets of signed Evidence by applying an Appraisal Policy for Attestation Results as described below.
-This policy will consider both the AR as well as additional information about the Attester within the AR Augmented Evidence the when determining what action to take.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
+This policy will consider both the AR as well as additional information about the Attester within the AR Augmented Evidence when determining what action to take.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
 <p id="section-4.2-6">This alternative combines the <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span> Sections 5.1 Passport Model and Section 5.2 Background-Check Model.
 <a href="#interactions" class="auto internal xref">Figure 5</a> describes this flow of information.
 The flows within this combined model are mapped to <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span> in the following way.
@@ -2693,13 +2693,13 @@ While this document does not mandate specific transport protocols, messages cont
 <a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="ARM-CCA">[ARM-CCA]</dt>
+        <dd>
+<span class="refAuthor">Frost, S.</span>, <span class="refAuthor">Fossati, T.</span>, and <span class="refAuthor">G. Mandyam</span>, <span class="refTitle">"Arm's Confidential Compute Architecture Reference Attestation Token"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ffm-rats-cca-token-01</span>, <time datetime="2025-03-03" class="refDate">3 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ffm-rats-cca-token-01">https://datatracker.ietf.org/doc/html/draft-ffm-rats-cca-token-01</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.ietf-rats-network-device-subscription">[I-D.ietf-rats-network-device-subscription]</dt>
         <dd>
-<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Voit, E.</span>, and <span class="refAuthor">W. Pan</span>, <span class="refTitle">"Attestation Event Stream Subscription"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-network-device-subscription-06</span>, <time datetime="2025-01-08" class="refDate">8 January 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-network-device-subscription-06">https://datatracker.ietf.org/doc/html/draft-ietf-rats-network-device-subscription-06</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.tschofenig-rats-psa-token">[I-D.tschofenig-rats-psa-token]</dt>
-        <dd>
-<span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Frost, S.</span>, <span class="refAuthor">Brossard, M.</span>, <span class="refAuthor">Shaw, A. L.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"Arm's Platform Security Architecture (PSA) Attestation Token"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-rats-psa-token-24</span>, <time datetime="2024-09-23" class="refDate">23 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-24">https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-24</a>&gt;</span>. </dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Voit, E.</span>, and <span class="refAuthor">W. Pan</span>, <span class="refTitle">"Attestation Event Stream Subscription"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-network-device-subscription-07</span>, <time datetime="2025-07-21" class="refDate">21 July 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-network-device-subscription-07">https://datatracker.ietf.org/doc/html/draft-ietf-rats-network-device-subscription-07</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IEEE802.1AR">[IEEE802.1AR]</dt>
         <dd>
@@ -2712,6 +2712,10 @@ While this document does not mandate specific transport protocols, messages cont
 <dt id="RFC8446">[RFC8446]</dt>
         <dd>
 <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8446">https://www.rfc-editor.org/rfc/rfc8446</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9783">[RFC9783]</dt>
+        <dd>
+<span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Frost, S.</span>, <span class="refAuthor">Brossard, M.</span>, <span class="refAuthor">Shaw, A.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"Arm's Platform Security Architecture (PSA) Attestation Token"</span>, <span class="seriesInfo">RFC 9783</span>, <span class="seriesInfo">DOI 10.17487/RFC9783</span>, <time datetime="2025-06" class="refDate">June 2025</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9783">https://www.rfc-editor.org/rfc/rfc9783</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="SEV-SNP">[SEV-SNP]</dt>
         <dd>
@@ -2735,7 +2739,7 @@ While this document does not mandate specific transport protocols, messages cont
 <dd class="break"></dd>
 <dt id="US-Executive-Order">[US-Executive-Order]</dt>
       <dd>
-<span class="refTitle">"Executive Order on Improving the Nation's Cybersecurity"</span>, <time datetime="2021-05-12" class="refDate">12 May 2021</time>, <span>&lt;<a href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/">https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/</a>&gt;</span>. </dd>
+<span class="refTitle">"Executive Order on Improving the Nation's Cybersecurity"</span>, <time datetime="2021-05-12" class="refDate">12 May 2021</time>, <span>&lt;<a href="https://bidenwhitehouse.archives.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/">https://bidenwhitehouse.archives.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
