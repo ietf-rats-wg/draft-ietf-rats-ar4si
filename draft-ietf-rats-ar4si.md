@@ -68,7 +68,7 @@ informative:
     date: 2015-08
   SEV-SNP:
     target:   https://www.amd.com/system/files/TechDocs/SEV-SNP-strengthening-vm-isolation-with-integrity-protection-and-more.pdf
-    title: "AMD SEV-SNP: Stregthening VM Isolation with Integrity Protection and More"
+    title: "AMD SEV-SNP: Strengthening VM Isolation with Integrity Protection and More"
     date: 2020
   SGX:
     target:   https://software.intel.com/content/dam/develop/external/us/en/documents/intel-sgx-support-for-third-party-attestation-801017.pdf
@@ -382,7 +382,7 @@ configuration:
    : No assertion
 
    1:
-   : Evidence contains unknown elements which inhibit Verifer evaluation.
+   : Evidence contains unknown elements which inhibit Verifier evaluation.
 
    -1:
    : Verifier malfunction
@@ -412,7 +412,7 @@ executables:
    : No assertion
 
    1:
-   : Evidence contains unknown elements which inhibit Verifer evaluation.
+   : Evidence contains unknown elements which inhibit Verifier evaluation.
 
    -1:
    : Verifier malfunction
@@ -442,7 +442,7 @@ file-system:
    : No assertion
 
    1:
-   : Evidence contains unknown elements which inhibit Verifer evaluation.
+   : Evidence contains unknown elements which inhibit Verifier evaluation.
 
    -1:
    : Verifier malfunction
@@ -467,7 +467,7 @@ hardware:
    : No assertion
 
    1:
-   : Evidence contains unknown elements which inhibit Verifer evaluation.
+   : Evidence contains unknown elements which inhibit Verifier evaluation.
 
    -1:
    : Verifier malfunction
@@ -494,7 +494,7 @@ instance-identity:
    : No assertion
 
    1:
-   : Evidence contains unknown elements which inhibit Verifer evaluation.
+   : Evidence contains unknown elements which inhibit Verifier evaluation.
 
    -1:
    : Verifier malfunction
@@ -519,7 +519,7 @@ runtime-opaque:
    : No assertion
 
    1:
-   : Evidence contains unknown elements which inhibit Verifer evaluation.
+   : Evidence contains unknown elements which inhibit Verifier evaluation.
 
    -1:
    : Verifier malfunction
@@ -544,7 +544,7 @@ sourced-data:
    : No assertion
 
    1:
-   : Evidence contains unknown elements which inhibit Verifer evaluation.
+   : Evidence contains unknown elements which inhibit Verifier evaluation.
 
    -1:
    : Verifier malfunction
@@ -568,7 +568,7 @@ storage-opaque:
    : No assertion
 
    1:
-   : Evidence contains unknown elements which inhibit Verifer evaluation.
+   : Evidence contains unknown elements which inhibit Verifier evaluation.
 
    -1:
    : Verifier malfunction
@@ -587,7 +587,7 @@ storage-opaque:
 
 
 
-It is possible for additonal Trustworthiness Claims and enumerated values to be defined in subsequent documents.
+It is possible for additional Trustworthiness Claims and enumerated values to be defined in subsequent documents.
 At the same time, the standardized Trustworthiness Claim values listed above have been designed so there is no overlap within a Trustworthiness Tier.
 As a result, it is possible to imagine a future where overlapping Trustworthiness Claims within a single Trustworthiness Tier may be defined.
 Wherever possible, the Verifier SHOULD assign the best fitting standardized value.
@@ -691,7 +691,7 @@ The fields are:
 `developer` (mandatory)
 : A text string that uniquely identifies the organizational unit responsible for this `build`.
 
-## Consolitated CDDL
+## Consolidated CDDL
 
 {{fig-cddl}} contains the CDDL of the entire AR4SI type system.
 
@@ -959,7 +959,7 @@ Following are Trustworthiness Claims which MAY be set for a process-based Confid
 | Trustworthiness Claim | Required? | Appraisal Method |
 | :--- | :--- |:--- |
 | instance-identity | Optional | Internally available in TEE.  But keys might not be known/exposed to the Relying Party by the Attesting Environment.   |
-| configuration | Optional | If done, this is at the Application Layer.  Plus each process needs it own protection mechanism as the protection is limited to the process itself.   |
+| configuration | Optional | If done, this is at the Application Layer.  Plus each process needs its own protection mechanism as the protection is limited to the process itself.   |
 | executables | Optional | Internally available in TEE.  But keys might not be known/exposed to the Relying Party by the Attesting Environment.  |
 | file-system | Optional | Can be supported by application, but process-based CC is not a sufficient technology base for this Trustworthiness Claim. |
 | hardware | Implicit in signature | At least the TEE is protected here. Other elements of the system outside of the TEE might need additional protections is used by the application process.  |
