@@ -691,9 +691,7 @@ The fields are:
 `developer` (mandatory)
 : A text string that uniquely identifies the organizational unit responsible for this `build`.
 
-## Consolid<img width="362" height="34" alt="image" src="https://github.com/user-attachments/assets/2dd22722-e05c-44d9-8a51-c4147c52a204" />
-<img width="362" height="34" alt="image" src="https://github.com/user-attachments/assets/c3b73353-db55-4f3a-8854-d505d78725be" />
-ated CDDL
+## Consolidated CDDL
 
 {{fig-cddl}} contains the CDDL of the entire AR4SI type system.
 
