@@ -373,19 +373,33 @@ In order to simplify design, only a single encoded value is asserted by a Verifi
 
 ### Specific Claims {#sec-specific-claims}
 
-Following are the Trustworthiness Claims and their supported enumerations which may be asserted by a Verifier:
+The following enumerations apply to all Trustworthiness Claims:
+
+0:
+: No assertion
+
+1:
+: Evidence contains unknown elements which inhibit Verifier evaluation.
+
+-1:
+: Verifier malfunction
+
+31:
+: Generic affirming reason
+
+95:
+: Generic warning reason
+
+99:
+: Cryptographic validation of the Evidence has failed.
+
+127:
+: Generic contraindicated reason
+
+The following Trustworthiness Claims-specific enumerations also apply:
 
 configuration:
 : A Verifier has appraised an Attester's configuration, and is able to make conclusions regarding the exposure of known vulnerabilities
-
-   0:
-   : No assertion
-
-   1:
-   : Evidence contains unknown elements which inhibit Verifier evaluation.
-
-   -1:
-   : Verifier malfunction
 
    2:
    : The configuration is a known and approved config.
@@ -402,20 +416,8 @@ configuration:
    96:
    : The configuration is unsupportable as it exposes unacceptable security vulnerabilities.
 
-   99:
-   : Cryptographic validation of the Evidence has failed.
-
 executables:
 : A Verifier has appraised and evaluated relevant runtime files, scripts, and/or other objects which have been loaded into the Target environment's memory.
-
-   0:
-   : No assertion
-
-   1:
-   : Evidence contains unknown elements which inhibit Verifier evaluation.
-
-   -1:
-   : Verifier malfunction
 
    2:
    : Only a recognized genuine set of approved executables, scripts, files, and/or objects have been loaded during and after the boot process.
@@ -432,20 +434,8 @@ executables:
    96:
    : Runtime memory includes executables, scripts, files, and/or object which are contraindicated.
 
-   99:
-   : Cryptographic validation of the Evidence has failed.
-
 file-system:
 :  A Verifier has evaluated a specific set of directories within the Attester's file system.  (Note: the Verifier may or may not indicate what these directory and expected files are via an unspecified management interface.)
-
-   0:
-   : No assertion
-
-   1:
-   : Evidence contains unknown elements which inhibit Verifier evaluation.
-
-   -1:
-   : Verifier malfunction
 
    2:
    : Only a recognized set of approved files are found.
@@ -456,21 +446,8 @@ file-system:
    96:
    : The file system includes contraindicated executables, scripts, or files.
 
-   99:
-   : Cryptographic validation of the Evidence has failed.
-
-
 hardware:
 : A Verifier has appraised any Attester hardware and firmware which are able to expose fingerprints of their identity and running code.
-
-   0:
-   : No assertion
-
-   1:
-   : Evidence contains unknown elements which inhibit Verifier evaluation.
-
-   -1:
-   : Verifier malfunction
 
    2:
    : An Attester has passed its hardware and/or firmware verifications needed to demonstrate that these are genuine/supported.
@@ -483,21 +460,8 @@ hardware:
    97:
    : A Verifier does not recognize an Attester's hardware or firmware, but it should be recognized.
 
-   99:
-   : Cryptographic validation of the Evidence has failed.
-
-
 instance-identity:
 : A Verifier has appraised an Attesting Environment's unique identity based upon private key signed Evidence which can be correlated to a unique instantiated instance of the Attester.  (Note: this Trustworthiness Claim should only be generated if the Verifier actually expects to recognize the unique identity of the Attester.)
-
-   0:
-   : No assertion
-
-   1:
-   : Evidence contains unknown elements which inhibit Verifier evaluation.
-
-   -1:
-   : Verifier malfunction
 
    2:
    : The Attesting Environment is recognized, and the associated instance of the Attester is not known to be compromised.
@@ -508,21 +472,8 @@ instance-identity:
    97:
    : The Attesting Environment is not recognized; however the Verifier believes it should be.
 
-   99:
-   : Cryptographic validation of the Evidence has failed.
-
-
 runtime-opaque:
 : A Verifier has appraised the visibility of Attester objects in memory from perspectives outside the Attester.
-
-   0:
-   : No assertion
-
-   1:
-   : Evidence contains unknown elements which inhibit Verifier evaluation.
-
-   -1:
-   : Verifier malfunction
 
    2:
    : the Attester's executing Target Environment and Attesting Environments are encrypted and within Trusted Execution Environment(s) opaque to the operating system, virtual machine manager, and peer  applications.  (Note: This value corresponds to the protections asserted by O.RUNTIME_CONFIDENTIALITY from {{GP-TEE-PP}})
@@ -533,21 +484,8 @@ runtime-opaque:
    96:
    : The Verifier has concluded that in memory objects are unacceptably visible within the physical host that supports the Attester.
 
-   99:
-   : Cryptographic validation of the Evidence has failed.
-
-
 sourced-data:
 : A Verifier has evaluated of the integrity of data objects from external systems used by the Attester.
-
-   0:
-   : No assertion
-
-   1:
-   : Evidence contains unknown elements which inhibit Verifier evaluation.
-
-   -1:
-   : Verifier malfunction
 
    2:
    : All essential Attester source data objects have been provided by other Attester(s) whose most recent appraisal(s) had both no Trustworthiness Claims of "0" where the current Trustworthiness Claim is "Affirming", as well as no "Warning" or "Contraindicated" Trustworthiness Claims.
@@ -558,20 +496,8 @@ sourced-data:
    96:
    : Attester source data objects come from contraindicated sources.
 
-   99:
-   : Cryptographic validation of the Evidence has failed.
-
 storage-opaque:
 : A Verifier has appraised that an Attester is capable of encrypting persistent storage. (Note: Protections must meet the capabilities of {{OMTP-ATE}} Section 5, but need not be hardware tamper resistant.)
-
-   0:
-   : No assertion
-
-   1:
-   : Evidence contains unknown elements which inhibit Verifier evaluation.
-
-   -1:
-   : Verifier malfunction
 
    2:
    : the Attester encrypts all secrets in persistent storage via using keys which are never visible outside an HSM or the Trusted Execution Environment hardware.
@@ -581,10 +507,6 @@ storage-opaque:
 
    96:
    : There are persistent secrets which are stored unencrypted in an Attester.
-
-   99:
-   : Cryptographic validation of the Evidence has failed.
-
 
 
 It is possible for additional Trustworthiness Claims and enumerated values to be defined in subsequent documents.
