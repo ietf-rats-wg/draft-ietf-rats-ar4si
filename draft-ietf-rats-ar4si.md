@@ -181,7 +181,7 @@ This section defines those information elements, and in some cases encodings for
 
 ## Information driving a Relying Party Action
 
-When the action is a communication establishment attempt with an Attester, there is only a limited set of actions which a Relying Party might take.
+During a communication establishment attempt with an Attester, there is only a limited set of actions which a Relying Party might take.
 These actions include:
 
 * Allow or deny information exchange with the Attester.
