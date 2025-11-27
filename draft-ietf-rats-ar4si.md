@@ -191,18 +191,19 @@ When there is a deny, reasons should be returned to the Attester.
 
 There are three categories of information which must be conveyed to the Relying Party (which also is integrated with a Verifier) before it determines which of these actions to take.
 
-1. Non-repudiable Identity Evidence – Evidence which undoubtably identifies one or more entities involved with a communication.
-2. Trustworthiness Claims – Specifics a Verifier asserts with regards to its trustworthiness findings about an Attester.
-3. Claim Freshness – Establishes the time of last update (or refresh) of Trustworthiness Claims.
+1. Non-repudiable Identity Evidence
+2. Trustworthiness Claims
+3. Claim Freshness
 
 The following sections detail requirements for these three categories.
 
 {: #identity-section}
-## Non-repudiable Identity
+## Non-repudiable Verifier Identity
 
 Identity Evidence must be conveyed during the establishment of any trust-based relationship.
 Specific use cases will define the minimum types of identities required by a particular Relying Party as it evaluates Attestation Results, and perhaps additional associated Evidence.
 At a bare minimum, a Relying Party MUST start with the ability to verify the identity of a Verifier it chooses to trust.
+
 Attester identities may then be acquired through signed or encrypted communications with the Verifier identity and/or the pre-provisioning Attester public keys in the Attester.
 
 During the Remote Attestation process, the Verifier's identity must be established with a Relying Party, often via a Verifier signature across recent Attestation Results.
