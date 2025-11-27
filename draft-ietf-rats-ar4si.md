@@ -176,7 +176,7 @@ The vector is included within Attestation Results.
 # Attestation Results for Secure Interactions
 
 A Verifier generates the Attestation Results used by a Relying Party.
-When a Relying Party needs to determine whether to permit communications with an Attester, these Attestation Results must contain a specific set of information elements.
+When a Relying Party needs to determine whether communications with an Attester is trustworthy, these Attestation Results must contain a specific set of information elements.
 This section defines those information elements, and in some cases encodings for information elements.
 
 ## Information driving a Relying Party Action
