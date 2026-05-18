@@ -114,7 +114,8 @@ Table of Contents
      B.2.  Supportable Trustworthiness Claims for process-based CC
      B.3.  Supportable Trustworthiness Claims for VM-based CC
    Appendix C.  Some issues being worked
-   Appendix D.  Contributors
+   Acknowledgments
+   Contributors
    Authors' Addresses
 
 1.  Introduction
@@ -1651,23 +1652,28 @@ Appendix C.  Some issues being worked
    extra loaded software = the sum of TrustZone Signer IDs for loaded
    components?
 
-Appendix D.  Contributors
+Acknowledgments
+
+   Many thanks to Michael Richardson for helpful comments, suggestions
+   and discussions that have shaped this document.
+
+Contributors
 
    Guy Fedorkow
-
    Email: gfedorkow@juniper.net
 
-   Dave Thaler
 
+   Dave Thaler
    Email: dthaler@microsoft.com
 
-   Ned Smith
 
+   Ned Smith
    Email: ned.smith@intel.com
 
-   Lawrence Lundblade
 
+   Lawrence Lundblade
    Email: lgl@island-resort.com
+
 
 Authors' Addresses
 
