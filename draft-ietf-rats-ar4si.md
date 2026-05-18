@@ -198,7 +198,7 @@ There are three categories of information which must be conveyed to the Relying 
 The following sections detail requirements for these three categories.
 
 {: #identity-section}
-## Non-repudiable Verifier Identity
+## Non-repudiable Identity
 
 Identity Evidence must be conveyed during the establishment of any trust-based relationship.
 Specific use cases will define the minimum types of identities required by a particular Relying Party as it evaluates Attestation Results, and perhaps additional associated Evidence.
