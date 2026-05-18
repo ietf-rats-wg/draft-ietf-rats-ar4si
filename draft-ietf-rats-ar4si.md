@@ -41,11 +41,21 @@ author:
   organization: Intel
   email: vincent.r.scarlata@intel.com
 
-
+contributor:
+  - ins: G. Fedorkow
+    name: Guy Fedorkow
+    email: gfedorkow@juniper.net
+  - ins: D. Thaler
+    name: Dave Thaler
+    email: dthaler@microsoft.com
+  - ins: N. Smith
+    name: Ned Smith
+    email: ned.smith@intel.com
+  - ins: L. Lundblade
+    name: Lawrence Lundblade
+    email: lgl@island-resort.com
 
 normative:
-  RFC2119:
-  RFC8174:
   RFC9334: rats-arch
   RFC8610: cddl
 
@@ -927,21 +937,9 @@ Expand the variant of {{interactions}} which requires no Relying Party PoF into 
 
 In what document (if any) do we attempt normalization of the identity claims between different types of TEE.   E.g., does MRSIGNER plus extra loaded software = the sum of TrustZone Signer IDs for loaded components?
 
+# Acknowledgments
+{:numbered="false"}
 
-# Contributors
-
-Guy Fedorkow
-
-Email: gfedorkow@juniper.net
-
-Dave Thaler
-
-Email: dthaler@microsoft.com
-
-Ned Smith
-
-Email: ned.smith@intel.com
-
-Lawrence Lundblade
-
-Email: lgl@island-resort.com
+Many thanks to
+Michael Richardson
+for helpful comments, suggestions and discussions that have shaped this document.
