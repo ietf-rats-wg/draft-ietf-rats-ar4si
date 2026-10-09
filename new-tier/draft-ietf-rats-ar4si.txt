@@ -5,14 +5,14 @@
 RATS Working Group                                               E. Voit
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                             H. Birkholz
-Expires: 28 March 2027                                    Fraunhofer SIT
+Expires: 12 April 2027                                    Fraunhofer SIT
                                                              T. Hardjono
                                                                      MIT
                                                               T. Fossati
                                                                   Linaro
                                                              V. Scarlata
                                                                    Intel
-                                                       24 September 2026
+                                                          9 October 2026
 
 
               Attestation Results for Secure Interactions
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 March 2027.
+   This Internet-Draft will expire on 12 April 2027.
 
 Copyright Notice
 
@@ -571,19 +571,6 @@ Table of Contents
       any distinction between a Trustworthiness Claim with enumeration
       '0', and no Trustworthiness Claim being provided.
 
-   Appraisal Aborted: The Verifier was unable to complete its appraisal
-   of this aspect of trustworthiness.
-
-   *  Value 1: The Evidence received contains unknown elements which the
-      Verifier is unable to evaluate.  An example might be that the
-      wrong type of Evidence has been delivered.  Another case is that
-      of Evidence coming from a composite Attester: a Verifier may
-      understand only part of it and leave as "unknown" the
-      Trustworthiness claims related to features it can't appraise.
-
-   *  Value -1: A verifier malfunction occurred during the Verifier's
-      appraisal processing.
-
    Affirming: The Verifier affirms the Attester support for this aspect
    of trustworthiness.
 
@@ -605,6 +592,19 @@ Table of Contents
 
    *  Values -97 to -128: A non-standard reason for the
       contraindication.
+
+   Appraisal Aborted: The Verifier was unable to complete its appraisal
+   of this aspect of trustworthiness.
+
+   *  Value 1: The Evidence received contains unknown elements which the
+      Verifier is unable to evaluate.  An example might be that the
+      wrong type of Evidence has been delivered.  Another case is that
+      of Evidence coming from a composite Attester: a Verifier may
+      understand only part of it and leave as "unknown" the
+      Trustworthiness claims related to features it can't appraise.
+
+   *  Value -1: A verifier malfunction occurred during the Verifier's
+      appraisal processing.
 
    This enumerated encoding listed above will simplify the Appraisal
    Policy for Attestation Results.  Such a policies may be as simple as
@@ -936,16 +936,16 @@ Table of Contents
    The allowed values for the type are as follows:
 
    trustworthiness-tier-none-label = JC<"none", 0>
-   trustworthiness-tier-appraisal-aborted-label = JC<"appraisal-aborted", 1>
    trustworthiness-tier-affirming-label = JC<"affirming", 2>
    trustworthiness-tier-warning-label = JC<"warning", 32>
    trustworthiness-tier-contraindicated-label = JC<"contraindicated", 96>
+   trustworthiness-tier-appraisal-aborted-label = JC<"appraisal-aborted", 127>
 
    trustworthiness-tier /= trustworthiness-tier-none-label
-   trustworthiness-tier /= trustworthiness-tier-appraisal-aborted-label
    trustworthiness-tier /= trustworthiness-tier-affirming-label
    trustworthiness-tier /= trustworthiness-tier-warning-label
    trustworthiness-tier /= trustworthiness-tier-contraindicated-label
+   trustworthiness-tier /= trustworthiness-tier-appraisal-aborted-label
 
                       Figure 2: Trustworthiness Tiers
 
@@ -1000,16 +1000,16 @@ Table of Contents
    sourced-data-label = JC<"sourced-data", 7>
    trustworthiness-claim = -128 .. 127
    trustworthiness-tier-none-label = JC<"none", 0>
-   trustworthiness-tier-appraisal-aborted-label = JC<"appraisal-aborted\
-                                                                   ", 1>
    trustworthiness-tier-affirming-label = JC<"affirming", 2>
    trustworthiness-tier-warning-label = JC<"warning", 32>
    trustworthiness-tier-contraindicated-label = JC<"contraindicated", \
                                                                      96>
+   trustworthiness-tier-appraisal-aborted-label = JC<"appraisal-aborted\
+                                                                 ", 127>
    trustworthiness-tier /= trustworthiness-tier-none-label / \
-   trustworthiness-tier-appraisal-aborted-label / trustworthiness-tier-\
-   affirming-label / trustworthiness-tier-warning-label / \
-                              trustworthiness-tier-contraindicated-label
+   trustworthiness-tier-affirming-label / trustworthiness-tier-warning-\
+   label / trustworthiness-tier-contraindicated-label / trustworthiness\
+                                           -tier-appraisal-aborted-label
    verifier-id = {
      developer-label => text,
      build-label => text,
@@ -1368,9 +1368,9 @@ Table of Contents
    [I-D.ietf-rats-network-device-subscription]
               Birkholz, H., Voit, E., and W. Pan, "Attestation Event
               Stream Subscription", Work in Progress, Internet-Draft,
-              draft-ietf-rats-network-device-subscription-13, 16 June
+              draft-ietf-rats-network-device-subscription-14, 5 October
               2026, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              rats-network-device-subscription-13>.
+              rats-network-device-subscription-14>.
 
    [IEEE802.1AR]
               "802.1AR: Secure Device Identity", 2 August 2018,
