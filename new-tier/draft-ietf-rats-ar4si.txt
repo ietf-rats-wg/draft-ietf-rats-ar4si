@@ -235,7 +235,7 @@ Table of Contents
    Trustworthiness Tier:  a categorization of the levels of
       trustworthiness which may be assigned by a Verifier to a specific
       Trustworthiness Claim.  These enumerated categories are:
-      Affirming, Warning, Contraindicated, None, and Appraisal Aborted.
+      Affirming, Warning, Contraindicated, None, and Incomplete.
 
    Trustworthiness Vector:  a set of Trustworthiness Claims assigned
       during a single appraisal procedure by a Verifier using Evidence
@@ -593,8 +593,8 @@ Table of Contents
    *  Values -97 to -128: A non-standard reason for the
       contraindication.
 
-   Appraisal Aborted: The Verifier was unable to complete its appraisal
-   of this aspect of trustworthiness.
+   Incomplete: The Verifier was unable to complete its appraisal of this
+   aspect of trustworthiness.
 
    *  Value 1: The Evidence received contains unknown elements which the
       Verifier is unable to evaluate.  An example might be that the
@@ -939,13 +939,13 @@ Table of Contents
    trustworthiness-tier-affirming-label = JC<"affirming", 2>
    trustworthiness-tier-warning-label = JC<"warning", 32>
    trustworthiness-tier-contraindicated-label = JC<"contraindicated", 96>
-   trustworthiness-tier-appraisal-aborted-label = JC<"appraisal-aborted", 127>
+   trustworthiness-tier-incomplete-label = JC<"incomplete", 127>
 
    trustworthiness-tier /= trustworthiness-tier-none-label
    trustworthiness-tier /= trustworthiness-tier-affirming-label
    trustworthiness-tier /= trustworthiness-tier-warning-label
    trustworthiness-tier /= trustworthiness-tier-contraindicated-label
-   trustworthiness-tier /= trustworthiness-tier-appraisal-aborted-label
+   trustworthiness-tier /= trustworthiness-tier-incomplete-label
 
                       Figure 2: Trustworthiness Tiers
 
@@ -1004,12 +1004,11 @@ Table of Contents
    trustworthiness-tier-warning-label = JC<"warning", 32>
    trustworthiness-tier-contraindicated-label = JC<"contraindicated", \
                                                                      96>
-   trustworthiness-tier-appraisal-aborted-label = JC<"appraisal-aborted\
-                                                                 ", 127>
+   trustworthiness-tier-incomplete-label = JC<"incomplete", 127>
    trustworthiness-tier /= trustworthiness-tier-none-label / \
    trustworthiness-tier-affirming-label / trustworthiness-tier-warning-\
    label / trustworthiness-tier-contraindicated-label / trustworthiness\
-                                           -tier-appraisal-aborted-label
+                                                  -tier-incomplete-label
    verifier-id = {
      developer-label => text,
      build-label => text,

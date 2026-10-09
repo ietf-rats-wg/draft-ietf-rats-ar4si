@@ -1410,7 +1410,7 @@ Identity Evidence could take different forms, such as a certificate, or a signat
 <dt id="section-1.2-4.7">Trustworthiness Tier:</dt>
           <dd style="margin-left: 1.5em" id="section-1.2-4.8">
             <p id="section-1.2-4.8.1">a categorization of the levels of trustworthiness which may be assigned by a Verifier to a specific Trustworthiness Claim.
-These enumerated categories are: Affirming, Warning, Contraindicated, None, and Appraisal Aborted.<a href="#section-1.2-4.8.1" class="pilcrow">¶</a></p>
+These enumerated categories are: Affirming, Warning, Contraindicated, None, and Incomplete.<a href="#section-1.2-4.8.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.2-4.9">Trustworthiness Vector:</dt>
@@ -1713,7 +1713,7 @@ To simplify the processing of these enumerations by the Relying Party, the enume
               <p id="section-2.3.2-9.2.1">Values -97 to -128: A non-standard reason for the contraindication.<a href="#section-2.3.2-9.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-2.3.2-10">Appraisal Aborted: The Verifier was unable to complete its appraisal of this aspect of trustworthiness.<a href="#section-2.3.2-10" class="pilcrow">¶</a></p>
+<p id="section-2.3.2-10">Incomplete: The Verifier was unable to complete its appraisal of this aspect of trustworthiness.<a href="#section-2.3.2-10" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2.3.2-11.1">
               <p id="section-2.3.2-11.1.1">Value 1: The Evidence received contains unknown elements which the Verifier is unable to evaluate. An example might be that the wrong type of Evidence has been delivered.  Another  case is that of Evidence coming from a composite Attester: a Verifier may understand only part of it and leave as "unknown" the Trustworthiness claims related to features it can't appraise.<a href="#section-2.3.2-11.1.1" class="pilcrow">¶</a></p>
@@ -2125,13 +2125,13 @@ trustworthiness-tier-none-label = JC&lt;"none", 0&gt;
 trustworthiness-tier-affirming-label = JC&lt;"affirming", 2&gt;
 trustworthiness-tier-warning-label = JC&lt;"warning", 32&gt;
 trustworthiness-tier-contraindicated-label = JC&lt;"contraindicated", 96&gt;
-trustworthiness-tier-appraisal-aborted-label = JC&lt;"appraisal-aborted", 127&gt;
+trustworthiness-tier-incomplete-label = JC&lt;"incomplete", 127&gt;
 
 trustworthiness-tier /= trustworthiness-tier-none-label
 trustworthiness-tier /= trustworthiness-tier-affirming-label
 trustworthiness-tier /= trustworthiness-tier-warning-label
 trustworthiness-tier /= trustworthiness-tier-contraindicated-label
-trustworthiness-tier /= trustworthiness-tier-appraisal-aborted-label
+trustworthiness-tier /= trustworthiness-tier-incomplete-label
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
@@ -2218,12 +2218,11 @@ trustworthiness-tier-affirming-label = JC&lt;"affirming", 2&gt;
 trustworthiness-tier-warning-label = JC&lt;"warning", 32&gt;
 trustworthiness-tier-contraindicated-label = JC&lt;"contraindicated", \
                                                                   96&gt;
-trustworthiness-tier-appraisal-aborted-label = JC&lt;"appraisal-aborted\
-                                                              ", 127&gt;
+trustworthiness-tier-incomplete-label = JC&lt;"incomplete", 127&gt;
 trustworthiness-tier /= trustworthiness-tier-none-label / \
 trustworthiness-tier-affirming-label / trustworthiness-tier-warning-\
 label / trustworthiness-tier-contraindicated-label / trustworthiness\
-                                        -tier-appraisal-aborted-label
+                                               -tier-incomplete-label
 verifier-id = {
   developer-label =&gt; text,
   build-label =&gt; text,
