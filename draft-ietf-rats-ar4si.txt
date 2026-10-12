@@ -5,14 +5,14 @@
 RATS Working Group                                               E. Voit
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                             H. Birkholz
-Expires: 19 November 2026                                 Fraunhofer SIT
+Expires: 15 April 2027                                    Fraunhofer SIT
                                                              T. Hardjono
                                                                      MIT
                                                               T. Fossati
                                                                   Linaro
                                                              V. Scarlata
                                                                    Intel
-                                                             18 May 2026
+                                                         12 October 2026
 
 
               Attestation Results for Secure Interactions
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 November 2026.
+   This Internet-Draft will expire on 15 April 2027.
 
 Copyright Notice
 
@@ -235,7 +235,7 @@ Table of Contents
    Trustworthiness Tier:  a categorization of the levels of
       trustworthiness which may be assigned by a Verifier to a specific
       Trustworthiness Claim.  These enumerated categories are:
-      Affirming, Warning, Contraindicated, and None.
+      Affirming, Warning, Contraindicated, None, and Incomplete.
 
    Trustworthiness Vector:  a set of Trustworthiness Claims assigned
       during a single appraisal procedure by a Verifier using Evidence
@@ -558,7 +558,7 @@ Table of Contents
    specific encoded values.  To simplify the processing of these
    enumerations by the Relying Party, the enumeration will be encoded as
    a single signed 8 bit integer.  These value assignments for this
-   integer will be in four Trustworthiness Tiers which follow these
+   integer will be in five Trustworthiness Tiers which follow these
    guidelines:
 
    None: The Verifier makes no assertions regarding this aspect of
@@ -570,16 +570,6 @@ Table of Contents
       the RP's Appraisal Policy for Attestation Results SHOULD NOT make
       any distinction between a Trustworthiness Claim with enumeration
       '0', and no Trustworthiness Claim being provided.
-
-   *  Value 1: The Evidence received contains unknown elements which the
-      Verifier is unable to evaluate.  An example might be that the
-      wrong type of Evidence has been delivered.  Another case is that
-      of Evidence coming from a composite Attester: a Verifier may
-      understand only part of it and leave as "unknown" the
-      Trustworthiness claims related to features it can't appraise.
-
-   *  Value -1: A verifier malfunction occurred during the Verifier's
-      appraisal processing.
 
    Affirming: The Verifier affirms the Attester support for this aspect
    of trustworthiness.
@@ -602,6 +592,19 @@ Table of Contents
 
    *  Values -97 to -128: A non-standard reason for the
       contraindication.
+
+   Incomplete: The Verifier was unable to complete its appraisal of this
+   aspect of trustworthiness.
+
+   *  Value 1: The Evidence received contains unknown elements which the
+      Verifier is unable to evaluate.  An example might be that the
+      wrong type of Evidence has been delivered.  Another case is that
+      of Evidence coming from a composite Attester: a Verifier may
+      understand only part of it and leave as "unknown" the
+      Trustworthiness claims related to features it can't appraise.
+
+   *  Value -1: A verifier malfunction occurred during the Verifier's
+      appraisal processing.
 
    This enumerated encoding listed above will simplify the Appraisal
    Policy for Attestation Results.  Such a policies may be as simple as
@@ -936,11 +939,13 @@ Table of Contents
    trustworthiness-tier-affirming-label = JC<"affirming", 2>
    trustworthiness-tier-warning-label = JC<"warning", 32>
    trustworthiness-tier-contraindicated-label = JC<"contraindicated", 96>
+   trustworthiness-tier-incomplete-label = JC<"incomplete", 127>
 
    trustworthiness-tier /= trustworthiness-tier-none-label
    trustworthiness-tier /= trustworthiness-tier-affirming-label
    trustworthiness-tier /= trustworthiness-tier-warning-label
    trustworthiness-tier /= trustworthiness-tier-contraindicated-label
+   trustworthiness-tier /= trustworthiness-tier-incomplete-label
 
                       Figure 2: Trustworthiness Tiers
 
@@ -999,9 +1004,11 @@ Table of Contents
    trustworthiness-tier-warning-label = JC<"warning", 32>
    trustworthiness-tier-contraindicated-label = JC<"contraindicated", \
                                                                      96>
+   trustworthiness-tier-incomplete-label = JC<"incomplete", 127>
    trustworthiness-tier /= trustworthiness-tier-none-label / \
    trustworthiness-tier-affirming-label / trustworthiness-tier-warning-\
-                      label / trustworthiness-tier-contraindicated-label
+   label / trustworthiness-tier-contraindicated-label / trustworthiness\
+                                                  -tier-incomplete-label
    verifier-id = {
      developer-label => text,
      build-label => text,
@@ -1353,16 +1360,16 @@ Table of Contents
    [ARM-CCA]  Frost, S., Fossati, T., and G. Mandyam, "Arm's
               Confidential Compute Architecture Reference Attestation
               Token", Work in Progress, Internet-Draft, draft-ffm-rats-
-              cca-token-03, 2 March 2026,
+              cca-token-04, 7 September 2026,
               <https://datatracker.ietf.org/doc/html/draft-ffm-rats-cca-
-              token-03>.
+              token-04>.
 
    [I-D.ietf-rats-network-device-subscription]
               Birkholz, H., Voit, E., and W. Pan, "Attestation Event
               Stream Subscription", Work in Progress, Internet-Draft,
-              draft-ietf-rats-network-device-subscription-11, 30 March
+              draft-ietf-rats-network-device-subscription-14, 5 October
               2026, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              rats-network-device-subscription-11>.
+              rats-network-device-subscription-14>.
 
    [IEEE802.1AR]
               "802.1AR: Secure Device Identity", 2 August 2018,
@@ -1398,14 +1405,14 @@ Table of Contents
               <https://software.intel.com/content/dam/develop/external/us/
               en/documents/tdx-whitepaper-final9-17.pdf>.
 
-   [TPM-ID]   "TPM Keys for Platform Identity for TPM 1.2", August 2015,
-              <https://www.trustedcomputinggroup.org/wp-content/uploads/
-              TPM_Keys_for_Platform_Identity_v1_0_r3_Final.pdf>.
-
    [TPM2.0]   "Trusted Platform Module Library - Part 1: Architecture",
               n.d., <https://trustedcomputinggroup.org/wp-
               content/uploads/TPM-Rev-2.0-Part-1-Architecture-
               01.07-2014-03-13.pdf>.
+
+   [TPM-ID]   "TPM Keys for Platform Identity for TPM 1.2", August 2015,
+              <https://www.trustedcomputinggroup.org/wp-content/uploads/
+              TPM_Keys_for_Platform_Identity_v1_0_r3_Final.pdf>.
 
    [US-Executive-Order]
               "Executive Order on Improving the Nation's Cybersecurity",
