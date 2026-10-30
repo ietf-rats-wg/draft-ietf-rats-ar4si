@@ -34,8 +34,8 @@ author:
   email: hardjono@mit.edu
 - ins: T. Fossati
   name: Thomas Fossati
-  organization: Linaro
-  email: Thomas.Fossati@linaro.org
+  organization: NVIDIA
+  email: tfossati@nvidia.com
 - ins: V. Scarlata
   name: Vincent Scarlata
   organization: Intel
