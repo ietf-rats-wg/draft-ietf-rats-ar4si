@@ -943,5 +943,6 @@ In what document (if any) do we attempt normalization of the identity claims bet
 {:numbered="false"}
 
 Many thanks to
-Michael Richardson
+Michael Richardson and
+Sergei Trofimov
 for helpful comments, suggestions and discussions that have shaped this document.
