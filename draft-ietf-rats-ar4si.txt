@@ -5,14 +5,14 @@
 RATS Working Group                                               E. Voit
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                             H. Birkholz
-Expires: 15 April 2027                                    Fraunhofer SIT
+Expires: 3 May 2027                                       Fraunhofer SIT
                                                              T. Hardjono
                                                                      MIT
                                                               T. Fossati
                                                                   Linaro
                                                              V. Scarlata
                                                                    Intel
-                                                         12 October 2026
+                                                         30 October 2026
 
 
               Attestation Results for Secure Interactions
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 April 2027.
+   This Internet-Draft will expire on 3 May 2027.
 
 Copyright Notice
 
@@ -1367,9 +1367,9 @@ Table of Contents
    [I-D.ietf-rats-network-device-subscription]
               Birkholz, H., Voit, E., and W. Pan, "Attestation Event
               Stream Subscription", Work in Progress, Internet-Draft,
-              draft-ietf-rats-network-device-subscription-14, 5 October
+              draft-ietf-rats-network-device-subscription-15, 27 October
               2026, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              rats-network-device-subscription-14>.
+              rats-network-device-subscription-15>.
 
    [IEEE802.1AR]
               "802.1AR: Secure Device Identity", 2 August 2018,
@@ -1661,8 +1661,8 @@ Appendix C.  Some issues being worked
 
 Acknowledgments
 
-   Many thanks to Michael Richardson for helpful comments, suggestions
-   and discussions that have shaped this document.
+   Many thanks to Michael Richardson and Sergei Trofimov for helpful
+   comments, suggestions and discussions that have shaped this document.
 
 Contributors
 
