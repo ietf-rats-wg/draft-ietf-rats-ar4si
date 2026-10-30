@@ -9,7 +9,7 @@ Expires: 3 May 2027                                       Fraunhofer SIT
                                                              T. Hardjono
                                                                      MIT
                                                               T. Fossati
-                                                                  Linaro
+                                                                  NVIDIA
                                                              V. Scarlata
                                                                    Intel
                                                          30 October 2026
@@ -1703,8 +1703,8 @@ Authors' Addresses
 
 
    Thomas Fossati
-   Linaro
-   Email: Thomas.Fossati@linaro.org
+   NVIDIA
+   Email: tfossati@nvidia.com
 
 
    Vincent Scarlata
