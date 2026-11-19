@@ -5,14 +5,14 @@
 RATS Working Group                                               E. Voit
 Internet-Draft                                                     Cisco
 Intended status: Standards Track                             H. Birkholz
-Expires: 13 April 2027                                    Fraunhofer SIT
+Expires: 23 May 2027                                      Fraunhofer SIT
                                                              T. Hardjono
                                                                      MIT
                                                               T. Fossati
-                                                                  Linaro
+                                                                  NVIDIA
                                                              V. Scarlata
                                                                    Intel
-                                                         10 October 2026
+                                                        19 November 2026
 
 
               Attestation Results for Secure Interactions
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 April 2027.
+   This Internet-Draft will expire on 23 May 2027.
 
 Copyright Notice
 
@@ -596,12 +596,13 @@ Table of Contents
    Incomplete: The Verifier was unable to complete its appraisal of this
    aspect of trustworthiness.
 
-   *  Value 1: The Evidence received contains unknown elements which the
-      Verifier is unable to evaluate.  An example might be that the
-      wrong type of Evidence has been delivered.  Another case is that
-      of Evidence coming from a composite Attester: a Verifier may
-      understand only part of it and leave as "unknown" the
-      Trustworthiness claims related to features it can't appraise.
+   *  Value 1: The Evidence received contains unknown elements, or lacks
+      expected elements, which the Verifier is unable to evaluate.  An
+      example might be that the wrong type of Evidence has been
+      delivered.  Another case is that of Evidence coming from a
+      composite Attester: a Verifier may understand only part of it and
+      leave as "unknown" the Trustworthiness claims related to features
+      it can't appraise.
 
    *  Value -1: A verifier malfunction occurred during the Verifier's
       appraisal processing.
@@ -643,8 +644,8 @@ Table of Contents
 
    0:  No assertion
 
-   1:  Evidence contains unknown elements which inhibit Verifier
-      evaluation.
+   1:  Evidence contains unknown elements, or lacks expected elements,
+      which inhibit Verifier evaluation.
 
    -1:  Verifier malfunction
 
@@ -1367,9 +1368,9 @@ Table of Contents
    [I-D.ietf-rats-network-device-subscription]
               Birkholz, H., Voit, E., and W. Pan, "Attestation Event
               Stream Subscription", Work in Progress, Internet-Draft,
-              draft-ietf-rats-network-device-subscription-14, 5 October
+              draft-ietf-rats-network-device-subscription-16, 4 November
               2026, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              rats-network-device-subscription-14>.
+              rats-network-device-subscription-16>.
 
    [IEEE802.1AR]
               "802.1AR: Secure Device Identity", 2 August 2018,
@@ -1661,8 +1662,8 @@ Appendix C.  Some issues being worked
 
 Acknowledgments
 
-   Many thanks to Michael Richardson for helpful comments, suggestions
-   and discussions that have shaped this document.
+   Many thanks to Michael Richardson and Sergei Trofimov for helpful
+   comments, suggestions and discussions that have shaped this document.
 
 Contributors
 
@@ -1703,8 +1704,8 @@ Authors' Addresses
 
 
    Thomas Fossati
-   Linaro
-   Email: Thomas.Fossati@linaro.org
+   NVIDIA
+   Email: tfossati@nvidia.com
 
 
    Vincent Scarlata
